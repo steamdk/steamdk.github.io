@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Qt on 项目介绍</title>
+    <link>//localhost:1313/tags/qt/</link>
+    <description>Recent content in Qt on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Sat, 07 Sep 2024 09:59:59 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Qt开发的学习记录</title>
+      <link>//localhost:1313/posts/qt_study/</link>
+      <pubDate>Sat, 07 Sep 2024 09:59:59 +0800</pubDate>
+      <guid>//localhost:1313/posts/qt_study/</guid>
+      <description>&lt;h1 id=&#34;信号与槽机制&#34;&gt;信号与槽机制&lt;/h1&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;h1 id=&#34;pyqt的ui文件转成py文件&#34;&gt;PyQt的&lt;code&gt;.ui&lt;/code&gt;文件转成&lt;code&gt;.py&lt;/code&gt;文件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;进入 &lt;code&gt;.ui&lt;/code&gt; 文件所在的目录，然后在命令行中输入下面的代码示例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;pyuic5   -x    xxxx.ui   -o   yyyyyy.py&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xxxx.ui  目标文件  &amp;mdash;&amp;gt;   yyyyy.py 结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;设置ui禁止编辑&#34;&gt;设置ui禁止编辑&lt;/h1&gt;
+&lt;p&gt;例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tableView&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setEditTriggers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QAbstractItemView&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NoEditTriggers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

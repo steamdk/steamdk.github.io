@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Vim操作手册 | 项目介绍</title>
+<meta name="keywords" content="vim, 命令">
+<meta name="description" content="日常技巧
+
+CTRL &#43; r 等于 window 下的默认 CTRL &#43; y
+CTRL &#43; f   查找
+
+1. 关于Vim
+1.1 Vim的几种模式
+
+正常模式：可以使用快捷键命令，或按:输入命令行。
+插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。
+可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl&#43;v进入可视块模式。
+替换模式：正常模式下，按R进入。
+
+2. 启动Vim
+
+vim -c cmd file: 在打开文件前，先执行指定的命令；
+vim -r file: 恢复上次异常退出的文件；
+vim -R file: 以只读的方式打开文件，但可以强制保存；
+vim -M file: 以只读的方式打开文件，不可以强制保存；
+vim -y num file: 将编辑窗口的大小设为num行；
+vim &#43; file: 从文件的末尾开始；
+vim &#43;num file: 从第num行开始；
+vim &#43;/string file: 打开file，并将光标停留在第一个找到的string上。
+vim &ndash;remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim &ndash;remote file在已有的gvim中打开文件。
+
+3. 文档操作
+
+:e file &ndash;关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。
+:e! file &ndash;放弃对当前文件的修改，编辑新的文件。
+:e&#43;file &ndash; 开始新的文件，并从文件尾开始编辑。
+:e&#43;n file &ndash; 开始新的文件，并从第n行开始编辑。
+:enew &ndash;编译一个未命名的新文档。(CTRL-W n)
+:e &ndash; 重新加载当前文档。
+:e! &ndash; 重新加载当前文档，并丢弃已做的改动。
+:e#或ctrl&#43;^ &ndash; 回到刚才编辑的文件，很实用。
+:f或ctrl&#43;g &ndash; 显示文档名，是否修改，和光标位置。
+:f filename &ndash; 改变编辑的文件名，这时再保存相当于另存为。
+gf &ndash; 打开以光标所在字符串为文件名的文件。
+:w &ndash; 保存修改。
+:n1,n2w filename &ndash; 选择性保存从某n1行到另n2行的内容。
+:wq &ndash; 保存并退出。
+ZZ &ndash; 保存并退出。
+:x &ndash; 保存并退出。
+:q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)
+:saveas newfilename &ndash; 另存为
+:browse e &ndash; 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置：
+
+:set browsedir=last &ndash; 用上次访问过的目录（默认）；
+:set browsedir=buffer &ndash; 用当前文件所在目录；
+:set browsedir=current &ndash; 用当前工作目录；
+
+
+:Sex &ndash; 水平分割一个窗口，浏览文件系统；
+:Vex &ndash; 垂直分割一个窗口，浏览文件系统；
+
+4. 光标的移动
+4.1 基本移动
+以下移动都是在normal模式下。">
+<meta name="author" content="steamdk">
+<link rel="canonical" href="//localhost:1313/posts/vim%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon.svg">
+<link rel="apple-touch-icon" href="//localhost:1313/favicon.svg">
+<link rel="mask-icon" href="//localhost:1313/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="//localhost:1313/posts/vim%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style><meta property="og:url" content="//localhost:1313/posts/vim%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">
+  <meta property="og:site_name" content="项目介绍">
+  <meta property="og:title" content="Vim操作手册">
+  <meta property="og:description" content="日常技巧 CTRL &#43; r 等于 window 下的默认 CTRL &#43; y CTRL &#43; f 查找 1. 关于Vim 1.1 Vim的几种模式 正常模式：可以使用快捷键命令，或按:输入命令行。 插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。 可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl&#43;v进入可视块模式。 替换模式：正常模式下，按R进入。 2. 启动Vim vim -c cmd file: 在打开文件前，先执行指定的命令； vim -r file: 恢复上次异常退出的文件； vim -R file: 以只读的方式打开文件，但可以强制保存； vim -M file: 以只读的方式打开文件，不可以强制保存； vim -y num file: 将编辑窗口的大小设为num行； vim &#43; file: 从文件的末尾开始； vim &#43;num file: 从第num行开始； vim &#43;/string file: 打开file，并将光标停留在第一个找到的string上。 vim –remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。 3. 文档操作 :e file –关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。 :e! file –放弃对当前文件的修改，编辑新的文件。 :e&#43;file – 开始新的文件，并从文件尾开始编辑。 :e&#43;n file – 开始新的文件，并从第n行开始编辑。 :enew –编译一个未命名的新文档。(CTRL-W n) :e – 重新加载当前文档。 :e! – 重新加载当前文档，并丢弃已做的改动。 :e#或ctrl&#43;^ – 回到刚才编辑的文件，很实用。 :f或ctrl&#43;g – 显示文档名，是否修改，和光标位置。 :f filename – 改变编辑的文件名，这时再保存相当于另存为。 gf – 打开以光标所在字符串为文件名的文件。 :w – 保存修改。 :n1,n2w filename – 选择性保存从某n1行到另n2行的内容。 :wq – 保存并退出。 ZZ – 保存并退出。 :x – 保存并退出。 :q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q) :saveas newfilename – 另存为 :browse e – 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置： :set browsedir=last – 用上次访问过的目录（默认）； :set browsedir=buffer – 用当前文件所在目录； :set browsedir=current – 用当前工作目录； :Sex – 水平分割一个窗口，浏览文件系统； :Vex – 垂直分割一个窗口，浏览文件系统； 4. 光标的移动 4.1 基本移动 以下移动都是在normal模式下。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-09T18:35:25+08:00">
+    <meta property="article:modified_time" content="2024-09-09T18:35:25+08:00">
+    <meta property="article:tag" content="Vim">
+    <meta property="article:tag" content="命令">
+      <meta property="og:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:title" content="Vim操作手册">
+<meta name="twitter:description" content="日常技巧
+
+CTRL &#43; r 等于 window 下的默认 CTRL &#43; y
+CTRL &#43; f   查找
+
+1. 关于Vim
+1.1 Vim的几种模式
+
+正常模式：可以使用快捷键命令，或按:输入命令行。
+插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。
+可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl&#43;v进入可视块模式。
+替换模式：正常模式下，按R进入。
+
+2. 启动Vim
+
+vim -c cmd file: 在打开文件前，先执行指定的命令；
+vim -r file: 恢复上次异常退出的文件；
+vim -R file: 以只读的方式打开文件，但可以强制保存；
+vim -M file: 以只读的方式打开文件，不可以强制保存；
+vim -y num file: 将编辑窗口的大小设为num行；
+vim &#43; file: 从文件的末尾开始；
+vim &#43;num file: 从第num行开始；
+vim &#43;/string file: 打开file，并将光标停留在第一个找到的string上。
+vim &ndash;remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim &ndash;remote file在已有的gvim中打开文件。
+
+3. 文档操作
+
+:e file &ndash;关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。
+:e! file &ndash;放弃对当前文件的修改，编辑新的文件。
+:e&#43;file &ndash; 开始新的文件，并从文件尾开始编辑。
+:e&#43;n file &ndash; 开始新的文件，并从第n行开始编辑。
+:enew &ndash;编译一个未命名的新文档。(CTRL-W n)
+:e &ndash; 重新加载当前文档。
+:e! &ndash; 重新加载当前文档，并丢弃已做的改动。
+:e#或ctrl&#43;^ &ndash; 回到刚才编辑的文件，很实用。
+:f或ctrl&#43;g &ndash; 显示文档名，是否修改，和光标位置。
+:f filename &ndash; 改变编辑的文件名，这时再保存相当于另存为。
+gf &ndash; 打开以光标所在字符串为文件名的文件。
+:w &ndash; 保存修改。
+:n1,n2w filename &ndash; 选择性保存从某n1行到另n2行的内容。
+:wq &ndash; 保存并退出。
+ZZ &ndash; 保存并退出。
+:x &ndash; 保存并退出。
+:q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)
+:saveas newfilename &ndash; 另存为
+:browse e &ndash; 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置：
+
+:set browsedir=last &ndash; 用上次访问过的目录（默认）；
+:set browsedir=buffer &ndash; 用当前文件所在目录；
+:set browsedir=current &ndash; 用当前工作目录；
+
+
+:Sex &ndash; 水平分割一个窗口，浏览文件系统；
+:Vex &ndash; 垂直分割一个窗口，浏览文件系统；
+
+4. 光标的移动
+4.1 基本移动
+以下移动都是在normal模式下。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Vim操作手册",
+      "item": "//localhost:1313/posts/vim%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Vim操作手册",
+  "name": "Vim操作手册",
+  "description": "日常技巧 CTRL + r 等于 window 下的默认 CTRL + y CTRL + f 查找 1. 关于Vim 1.1 Vim的几种模式 正常模式：可以使用快捷键命令，或按:输入命令行。 插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。 可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl+v进入可视块模式。 替换模式：正常模式下，按R进入。 2. 启动Vim vim -c cmd file: 在打开文件前，先执行指定的命令； vim -r file: 恢复上次异常退出的文件； vim -R file: 以只读的方式打开文件，但可以强制保存； vim -M file: 以只读的方式打开文件，不可以强制保存； vim -y num file: 将编辑窗口的大小设为num行； vim + file: 从文件的末尾开始； vim +num file: 从第num行开始； vim +/string file: 打开file，并将光标停留在第一个找到的string上。 vim \u0026ndash;remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim \u0026ndash;remote file在已有的gvim中打开文件。 3. 文档操作 :e file \u0026ndash;关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。 :e! file \u0026ndash;放弃对当前文件的修改，编辑新的文件。 :e+file \u0026ndash; 开始新的文件，并从文件尾开始编辑。 :e+n file \u0026ndash; 开始新的文件，并从第n行开始编辑。 :enew \u0026ndash;编译一个未命名的新文档。(CTRL-W n) :e \u0026ndash; 重新加载当前文档。 :e! \u0026ndash; 重新加载当前文档，并丢弃已做的改动。 :e#或ctrl+^ \u0026ndash; 回到刚才编辑的文件，很实用。 :f或ctrl+g \u0026ndash; 显示文档名，是否修改，和光标位置。 :f filename \u0026ndash; 改变编辑的文件名，这时再保存相当于另存为。 gf \u0026ndash; 打开以光标所在字符串为文件名的文件。 :w \u0026ndash; 保存修改。 :n1,n2w filename \u0026ndash; 选择性保存从某n1行到另n2行的内容。 :wq \u0026ndash; 保存并退出。 ZZ \u0026ndash; 保存并退出。 :x \u0026ndash; 保存并退出。 :q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q) :saveas newfilename \u0026ndash; 另存为 :browse e \u0026ndash; 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置： :set browsedir=last \u0026ndash; 用上次访问过的目录（默认）； :set browsedir=buffer \u0026ndash; 用当前文件所在目录； :set browsedir=current \u0026ndash; 用当前工作目录； :Sex \u0026ndash; 水平分割一个窗口，浏览文件系统； :Vex \u0026ndash; 垂直分割一个窗口，浏览文件系统； 4. 光标的移动 4.1 基本移动 以下移动都是在normal模式下。\n",
+  "keywords": [
+    "vim", "命令"
+  ],
+  "articleBody": "日常技巧 CTRL + r 等于 window 下的默认 CTRL + y CTRL + f 查找 1. 关于Vim 1.1 Vim的几种模式 正常模式：可以使用快捷键命令，或按:输入命令行。 插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。 可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl+v进入可视块模式。 替换模式：正常模式下，按R进入。 2. 启动Vim vim -c cmd file: 在打开文件前，先执行指定的命令； vim -r file: 恢复上次异常退出的文件； vim -R file: 以只读的方式打开文件，但可以强制保存； vim -M file: 以只读的方式打开文件，不可以强制保存； vim -y num file: 将编辑窗口的大小设为num行； vim + file: 从文件的末尾开始； vim +num file: 从第num行开始； vim +/string file: 打开file，并将光标停留在第一个找到的string上。 vim –remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。 3. 文档操作 :e file –关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。 :e! file –放弃对当前文件的修改，编辑新的文件。 :e+file – 开始新的文件，并从文件尾开始编辑。 :e+n file – 开始新的文件，并从第n行开始编辑。 :enew –编译一个未命名的新文档。(CTRL-W n) :e – 重新加载当前文档。 :e! – 重新加载当前文档，并丢弃已做的改动。 :e#或ctrl+^ – 回到刚才编辑的文件，很实用。 :f或ctrl+g – 显示文档名，是否修改，和光标位置。 :f filename – 改变编辑的文件名，这时再保存相当于另存为。 gf – 打开以光标所在字符串为文件名的文件。 :w – 保存修改。 :n1,n2w filename – 选择性保存从某n1行到另n2行的内容。 :wq – 保存并退出。 ZZ – 保存并退出。 :x – 保存并退出。 :q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q) :saveas newfilename – 另存为 :browse e – 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置： :set browsedir=last – 用上次访问过的目录（默认）； :set browsedir=buffer – 用当前文件所在目录； :set browsedir=current – 用当前工作目录； :Sex – 水平分割一个窗口，浏览文件系统； :Vex – 垂直分割一个窗口，浏览文件系统； 4. 光标的移动 4.1 基本移动 以下移动都是在normal模式下。\nh或退格: 左移一个字符； l或空格: 右移一个字符； j: 下移一行； k: 上移一行； gj: 移动到一段内的下一行； gk: 移动到一段内的上一行； +或Enter: 把光标移至下一行第一个非空白字符。 -: 把光标移至上一行第一个非空白字符。 w: 前移一个单词，光标停在下一个单词开头； W: 移动下一个单词开头，但忽略一些标点； e: 前移一个单词，光标停在下一个单词末尾； E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点； b: 后移一个单词，光标停在上一个单词开头； B: 移动到上一个单词开头，忽略一些标点； ge: 后移一个单词，光标停在上一个单词末尾； gE: 同 ge ，不过‘单词’包含单词相邻的标点。 (: 前移1句。 ): 后移1句。 {: 前移1段。 }: 后移1段。 fc: 把光标移到同一行的下一个c字符处 Fc: 把光标移到同一行的上一个c字符处 tc: 把光标移到同一行的下一个c字符前 Tc: 把光标移到同一行的上一个c字符后 ;: 配合f \u0026 t使用，重复一次 ,: 配合f \u0026 t使用，反向重复一次 viw : 选中一个单词 上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h， 则光标向左移动3个字符。\n0: 移动到行首。 g0: 移到光标所在屏幕行行首。 ^: 移动到本行第一个非空白字符。 g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。 $: 移动到行尾。 g$: 移动光标所在屏幕行行尾。 n|: 把光标移到递n列上。 nG: 到文件第n行。 :n 移动到第n行。 :$ 移动到最后一行。 H: 把光标移到屏幕最顶端一行。 M: 把光标移到屏幕中间一行。 L: 把光标移到屏幕最底端一行。 gg: 到文件头部。 G: 到文件尾部。 4.2 翻屏 ctrl+f: 下翻一屏。 ctrl+b: 上翻一屏。 ctrl+d: 下翻半屏。 ctrl+u: 上翻半屏。 ctrl+e: 向下滚动一行。 ctrl+y: 向上滚动一行。 n%: 到文件n%的位置。 zz: 将当前行移动到屏幕中央。 zt: 将当前行移动到屏幕顶端。 zb: 将当前行移动到屏幕底端。 4.3 标记 使用标记可以快速移动。到达标记后，可以用Ctrl+o返回原来的位置。 Ctrl+o和Ctrl+i 很像浏览器上的 后退 和 前进 。\nm{a-z}: 标记光标所在位置，局部标记，只用于当前文件。 m{A-Z}: 标记光标所在位置，全局标记。标记之后，退出Vim， 重新启动，标记仍然有效。 `{a-z}: 移动到标记位置。 ‘{a-z}: 移动到标记行的行首。 `{0-9}：回到上[2-10]次关闭vim时最后离开的位置。 : 移动到上次编辑的位置。''也可以，不过精确到列，而’‘精确到行 。如果想跳转到更老的位置，可以按C-o，跳转到更新的位置用C-i。 `\": 移动到上次离开的地方。 `.: 移动到最后改动的地方。 :marks 显示所有标记。 :delmarks a b – 删除标记a和b。 :delmarks a-c – 删除标记a、b和c。 :delmarks a c-f – 删除标记a、c、d、e、f。 :delmarks! – 删除当前缓冲区的所有标记。 :help mark-motions 查看更多关于mark的知识。 5. 插入文本 5.1 基本插入 i: 在光标前插入；一个小技巧：按8，再按i，进入插入模式，输入=， 按esc进入命令模式，就会出现8个=。 这在插入分割线时非常有用，如30i+就插入了36个+组成的分割线。 I: 在当前行第一个非空字符前插入； gI: 在当前行第一列插入； a: 在光标后插入； A: 在当前行最后插入； o: 在下面新建一行插入； O: 在上面新建一行插入； :r filename在当前位置插入另一个文件的内容。 :[n]r filename在第n行插入另一个文件的内容。 :r !date 在光标处插入当前日期与时间。同理，:r !command可以将其它shell命令的输出插入当前文档。 5.2 改写插入 c[n]w: 改写光标后1(n)个词。 c[n]l: 改写光标后n个字母。 c[n]h: 改写光标前n个字母。 [n]cc: 修改当前[n]行。 [n]s: 以输入的文本替代光标之后1(n)个字符，相当于c[n]l。 [n]S: 删除指定数目的行，并以所输入文本代替之。 注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。\n6. 剪切复制和寄存器 6.1 剪切和复制、粘贴 [n]x: 剪切光标右边n个字符，相当于d[n]l。 [n]X: 剪切光标左边n个字符，相当于d[n]h。 y: 复制在可视模式下选中的文本。 yy or Y: 复制整行文本。 y[n]w: 复制一(n)个词。 y[n]l: 复制光标右边1(n)个字符。 y[n]h: 复制光标左边1(n)个字符。 y$: 从光标当前位置复制到行尾。 y0: 从光标当前位置复制到行首。 :m,ny 复制m行到n行的内容。 y1G或ygg: 复制光标以上的所有行。 yG: 复制光标以下的所有行。 yaw和yas：复制一个词和复制一个句子，即使光标不在词首和句首也没关系。 d: 删除（剪切）在可视模式下选中的文本。 d$ or D: 删除（剪切）当前位置到行尾的内容。 d[n]w: 删除（剪切）1(n)个单词 d[n]l: 删除（剪切）光标右边1(n)个字符。 d[n]h: 删除（剪切）光标左边1(n)个字符。 d0: 删除（剪切）当前位置到行首的内容 [n] dd: 删除（剪切）1(n)行。 :m,nd 剪切m行到n行的内容。 d1G或dgg: 剪切光标以上的所有行。 dG: 剪切光标以下的所有行。 daw和das：剪切一个词和剪切一个句子，即使光标不在词首和句首也没关系。 d/f：这是一个比较高级的组合命令，它将删除当前位置 到下一个f之间的内容。 p: 在光标之后粘贴。 P: 在光标之前粘贴。 6.2 文本对象 aw：一个词 as：一句。 ap：一段。 ab：一块（包含在圆括号中的）。 y, d, c, v都可以跟文本对象。\n6.3 寄存器 a-z：都可以用作寄存器名。“ayy把当前行的内容放入a寄存器。 A-Z：用大写字母索引寄存器，可以在寄存器中追加内容。 如\"Ayy把当前行的内容追加到a寄存器中。 :reg 显示所有寄存器的内容。 “\"：不加寄存器索引时，默认使用的寄存器。 “*：当前选择缓冲区，\"*yy把当前行的内容放入当前选择缓冲区。 “+：系统剪贴板。\"+yy把当前行的内容放入系统剪贴板。 7. 查找与替换 7.1 查找 /something: 在后面的文本中查找something。 ?something: 在前面的文本中查找something。 /pattern/+number: 将光标停在包含pattern的行后面第number行上。 /pattern/-number: 将光标停在包含pattern的行前面第number行上。 n: 向后查找下一个。 N: 向前查找下一个。 可以用grep或vimgrep查找一个模式都在哪些地方出现过，\n其中:grep是调用外部的grep程序，而:vimgrep是vim自己的查找算法。\n用法为： :vim[grep]/pattern/[g] [j] files\ng的含义是如果一个模式在一行中多次出现，则这一行也在结果中多次出现。\nj的含义是grep结束后，结果停在第j项，默认是停在第一项。\nvimgrep前面可以加数字限定搜索结果的上限，如\n:1vim/pattern/ % 只查找那个模式在本文件中的第一个出现。\n其实vimgrep在读纯文本电子书时特别有用，可以生成导航的目录。\n比如电子书中每一节的标题形式为：n. xxxx。你就可以这样：\n:vim/^d{1,}./ %\n然后用:cw或:copen查看结果，可以用C-w H把quickfix窗口移到左侧，\n就更像个目录了。\n7.2 替换 :s/old/new - 用new替换当前行第一个old。 :s/old/new/g - 用new替换当前行所有的old。 :n1,n2s/old/new/g - 用new替换文件n1行到n2行所有的old。 :%s/old/new/g - 用new替换文件中所有的old。 :%s/^/xxx/g - 在每一行的行首插入xxx，^表示行首。 :%s/$/xxx/g - 在每一行的行尾插入xxx，$表示行尾。 所有替换命令末尾加上c，每个替换都将需要用户确认。 如：%s/old/new/gc，加上i则忽略大小写(ignore)。 还有一种比替换更灵活的方式，它是匹配到某个模式后执行某种命令，\n语法为 :[range]g/pattern/command\n例如 :%g/^ xyz/normal dd。\n表示对于以一个空格和xyz开头的行执行normal模式下的dd命令。\n关于range的规定为：\n如果不指定range，则表示当前行。 m,n: 从m行到n行。 0: 最开始一行（可能是这样）。 $: 最后一行 .: 当前行 %: 所有行 7.3 正则表达式 高级的查找替换就要用到正则表达式。\n\\d: 表示十进制数（我猜的） \\s: 表示空格 \\S: 非空字符 \\a: 英文字母 |: 表示 或 .: 表示. {m,n}: 表示m到n个字符。这要和 \\s与\\a等连用，如 \\a{m,n} 表示m 到n个英文字母。 {m,}: 表示m到无限多个字符。 **: 当前目录下的所有子目录。 :help pattern得到更多帮助。\n8. 排版 8.1 基本排版 « 向左缩进一个shiftwidth \u003e\u003e 向右缩进一个shiftwidth :ce(nter) 本行文字居中 :le(ft) 本行文字靠左 :ri(ght) 本行文字靠右 gq 对选中的文字重排，即对过长的文字进行断行 gqq 重排当前行 gqnq 重排n行 gqap 重排当前段 gqnap 重排n段 gqnj 重排当前行和下面n行 gqQ 重排当前段对文章末尾 J 拼接当前行和下一行 gJ 同 J ，不过合并后不留空格。 8.2 拼写检查 :set spell－开启拼写检查功能 :set nospell－关闭拼写检查功能 ]s－移到下一个拼写错误的单词 [s－作用与上一命令类似，但它是从相反方向进行搜索 z=－显示一个有关拼写错误单词的列表，可从中选择 zg－告诉拼写检查器该单词是拼写正确的 zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的 8.3 统计字数 g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 以上对 Mac 或 Unix 的文件格式适用。 如果是 Windows 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。\n9. 编辑多个文件 9.1 一次编辑多个文件 我们可以一次打开多个文件，如\nvi a.txt b.txt c.txt 使用:next(:n)编辑下一个文件。 :2n 编辑下2个文件。 使用:previous或:N编辑上一个文件。 使用:wnext，保存当前文件，并编辑下一个文件。 使用:wprevious，保存当前文件，并编辑上一个文件。 使用:args 显示文件列表。 :n filenames或:args filenames 指定新的文件列表。 vi -o filenames 在水平分割的多个窗口中编辑多个文件。 vi -O filenames 在垂直分割的多个窗口中编辑多个文件。 9.2 多标签编辑 vim -p files: 打开多个文件，每个文件占用一个标签页。 :tabe, tabnew – 如果加文件名，就在新的标签中打开这个文件， 否则打开一个空缓冲区。 ^w gf – 在新的标签页里打开光标下路径指定的文件。 :tabn – 切换到下一个标签。Control + PageDown，也可以。 :tabp – 切换到上一个标签。Control + PageUp，也可以。 [n] gt – 切换到下一个标签。如果前面加了 n ， 就切换到第n个标签。第一个标签的序号就是1。 :tab split – 将当前缓冲区的内容在新页签中打开。 :tabc[lose] – 关闭当前的标签页。 :tabo[nly] – 关闭其它的标签页。 :tabs – 列出所有的标签页和它们包含的窗口。 :tabm[ove] [N] – 移动标签页，移动到第N个标签页之后。 如 tabm 0 当前标签页，就会变成第一个标签页。 9.3 缓冲区 :buffers或:ls或:files 显示缓冲区列表。 ctrl+^：在最近两个缓冲区间切换。 :bn – 下一个缓冲区。 :bp – 上一个缓冲区。 :bl – 最后一个缓冲区。 :b[n]或:[n]b – 切换到第n个缓冲区。 :nbw(ipeout) – 彻底删除第n个缓冲区。 :nbd(elete) – 删除第n个缓冲区，并未真正删除，还在unlisted列表中。 :ba[ll] – 把所有的缓冲区在当前页中打开，每个缓冲区占一个窗口。 10. 分屏编辑 vim -o file1 file2:水平分割窗口，同时打开file1和file2 vim -O file1 file2:垂直分割窗口，同时打开file1和file2 10.1 水平分割 :split(:sp) – 把当前窗水平分割成两个窗口。(CTRL-W s 或 CTRL-W CTRL-S) 注意如果在终端下，CTRL-S可能会冻结终端，请按CTRL-Q继续。 :split filename – 水平分割窗口，并在新窗口中显示另一个文件。 :nsplit(:nsp) – 水平分割出一个n行高的窗口。 :[N]new – 水平分割出一个N行高的窗口，并编辑一个新文件。 (CTRL-W n或 CTRL-W CTRL-N) ctrl+w f –水平分割出一个窗口，并在新窗口打开名称为光标所在词的文件 。 C-w C-^ – 水平分割一个窗口，打开刚才编辑的文件。 10.2 垂直分割 :vsplit(:vsp) – 把当前窗口分割成水平分布的两个窗口。 (CTRL-W v或CTRL CTRL-V) :[N]vne[w] – 垂直分割出一个新窗口。 :vertical 水平分割的命令： 相应的垂直分割。 10.3 关闭子窗口 :qall – 关闭所有窗口，退出vim。 :wall – 保存所有修改过的窗口。 :only – 只保留当前窗口，关闭其它窗口。(CTRL-W o) :close – 关闭当前窗口，CTRL-W c能实现同样的功能。 (象 :q :x同样工作 ) 10.4 调整窗口大小 ctrl+w + –当前窗口增高一行。也可以用n增高n行。 ctrl+w - –当前窗口减小一行。也可以用n减小n行。 ctrl+w _ –当前窗口扩展到尽可能的大。也可以用n设定行数。 :resize n – 当前窗口n行高。 ctrl+w = – 所有窗口同样高度。 n ctrl+w _ – 当前窗口的高度设定为n行。 ctrl+w \u003c –当前窗口减少一列。也可以用n减少n列。 ctrl+w \u003e –当前窗口增宽一列。也可以用n增宽n列。 ctrl+w | –当前窗口尽可能的宽。也可以用n设定列数。 10.5 切换和移动窗口 如果支持鼠标，切换和调整子窗口的大小就简单了。\nctrl+w ctrl+w: 切换到下一个窗口。或者是ctrl+w w。 ctrl+w p: 切换到前一个窗口。 ctrl+w h(l,j,k):切换到左（右，下，上）的窗口。 ctrl+w t(b):切换到最上（下）面的窗口。 ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面。 ctrl+w r：旋转窗口的位置。 ctrl+w T: 将当前的窗口移动到新的标签页上。 11. 快速编辑 11.1 改变大小写 ~: 反转光标所在字符的大小写。 可视模式下的U或u：把选中的文本变为大写或小写。 gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。 11.2 替换（normal模式） r: 替换光标处的字符，同样支持汉字。 R: 进入替换模式，按esc回到正常模式。 11.3 撤消与重做（normal模式） [n] u: 取消一(n)个改动。 :undo 5 – 撤销5个改变。 :undolist – 你的撤销历史。 ctrl + r: 重做最后的改动。 U: 取消当前行中所有的改动。 :earlier 4m – 回到4分钟前 :later 55s – 前进55秒 \u003e 在这篇博客中，我引用了作者详细介绍的 Vim 的使用技巧。更多内容请查看原文：Vim 笔记。\n",
+  "wordCount" : "6373",
+  "inLanguage": "zh",
+  "image": "https://i.postimg.cc/7hwBy7VS/calcr.png","datePublished": "2024-09-09T18:35:25+08:00",
+  "dateModified": "2024-09-09T18:35:25+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "steamdk"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/vim%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "项目介绍",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Vim操作手册
+    </h1>
+    <div class="post-meta"><span title='2024-09-09 18:35:25 +0800 CST'>2024-09-09</span>&nbsp;·&nbsp;13 分钟&nbsp;·&nbsp;steamdk
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%97%a5%e5%b8%b8%e6%8a%80%e5%b7%a7" aria-label="日常技巧">日常技巧</a></li>
+                <li>
+                    <a href="#1-%e5%85%b3%e4%ba%8evim" aria-label="1. 关于Vim">1. 关于Vim</a><ul>
+                        
+                <li>
+                    <a href="#11-vim%e7%9a%84%e5%87%a0%e7%a7%8d%e6%a8%a1%e5%bc%8f" aria-label="1.1 Vim的几种模式">1.1 Vim的几种模式</a></li></ul>
+                </li>
+                <li>
+                    <a href="#2-%e5%90%af%e5%8a%a8vim" aria-label="2. 启动Vim">2. 启动Vim</a></li>
+                <li>
+                    <a href="#3-%e6%96%87%e6%a1%a3%e6%93%8d%e4%bd%9c" aria-label="3. 文档操作">3. 文档操作</a></li>
+                <li>
+                    <a href="#4-%e5%85%89%e6%a0%87%e7%9a%84%e7%a7%bb%e5%8a%a8" aria-label="4. 光标的移动">4. 光标的移动</a><ul>
+                        
+                <li>
+                    <a href="#41-%e5%9f%ba%e6%9c%ac%e7%a7%bb%e5%8a%a8" aria-label="4.1 基本移动">4.1 基本移动</a></li>
+                <li>
+                    <a href="#42-%e7%bf%bb%e5%b1%8f" aria-label="4.2 翻屏">4.2 翻屏</a></li>
+                <li>
+                    <a href="#43-%e6%a0%87%e8%ae%b0" aria-label="4.3 标记">4.3 标记</a></li></ul>
+                </li>
+                <li>
+                    <a href="#5-%e6%8f%92%e5%85%a5%e6%96%87%e6%9c%ac" aria-label="5. 插入文本">5. 插入文本</a><ul>
+                        
+                <li>
+                    <a href="#51-%e5%9f%ba%e6%9c%ac%e6%8f%92%e5%85%a5" aria-label="5.1 基本插入">5.1 基本插入</a></li>
+                <li>
+                    <a href="#52-%e6%94%b9%e5%86%99%e6%8f%92%e5%85%a5" aria-label="5.2 改写插入">5.2 改写插入</a></li></ul>
+                </li>
+                <li>
+                    <a href="#6-%e5%89%aa%e5%88%87%e5%a4%8d%e5%88%b6%e5%92%8c%e5%af%84%e5%ad%98%e5%99%a8" aria-label="6. 剪切复制和寄存器">6. 剪切复制和寄存器</a><ul>
+                        
+                <li>
+                    <a href="#61-%e5%89%aa%e5%88%87%e5%92%8c%e5%a4%8d%e5%88%b6%e7%b2%98%e8%b4%b4" aria-label="6.1 剪切和复制、粘贴">6.1 剪切和复制、粘贴</a></li>
+                <li>
+                    <a href="#62-%e6%96%87%e6%9c%ac%e5%af%b9%e8%b1%a1" aria-label="6.2 文本对象">6.2 文本对象</a></li>
+                <li>
+                    <a href="#63-%e5%af%84%e5%ad%98%e5%99%a8" aria-label="6.3 寄存器">6.3 寄存器</a></li></ul>
+                </li>
+                <li>
+                    <a href="#7-%e6%9f%a5%e6%89%be%e4%b8%8e%e6%9b%bf%e6%8d%a2" aria-label="7. 查找与替换">7. 查找与替换</a><ul>
+                        
+                <li>
+                    <a href="#71-%e6%9f%a5%e6%89%be" aria-label="7.1 查找">7.1 查找</a></li>
+                <li>
+                    <a href="#72-%e6%9b%bf%e6%8d%a2" aria-label="7.2 替换">7.2 替换</a></li>
+                <li>
+                    <a href="#73-%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f" aria-label="7.3 正则表达式">7.3 正则表达式</a></li></ul>
+                </li>
+                <li>
+                    <a href="#8-%e6%8e%92%e7%89%88" aria-label="8. 排版">8. 排版</a><ul>
+                        
+                <li>
+                    <a href="#81-%e5%9f%ba%e6%9c%ac%e6%8e%92%e7%89%88" aria-label="8.1 基本排版">8.1 基本排版</a></li>
+                <li>
+                    <a href="#82-%e6%8b%bc%e5%86%99%e6%a3%80%e6%9f%a5" aria-label="8.2 拼写检查">8.2 拼写检查</a></li>
+                <li>
+                    <a href="#83-%e7%bb%9f%e8%ae%a1%e5%ad%97%e6%95%b0" aria-label="8.3 统计字数">8.3 统计字数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#9-%e7%bc%96%e8%be%91%e5%a4%9a%e4%b8%aa%e6%96%87%e4%bb%b6" aria-label="9. 编辑多个文件">9. 编辑多个文件</a><ul>
+                        
+                <li>
+                    <a href="#91-%e4%b8%80%e6%ac%a1%e7%bc%96%e8%be%91%e5%a4%9a%e4%b8%aa%e6%96%87%e4%bb%b6" aria-label="9.1 一次编辑多个文件">9.1 一次编辑多个文件</a></li>
+                <li>
+                    <a href="#92-%e5%a4%9a%e6%a0%87%e7%ad%be%e7%bc%96%e8%be%91" aria-label="9.2 多标签编辑">9.2 多标签编辑</a></li>
+                <li>
+                    <a href="#93-%e7%bc%93%e5%86%b2%e5%8c%ba" aria-label="9.3 缓冲区">9.3 缓冲区</a></li></ul>
+                </li>
+                <li>
+                    <a href="#10-%e5%88%86%e5%b1%8f%e7%bc%96%e8%be%91" aria-label="10. 分屏编辑">10. 分屏编辑</a><ul>
+                        
+                <li>
+                    <a href="#101-%e6%b0%b4%e5%b9%b3%e5%88%86%e5%89%b2" aria-label="10.1 水平分割">10.1 水平分割</a></li>
+                <li>
+                    <a href="#102-%e5%9e%82%e7%9b%b4%e5%88%86%e5%89%b2" aria-label="10.2 垂直分割">10.2 垂直分割</a></li>
+                <li>
+                    <a href="#103-%e5%85%b3%e9%97%ad%e5%ad%90%e7%aa%97%e5%8f%a3" aria-label="10.3 关闭子窗口">10.3 关闭子窗口</a></li>
+                <li>
+                    <a href="#104-%e8%b0%83%e6%95%b4%e7%aa%97%e5%8f%a3%e5%a4%a7%e5%b0%8f" aria-label="10.4 调整窗口大小">10.4 调整窗口大小</a></li>
+                <li>
+                    <a href="#105-%e5%88%87%e6%8d%a2%e5%92%8c%e7%a7%bb%e5%8a%a8%e7%aa%97%e5%8f%a3" aria-label="10.5 切换和移动窗口">10.5 切换和移动窗口</a></li></ul>
+                </li>
+                <li>
+                    <a href="#11-%e5%bf%ab%e9%80%9f%e7%bc%96%e8%be%91" aria-label="11. 快速编辑">11. 快速编辑</a><ul>
+                        
+                <li>
+                    <a href="#111-%e6%94%b9%e5%8f%98%e5%a4%a7%e5%b0%8f%e5%86%99" aria-label="11.1 改变大小写">11.1 改变大小写</a></li>
+                <li>
+                    <a href="#112-%e6%9b%bf%e6%8d%a2normal%e6%a8%a1%e5%bc%8f" aria-label="11.2 替换（normal模式）">11.2 替换（normal模式）</a></li>
+                <li>
+                    <a href="#113-%e6%92%a4%e6%b6%88%e4%b8%8e%e9%87%8d%e5%81%9anormal%e6%a8%a1%e5%bc%8f" aria-label="11.3 撤消与重做（normal模式）">11.3 撤消与重做（normal模式）</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="日常技巧">日常技巧<a hidden class="anchor" aria-hidden="true" href="#日常技巧">#</a></h1>
+<ol>
+<li><code>CTRL + r</code> 等于 window 下的默认 <code>CTRL + y</code></li>
+<li>CTRL + f   查找</li>
+</ol>
+<h1 id="1-关于vim">1. 关于Vim<a hidden class="anchor" aria-hidden="true" href="#1-关于vim">#</a></h1>
+<h2 id="11-vim的几种模式">1.1 Vim的几种模式<a hidden class="anchor" aria-hidden="true" href="#11-vim的几种模式">#</a></h2>
+<ul>
+<li>正常模式：可以使用快捷键命令，或按:输入命令行。</li>
+<li>插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。</li>
+<li>可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl+v进入可视块模式。</li>
+<li>替换模式：正常模式下，按R进入。</li>
+</ul>
+<h1 id="2-启动vim">2. 启动Vim<a hidden class="anchor" aria-hidden="true" href="#2-启动vim">#</a></h1>
+<ul>
+<li>vim -c cmd file: 在打开文件前，先执行指定的命令；</li>
+<li>vim -r file: 恢复上次异常退出的文件；</li>
+<li>vim -R file: 以只读的方式打开文件，但可以强制保存；</li>
+<li>vim -M file: 以只读的方式打开文件，不可以强制保存；</li>
+<li>vim -y num file: 将编辑窗口的大小设为num行；</li>
+<li>vim + file: 从文件的末尾开始；</li>
+<li>vim +num file: 从第num行开始；</li>
+<li>vim +/string file: 打开file，并将光标停留在第一个找到的string上。</li>
+<li>vim &ndash;remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim &ndash;remote file在已有的gvim中打开文件。</li>
+</ul>
+<h1 id="3-文档操作">3. 文档操作<a hidden class="anchor" aria-hidden="true" href="#3-文档操作">#</a></h1>
+<ul>
+<li>:e file &ndash;关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。</li>
+<li>:e! file &ndash;放弃对当前文件的修改，编辑新的文件。</li>
+<li>:e+file &ndash; 开始新的文件，并从文件尾开始编辑。</li>
+<li>:e+n file &ndash; 开始新的文件，并从第n行开始编辑。</li>
+<li>:enew &ndash;编译一个未命名的新文档。(CTRL-W n)</li>
+<li>:e &ndash; 重新加载当前文档。</li>
+<li>:e! &ndash; 重新加载当前文档，并丢弃已做的改动。</li>
+<li>:e#或ctrl+^ &ndash; 回到刚才编辑的文件，很实用。</li>
+<li>:f或ctrl+g &ndash; 显示文档名，是否修改，和光标位置。</li>
+<li>:f filename &ndash; 改变编辑的文件名，这时再保存相当于另存为。</li>
+<li>gf &ndash; 打开以光标所在字符串为文件名的文件。</li>
+<li>:w &ndash; 保存修改。</li>
+<li>:n1,n2w filename &ndash; 选择性保存从某n1行到另n2行的内容。</li>
+<li>:wq &ndash; 保存并退出。</li>
+<li>ZZ &ndash; 保存并退出。</li>
+<li>:x &ndash; 保存并退出。</li>
+<li>:q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)</li>
+<li>:saveas newfilename &ndash; 另存为</li>
+<li>:browse e &ndash; 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置：
+<ul>
+<li>:set browsedir=last &ndash; 用上次访问过的目录（默认）；</li>
+<li>:set browsedir=buffer &ndash; 用当前文件所在目录；</li>
+<li>:set browsedir=current &ndash; 用当前工作目录；</li>
+</ul>
+</li>
+<li>:Sex &ndash; 水平分割一个窗口，浏览文件系统；</li>
+<li>:Vex &ndash; 垂直分割一个窗口，浏览文件系统；</li>
+</ul>
+<h1 id="4-光标的移动">4. 光标的移动<a hidden class="anchor" aria-hidden="true" href="#4-光标的移动">#</a></h1>
+<h2 id="41-基本移动">4.1 基本移动<a hidden class="anchor" aria-hidden="true" href="#41-基本移动">#</a></h2>
+<p>以下移动都是在normal模式下。</p>
+<ul>
+<li>h或退格: 左移一个字符；</li>
+<li>l或空格: 右移一个字符；</li>
+<li>j: 下移一行；</li>
+<li>k: 上移一行；</li>
+<li>gj: 移动到一段内的下一行；</li>
+<li>gk: 移动到一段内的上一行；</li>
+<li>+或Enter: 把光标移至下一行第一个非空白字符。</li>
+<li>-: 把光标移至上一行第一个非空白字符。</li>
+<li>w: 前移一个单词，光标停在下一个单词开头；</li>
+<li>W: 移动下一个单词开头，但忽略一些标点；</li>
+<li>e: 前移一个单词，光标停在下一个单词末尾；</li>
+<li>E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点；</li>
+<li>b: 后移一个单词，光标停在上一个单词开头；</li>
+<li>B: 移动到上一个单词开头，忽略一些标点；</li>
+<li>ge: 后移一个单词，光标停在上一个单词末尾；</li>
+<li>gE: 同 ge ，不过‘单词’包含单词相邻的标点。</li>
+<li>(: 前移1句。</li>
+<li>): 后移1句。</li>
+<li>{: 前移1段。</li>
+<li>}: 后移1段。</li>
+<li>fc: 把光标移到同一行的下一个c字符处</li>
+<li>Fc: 把光标移到同一行的上一个c字符处</li>
+<li>tc: 把光标移到同一行的下一个c字符前</li>
+<li>Tc: 把光标移到同一行的上一个c字符后</li>
+<li>;: 配合f &amp; t使用，重复一次</li>
+<li>,: 配合f &amp; t使用，反向重复一次</li>
+<li>viw : 选中一个单词</li>
+</ul>
+<p>上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h， 则光标向左移动3个字符。</p>
+<ul>
+<li>0: 移动到行首。</li>
+<li>g0: 移到光标所在屏幕行行首。</li>
+<li>^: 移动到本行第一个非空白字符。</li>
+<li>g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。</li>
+<li>$: 移动到行尾。</li>
+<li>g$: 移动光标所在屏幕行行尾。</li>
+<li>n|: 把光标移到递n列上。</li>
+<li>nG: 到文件第n行。</li>
+<li>:n<!-- raw HTML omitted --> 移动到第n行。</li>
+<li>:$<!-- raw HTML omitted --> 移动到最后一行。</li>
+<li>H: 把光标移到屏幕最顶端一行。</li>
+<li>M: 把光标移到屏幕中间一行。</li>
+<li>L: 把光标移到屏幕最底端一行。</li>
+<li>gg: 到文件头部。</li>
+<li>G: 到文件尾部。</li>
+</ul>
+<h2 id="42-翻屏">4.2 翻屏<a hidden class="anchor" aria-hidden="true" href="#42-翻屏">#</a></h2>
+<ul>
+<li>ctrl+f: 下翻一屏。</li>
+<li>ctrl+b: 上翻一屏。</li>
+<li>ctrl+d: 下翻半屏。</li>
+<li>ctrl+u: 上翻半屏。</li>
+<li>ctrl+e: 向下滚动一行。</li>
+<li>ctrl+y: 向上滚动一行。</li>
+<li>n%: 到文件n%的位置。</li>
+<li>zz: 将当前行移动到屏幕中央。</li>
+<li>zt: 将当前行移动到屏幕顶端。</li>
+<li>zb: 将当前行移动到屏幕底端。</li>
+</ul>
+<h2 id="43-标记">4.3 标记<a hidden class="anchor" aria-hidden="true" href="#43-标记">#</a></h2>
+<p>使用标记可以快速移动。到达标记后，可以用Ctrl+o返回原来的位置。 Ctrl+o和Ctrl+i 很像浏览器上的 <em>后退</em> 和 <em>前进</em> 。</p>
+<ul>
+<li>m{a-z}: 标记光标所在位置，局部标记，只用于当前文件。</li>
+<li>m{A-Z}: 标记光标所在位置，全局标记。标记之后，退出Vim， 重新启动，标记仍然有效。</li>
+<li>`{a-z}: 移动到标记位置。</li>
+<li>&lsquo;{a-z}: 移动到标记行的行首。</li>
+<li>`{0-9}：回到上[2-10]次关闭vim时最后离开的位置。</li>
+<li><code>: 移动到上次编辑的位置。''也可以，不过</code>精确到列，而&rsquo;&lsquo;精确到行 。如果想跳转到更老的位置，可以按C-o，跳转到更新的位置用C-i。</li>
+<li>`&quot;: 移动到上次离开的地方。</li>
+<li>`.: 移动到最后改动的地方。</li>
+<li>:marks 显示所有标记。</li>
+<li>:delmarks a b &ndash; 删除标记a和b。</li>
+<li>:delmarks a-c &ndash; 删除标记a、b和c。</li>
+<li>:delmarks a c-f &ndash; 删除标记a、c、d、e、f。</li>
+<li>:delmarks! &ndash; 删除当前缓冲区的所有标记。</li>
+<li>:help mark-motions 查看更多关于mark的知识。</li>
+</ul>
+<h1 id="5-插入文本">5. 插入文本<a hidden class="anchor" aria-hidden="true" href="#5-插入文本">#</a></h1>
+<h2 id="51-基本插入">5.1 基本插入<a hidden class="anchor" aria-hidden="true" href="#51-基本插入">#</a></h2>
+<ul>
+<li>i: 在光标前插入；一个小技巧：按8，再按i，进入插入模式，输入=， 按esc进入命令模式，就会出现8个=。 这在插入分割线时非常有用，如30i+<!-- raw HTML omitted -->就插入了36个+组成的分割线。</li>
+<li>I: 在当前行第一个非空字符前插入；</li>
+<li>gI: 在当前行第一列插入；</li>
+<li>a: 在光标后插入；</li>
+<li>A: 在当前行最后插入；</li>
+<li>o: 在下面新建一行插入；</li>
+<li>O: 在上面新建一行插入；</li>
+<li>:r filename在当前位置插入另一个文件的内容。</li>
+<li>:[n]r filename在第n行插入另一个文件的内容。</li>
+<li>:r !date 在光标处插入当前日期与时间。同理，:r !command可以将其它shell命令的输出插入当前文档。</li>
+</ul>
+<h2 id="52-改写插入">5.2 改写插入<a hidden class="anchor" aria-hidden="true" href="#52-改写插入">#</a></h2>
+<ul>
+<li>c[n]w: 改写光标后1(n)个词。</li>
+<li>c[n]l: 改写光标后n个字母。</li>
+<li>c[n]h: 改写光标前n个字母。</li>
+<li>[n]cc: 修改当前[n]行。</li>
+<li>[n]s: 以输入的文本替代光标之后1(n)个字符，相当于c[n]l。</li>
+<li>[n]S: 删除指定数目的行，并以所输入文本代替之。</li>
+</ul>
+<p>注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。</p>
+<h1 id="6-剪切复制和寄存器">6. 剪切复制和寄存器<a hidden class="anchor" aria-hidden="true" href="#6-剪切复制和寄存器">#</a></h1>
+<h2 id="61-剪切和复制粘贴">6.1 剪切和复制、粘贴<a hidden class="anchor" aria-hidden="true" href="#61-剪切和复制粘贴">#</a></h2>
+<ul>
+<li>[n]x: 剪切光标右边n个字符，相当于d[n]l。</li>
+<li>[n]X: 剪切光标左边n个字符，相当于d[n]h。</li>
+<li>y: 复制在可视模式下选中的文本。</li>
+<li>yy or Y: 复制整行文本。</li>
+<li>y[n]w: 复制一(n)个词。</li>
+<li>y[n]l: 复制光标右边1(n)个字符。</li>
+<li>y[n]h: 复制光标左边1(n)个字符。</li>
+<li>y$: 从光标当前位置复制到行尾。</li>
+<li>y0: 从光标当前位置复制到行首。</li>
+<li>:m,ny<!-- raw HTML omitted --> 复制m行到n行的内容。</li>
+<li>y1G或ygg: 复制光标以上的所有行。</li>
+<li>yG: 复制光标以下的所有行。</li>
+<li>yaw和yas：复制一个词和复制一个句子，即使光标不在词首和句首也没关系。</li>
+<li>d: 删除（剪切）在可视模式下选中的文本。</li>
+<li>d$ or D: 删除（剪切）当前位置到行尾的内容。</li>
+<li>d[n]w: 删除（剪切）1(n)个单词</li>
+<li>d[n]l: 删除（剪切）光标右边1(n)个字符。</li>
+<li>d[n]h: 删除（剪切）光标左边1(n)个字符。</li>
+<li>d0: 删除（剪切）当前位置到行首的内容</li>
+<li>[n] dd: 删除（剪切）1(n)行。</li>
+<li>:m,nd<!-- raw HTML omitted --> 剪切m行到n行的内容。</li>
+<li>d1G或dgg: 剪切光标以上的所有行。</li>
+<li>dG: 剪切光标以下的所有行。</li>
+<li>daw和das：剪切一个词和剪切一个句子，即使光标不在词首和句首也没关系。</li>
+<li>d/f<!-- raw HTML omitted -->：这是一个比较高级的组合命令，它将删除当前位置 到下一个f之间的内容。</li>
+<li>p: 在光标之后粘贴。</li>
+<li>P: 在光标之前粘贴。</li>
+</ul>
+<h2 id="62-文本对象">6.2 文本对象<a hidden class="anchor" aria-hidden="true" href="#62-文本对象">#</a></h2>
+<ul>
+<li>aw：一个词</li>
+<li>as：一句。</li>
+<li>ap：一段。</li>
+<li>ab：一块（包含在圆括号中的）。</li>
+</ul>
+<p>y, d, c, v都可以跟文本对象。</p>
+<h2 id="63-寄存器">6.3 寄存器<a hidden class="anchor" aria-hidden="true" href="#63-寄存器">#</a></h2>
+<ul>
+<li>a-z：都可以用作寄存器名。&ldquo;ayy把当前行的内容放入a寄存器。</li>
+<li>A-Z：用大写字母索引寄存器，可以在寄存器中追加内容。 如&quot;Ayy把当前行的内容追加到a寄存器中。</li>
+<li>:reg 显示所有寄存器的内容。</li>
+<li>&ldquo;&quot;：不加寄存器索引时，默认使用的寄存器。</li>
+<li>&ldquo;*：当前选择缓冲区，&quot;*yy把当前行的内容放入当前选择缓冲区。</li>
+<li>&ldquo;+：系统剪贴板。&quot;+yy把当前行的内容放入系统剪贴板。</li>
+</ul>
+<h1 id="7-查找与替换">7. 查找与替换<a hidden class="anchor" aria-hidden="true" href="#7-查找与替换">#</a></h1>
+<h2 id="71-查找">7.1 查找<a hidden class="anchor" aria-hidden="true" href="#71-查找">#</a></h2>
+<ul>
+<li>/something: 在后面的文本中查找something。</li>
+<li>?something: 在前面的文本中查找something。</li>
+<li>/pattern/+number: 将光标停在包含pattern的行后面第number行上。</li>
+<li>/pattern/-number: 将光标停在包含pattern的行前面第number行上。</li>
+<li>n: 向后查找下一个。</li>
+<li>N: 向前查找下一个。</li>
+</ul>
+<p>可以用grep或vimgrep查找一个模式都在哪些地方出现过，</p>
+<p>其中:grep是调用外部的grep程序，而:vimgrep是vim自己的查找算法。</p>
+<p>用法为： :vim[grep]/pattern/[g] [j] files</p>
+<p>g的含义是如果一个模式在一行中多次出现，则这一行也在结果中多次出现。</p>
+<p>j的含义是grep结束后，结果停在第j项，默认是停在第一项。</p>
+<p>vimgrep前面可以加数字限定搜索结果的上限，如</p>
+<p>:1vim/pattern/ % 只查找那个模式在本文件中的第一个出现。</p>
+<p>其实vimgrep在读纯文本电子书时特别有用，可以生成导航的目录。</p>
+<p>比如电子书中每一节的标题形式为：n. xxxx。你就可以这样：</p>
+<p>:vim/^d{1,}./ %</p>
+<p>然后用:cw或:copen查看结果，可以用C-w H把quickfix窗口移到左侧，</p>
+<p>就更像个目录了。</p>
+<h2 id="72-替换">7.2 替换<a hidden class="anchor" aria-hidden="true" href="#72-替换">#</a></h2>
+<ul>
+<li>:s/old/new - 用new替换当前行第一个old。</li>
+<li>:s/old/new/g - 用new替换当前行所有的old。</li>
+<li>:n1,n2s/old/new/g - 用new替换文件n1行到n2行所有的old。</li>
+<li>:%s/old/new/g - 用new替换文件中所有的old。</li>
+<li>:%s/^/xxx/g - 在每一行的行首插入xxx，^表示行首。</li>
+<li>:%s/$/xxx/g - 在每一行的行尾插入xxx，$表示行尾。</li>
+<li>所有替换命令末尾加上c，每个替换都将需要用户确认。 如：%s/old/new/gc，加上i则忽略大小写(ignore)。</li>
+</ul>
+<p>还有一种比替换更灵活的方式，它是匹配到某个模式后执行某种命令，</p>
+<p>语法为 :[range]g/pattern/command</p>
+<p>例如 :%g/^ xyz/normal dd。</p>
+<p>表示对于以一个空格和xyz开头的行执行normal模式下的dd命令。</p>
+<p>关于range的规定为：</p>
+<ul>
+<li>如果不指定range，则表示当前行。</li>
+<li>m,n: 从m行到n行。</li>
+<li>0: 最开始一行（可能是这样）。</li>
+<li>$: 最后一行</li>
+<li>.: 当前行</li>
+<li>%: 所有行</li>
+</ul>
+<h2 id="73-正则表达式">7.3 正则表达式<a hidden class="anchor" aria-hidden="true" href="#73-正则表达式">#</a></h2>
+<p>高级的查找替换就要用到正则表达式。</p>
+<ul>
+<li>\d: 表示十进制数（我猜的）</li>
+<li>\s: 表示空格</li>
+<li>\S: 非空字符</li>
+<li>\a: 英文字母</li>
+<li>|: 表示 或</li>
+<li>.: 表示.</li>
+<li>{m,n}: 表示m到n个字符。这要和 \s与\a等连用，如 \a{m,n} 表示m 到n个英文字母。</li>
+<li>{m,}: 表示m到无限多个字符。</li>
+<li>**: 当前目录下的所有子目录。</li>
+</ul>
+<p>:help pattern得到更多帮助。</p>
+<hr>
+<h1 id="8-排版">8. 排版<a hidden class="anchor" aria-hidden="true" href="#8-排版">#</a></h1>
+<h2 id="81-基本排版">8.1 基本排版<a hidden class="anchor" aria-hidden="true" href="#81-基本排版">#</a></h2>
+<ul>
+<li>&laquo; 向左缩进一个shiftwidth</li>
+<li>&gt;&gt; 向右缩进一个shiftwidth</li>
+<li>:ce(nter) 本行文字居中</li>
+<li>:le(ft) 本行文字靠左</li>
+<li>:ri(ght) 本行文字靠右</li>
+<li>gq 对选中的文字重排，即对过长的文字进行断行</li>
+<li>gqq 重排当前行</li>
+<li>gqnq 重排n行</li>
+<li>gqap 重排当前段</li>
+<li>gqnap 重排n段</li>
+<li>gqnj 重排当前行和下面n行</li>
+<li>gqQ 重排当前段对文章末尾</li>
+<li>J 拼接当前行和下一行</li>
+<li>gJ 同 J ，不过合并后不留空格。</li>
+</ul>
+<h2 id="82-拼写检查">8.2 拼写检查<a hidden class="anchor" aria-hidden="true" href="#82-拼写检查">#</a></h2>
+<ul>
+<li>:set spell－开启拼写检查功能</li>
+<li>:set nospell－关闭拼写检查功能</li>
+<li>]s－移到下一个拼写错误的单词</li>
+<li>[s－作用与上一命令类似，但它是从相反方向进行搜索</li>
+<li>z=－显示一个有关拼写错误单词的列表，可从中选择</li>
+<li>zg－告诉拼写检查器该单词是拼写正确的</li>
+<li>zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的</li>
+</ul>
+<h2 id="83-统计字数">8.3 统计字数<a hidden class="anchor" aria-hidden="true" href="#83-统计字数">#</a></h2>
+<p>g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 以上对 Mac 或 Unix 的文件格式适用。 如果是 Windows 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。</p>
+<hr>
+<h1 id="9-编辑多个文件">9. 编辑多个文件<a hidden class="anchor" aria-hidden="true" href="#9-编辑多个文件">#</a></h1>
+<h2 id="91-一次编辑多个文件">9.1 一次编辑多个文件<a hidden class="anchor" aria-hidden="true" href="#91-一次编辑多个文件">#</a></h2>
+<p>我们可以一次打开多个文件，如</p>
+<blockquote>
+<pre tabindex="0"><code>vi a.txt b.txt c.txt
+</code></pre></blockquote>
+<ul>
+<li>使用:next(:n)编辑下一个文件。</li>
+<li>:2n 编辑下2个文件。</li>
+<li>使用:previous或:N编辑上一个文件。</li>
+<li>使用:wnext，保存当前文件，并编辑下一个文件。</li>
+<li>使用:wprevious，保存当前文件，并编辑上一个文件。</li>
+<li>使用:args 显示文件列表。</li>
+<li>:n filenames或:args filenames 指定新的文件列表。</li>
+<li>vi -o filenames 在水平分割的多个窗口中编辑多个文件。</li>
+<li>vi -O filenames 在垂直分割的多个窗口中编辑多个文件。</li>
+</ul>
+<h2 id="92-多标签编辑">9.2 多标签编辑<a hidden class="anchor" aria-hidden="true" href="#92-多标签编辑">#</a></h2>
+<ul>
+<li>vim -p files: 打开多个文件，每个文件占用一个标签页。</li>
+<li>:tabe, tabnew &ndash; 如果加文件名，就在新的标签中打开这个文件， 否则打开一个空缓冲区。</li>
+<li>^w gf &ndash; 在新的标签页里打开光标下路径指定的文件。</li>
+<li>:tabn &ndash; 切换到下一个标签。Control + PageDown，也可以。</li>
+<li>:tabp &ndash; 切换到上一个标签。Control + PageUp，也可以。</li>
+<li>[n] gt &ndash; 切换到下一个标签。如果前面加了 n ， 就切换到第n个标签。第一个标签的序号就是1。</li>
+<li>:tab split &ndash; 将当前缓冲区的内容在新页签中打开。</li>
+<li>:tabc[lose] &ndash; 关闭当前的标签页。</li>
+<li>:tabo[nly] &ndash; 关闭其它的标签页。</li>
+<li>:tabs &ndash; 列出所有的标签页和它们包含的窗口。</li>
+<li>:tabm[ove] [N] &ndash; 移动标签页，移动到第N个标签页之后。 如 tabm 0 当前标签页，就会变成第一个标签页。</li>
+</ul>
+<h2 id="93-缓冲区">9.3 缓冲区<a hidden class="anchor" aria-hidden="true" href="#93-缓冲区">#</a></h2>
+<ul>
+<li>:buffers或:ls或:files 显示缓冲区列表。</li>
+<li>ctrl+^：在最近两个缓冲区间切换。</li>
+<li>:bn &ndash; 下一个缓冲区。</li>
+<li>:bp &ndash; 上一个缓冲区。</li>
+<li>:bl &ndash; 最后一个缓冲区。</li>
+<li>:b[n]或:[n]b &ndash; 切换到第n个缓冲区。</li>
+<li>:nbw(ipeout) &ndash; 彻底删除第n个缓冲区。</li>
+<li>:nbd(elete) &ndash; 删除第n个缓冲区，并未真正删除，还在unlisted列表中。</li>
+<li>:ba[ll] &ndash; 把所有的缓冲区在当前页中打开，每个缓冲区占一个窗口。</li>
+</ul>
+<h1 id="10-分屏编辑">10. 分屏编辑<a hidden class="anchor" aria-hidden="true" href="#10-分屏编辑">#</a></h1>
+<ul>
+<li>vim -o file1 file2:水平分割窗口，同时打开file1和file2</li>
+<li>vim -O file1 file2:垂直分割窗口，同时打开file1和file2</li>
+</ul>
+<h2 id="101-水平分割">10.1 水平分割<a hidden class="anchor" aria-hidden="true" href="#101-水平分割">#</a></h2>
+<ul>
+<li>:split(:sp) &ndash; 把当前窗水平分割成两个窗口。(CTRL-W s 或 CTRL-W CTRL-S) 注意如果在终端下，CTRL-S可能会冻结终端，请按CTRL-Q继续。</li>
+<li>:split filename &ndash; 水平分割窗口，并在新窗口中显示另一个文件。</li>
+<li>:nsplit(:nsp) &ndash; 水平分割出一个n行高的窗口。</li>
+<li>:[N]new &ndash; 水平分割出一个N行高的窗口，并编辑一个新文件。 (CTRL-W n或 CTRL-W CTRL-N)</li>
+<li>ctrl+w f &ndash;水平分割出一个窗口，并在新窗口打开名称为光标所在词的文件 。</li>
+<li>C-w C-^ &ndash; 水平分割一个窗口，打开刚才编辑的文件。</li>
+</ul>
+<h2 id="102-垂直分割">10.2 垂直分割<a hidden class="anchor" aria-hidden="true" href="#102-垂直分割">#</a></h2>
+<ul>
+<li>:vsplit(:vsp) &ndash; 把当前窗口分割成水平分布的两个窗口。 (CTRL-W v或CTRL CTRL-V)</li>
+<li>:[N]vne[w] &ndash; 垂直分割出一个新窗口。</li>
+<li>:vertical 水平分割的命令： 相应的垂直分割。</li>
+</ul>
+<h2 id="103-关闭子窗口">10.3 关闭子窗口<a hidden class="anchor" aria-hidden="true" href="#103-关闭子窗口">#</a></h2>
+<ul>
+<li>:qall &ndash; 关闭所有窗口，退出vim。</li>
+<li>:wall &ndash; 保存所有修改过的窗口。</li>
+<li>:only &ndash; 只保留当前窗口，关闭其它窗口。(CTRL-W o)</li>
+<li>:close &ndash; 关闭当前窗口，CTRL-W c能实现同样的功能。 (象 :q :x同样工作 )</li>
+</ul>
+<h2 id="104-调整窗口大小">10.4 调整窗口大小<a hidden class="anchor" aria-hidden="true" href="#104-调整窗口大小">#</a></h2>
+<ul>
+<li>ctrl+w + &ndash;当前窗口增高一行。也可以用n增高n行。</li>
+<li>ctrl+w - &ndash;当前窗口减小一行。也可以用n减小n行。</li>
+<li>ctrl+w _ &ndash;当前窗口扩展到尽可能的大。也可以用n设定行数。</li>
+<li>:resize n &ndash; 当前窗口n行高。</li>
+<li>ctrl+w = &ndash; 所有窗口同样高度。</li>
+<li>n ctrl+w _ &ndash; 当前窗口的高度设定为n行。</li>
+<li>ctrl+w &lt; &ndash;当前窗口减少一列。也可以用n减少n列。</li>
+<li>ctrl+w &gt; &ndash;当前窗口增宽一列。也可以用n增宽n列。</li>
+<li>ctrl+w | &ndash;当前窗口尽可能的宽。也可以用n设定列数。</li>
+</ul>
+<h2 id="105-切换和移动窗口">10.5 切换和移动窗口<a hidden class="anchor" aria-hidden="true" href="#105-切换和移动窗口">#</a></h2>
+<p>如果支持鼠标，切换和调整子窗口的大小就简单了。</p>
+<ul>
+<li>ctrl+w ctrl+w: 切换到下一个窗口。或者是ctrl+w w。</li>
+<li>ctrl+w p: 切换到前一个窗口。</li>
+<li>ctrl+w h(l,j,k):切换到左（右，下，上）的窗口。</li>
+<li>ctrl+w t(b):切换到最上（下）面的窗口。<!-- raw HTML omitted --></li>
+<li>ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面。</li>
+<li>ctrl+w r：旋转窗口的位置。</li>
+<li>ctrl+w T: 将当前的窗口移动到新的标签页上。</li>
+</ul>
+<h1 id="11-快速编辑">11. 快速编辑<a hidden class="anchor" aria-hidden="true" href="#11-快速编辑">#</a></h1>
+<h2 id="111-改变大小写">11.1 改变大小写<a hidden class="anchor" aria-hidden="true" href="#111-改变大小写">#</a></h2>
+<ul>
+<li>~: 反转光标所在字符的大小写。</li>
+<li>可视模式下的U或u：把选中的文本变为大写或小写。</li>
+<li>gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。</li>
+</ul>
+<h2 id="112-替换normal模式">11.2 替换（normal模式）<a hidden class="anchor" aria-hidden="true" href="#112-替换normal模式">#</a></h2>
+<ul>
+<li>r: 替换光标处的字符，同样支持汉字。</li>
+<li>R: 进入替换模式，按esc回到正常模式。</li>
+</ul>
+<h2 id="113-撤消与重做normal模式">11.3 撤消与重做（normal模式）<a hidden class="anchor" aria-hidden="true" href="#113-撤消与重做normal模式">#</a></h2>
+<ul>
+<li>[n] u: 取消一(n)个改动。</li>
+<li>:undo 5 &ndash; 撤销5个改变。</li>
+<li>:undolist &ndash; 你的撤销历史。</li>
+<li>ctrl + r: 重做最后的改动。</li>
+<li>U: 取消当前行中所有的改动。</li>
+<li>:earlier 4m &ndash; 回到4分钟前</li>
+<li>:later 55s &ndash; 前进55秒</li>
+</ul>
+<p>&gt; 在这篇博客中，我引用了作者详细介绍的 Vim 的使用技巧。更多内容请查看原文：<a href="https://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html">Vim 笔记</a>。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="//localhost:1313/tags/vim/">Vim</a></li>
+      <li><a href="//localhost:1313/tags/%E5%91%BD%E4%BB%A4/">命令</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/go%E8%AF%AD%E8%A8%80/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Go语言</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/hugo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Hugo博客的图片上传</span>
+  </a>
+</nav>
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steamdk\/steamdk.github.io",
+            "data-repo-id": "R_kgDONN_Y2g",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONN_Y2s4CkVh9",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://github.com/steamdk/steamdk.github.io">©2024 项目介绍</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js"
+  integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj+Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var OSName = "unknown";
+  var navApp = navigator.userAgent.toLowerCase();
+  switch (true) {
+    case (navApp.indexOf("win") != -1):
+      OSName = "windows";
+      break;
+    case (navApp.indexOf("mac") != -1):
+      OSName = "apple";
+      break;
+    case (navApp.indexOf("linux") != -1):
+      OSName = "linux";
+      break;
+    case (navApp.indexOf("x11") != -1):
+      OSName = "unix";
+      break;
+  }
+
+  const images = Array.from(document.querySelectorAll(".post-content img"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 1,    
+      
+      container: null,  
+      template: null,  
+      
+    });
+  });
+
+  if (OSName == "windows") {
+    document.body.className += ' win11'
+  }
+</script>
+
+
+
+
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

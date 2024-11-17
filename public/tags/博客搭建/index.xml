@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>博客搭建 on 项目介绍</title>
+    <link>//localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+    <description>Recent content in 博客搭建 on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Fri, 23 Aug 2024 22:32:58 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FirstPost</title>
+      <link>//localhost:1313/posts/firstpost/</link>
+      <pubDate>Fri, 23 Aug 2024 22:32:58 +0800</pubDate>
+      <guid>//localhost:1313/posts/firstpost/</guid>
+      <description>&lt;h1 id=&#34;第一篇博客&#34;&gt;第一篇博客&lt;/h1&gt;
+&lt;p&gt;感谢 B 站 UP 主 SonnyCalcr 的大力支持，让我得以学习并成功搭建这个个人博客网站。非常感谢他的支持与指导！&lt;/p&gt;
+&lt;p&gt;这是这位up主的网站（支持up）：&lt;a href=&#34;https://space.bilibili.com/3493138859559908&#34;&gt;bilibili: SonnyCalcr&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on 项目介绍</title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in Tags on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Sat, 16 Nov 2024 16:26:36 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记录</title>
+      <link>//localhost:1313/tags/%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 16 Nov 2024 16:26:36 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E8%AE%B0%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cpp</title>
+      <link>//localhost:1313/tags/cpp/</link>
+      <pubDate>Fri, 15 Nov 2024 16:09:30 +0800</pubDate>
+      <guid>//localhost:1313/tags/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>模板</title>
+      <link>//localhost:1313/tags/%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Fri, 15 Nov 2024 16:09:30 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%A8%A1%E6%9D%BF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>刷题</title>
+      <link>//localhost:1313/tags/%E5%88%B7%E9%A2%98/</link>
+      <pubDate>Thu, 14 Nov 2024 15:27:55 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%88%B7%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>配色</title>
+      <link>//localhost:1313/tags/%E9%85%8D%E8%89%B2/</link>
+      <pubDate>Wed, 13 Nov 2024 23:26:05 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E9%85%8D%E8%89%B2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
+      <link>//localhost:1313/tags/ai/</link>
+      <pubDate>Wed, 13 Nov 2024 19:10:50 +0800</pubDate>
+      <guid>//localhost:1313/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>提示词</title>
+      <link>//localhost:1313/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</link>
+      <pubDate>Wed, 13 Nov 2024 19:10:50 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title> 加密</title>
+      <link>//localhost:1313/tags/-%E5%8A%A0%E5%AF%86/</link>
+      <pubDate>Tue, 12 Nov 2024 23:32:52 +0800</pubDate>
+      <guid>//localhost:1313/tags/-%E5%8A%A0%E5%AF%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>思考理解</title>
+      <link>//localhost:1313/tags/%E6%80%9D%E8%80%83%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Tue, 12 Nov 2024 23:32:52 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%80%9D%E8%80%83%E7%90%86%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>学习记录</title>
+      <link>//localhost:1313/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 12 Nov 2024 23:32:52 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Setting</title>
+      <link>//localhost:1313/tags/setting/</link>
+      <pubDate>Tue, 12 Nov 2024 21:31:17 +0800</pubDate>
+      <guid>//localhost:1313/tags/setting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>备忘</title>
+      <link>//localhost:1313/tags/%E5%A4%87%E5%BF%98/</link>
+      <pubDate>Mon, 11 Nov 2024 14:56:57 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%A4%87%E5%BF%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>留言板</title>
+      <link>//localhost:1313/tags/%E7%95%99%E8%A8%80%E6%9D%BF/</link>
+      <pubDate>Fri, 08 Nov 2024 16:37:19 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E7%95%99%E8%A8%80%E6%9D%BF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>竞赛</title>
+      <link>//localhost:1313/tags/%E7%AB%9E%E8%B5%9B/</link>
+      <pubDate>Sat, 12 Oct 2024 14:55:08 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E7%AB%9E%E8%B5%9B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>蓝桥杯</title>
+      <link>//localhost:1313/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</link>
+      <pubDate>Sat, 12 Oct 2024 14:55:08 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>算法</title>
+      <link>//localhost:1313/tags/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sat, 12 Oct 2024 14:55:08 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>主题设置</title>
+      <link>//localhost:1313/tags/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Wed, 09 Oct 2024 23:14:12 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go语法</title>
+      <link>//localhost:1313/tags/go%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Sun, 22 Sep 2024 11:47:03 +0800</pubDate>
+      <guid>//localhost:1313/tags/go%E8%AF%AD%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interstellar</title>
+      <link>//localhost:1313/tags/interstellar/</link>
+      <pubDate>Tue, 17 Sep 2024 21:53:38 +0800</pubDate>
+      <guid>//localhost:1313/tags/interstellar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>星际穿越</title>
+      <link>//localhost:1313/tags/%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A/</link>
+      <pubDate>Tue, 17 Sep 2024 21:53:38 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>面经</title>
+      <link>//localhost:1313/tags/%E9%9D%A2%E7%BB%8F/</link>
+      <pubDate>Sat, 14 Sep 2024 22:01:09 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E9%9D%A2%E7%BB%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>基础</title>
+      <link>//localhost:1313/tags/%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sat, 14 Sep 2024 21:59:02 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>英文</title>
+      <link>//localhost:1313/tags/%E8%8B%B1%E6%96%87/</link>
+      <pubDate>Thu, 12 Sep 2024 21:06:42 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E8%8B%B1%E6%96%87/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>//localhost:1313/tags/go/</link>
+      <pubDate>Mon, 09 Sep 2024 21:55:24 +0800</pubDate>
+      <guid>//localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vim</title>
+      <link>//localhost:1313/tags/vim/</link>
+      <pubDate>Mon, 09 Sep 2024 18:35:25 +0800</pubDate>
+      <guid>//localhost:1313/tags/vim/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>命令</title>
+      <link>//localhost:1313/tags/%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 09 Sep 2024 18:35:25 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%91%BD%E4%BB%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>博客</title>
+      <link>//localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 08 Sep 2024 16:33:57 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>图片显示</title>
+      <link>//localhost:1313/tags/%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/</link>
+      <pubDate>Sun, 08 Sep 2024 16:33:57 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>指令</title>
+      <link>//localhost:1313/tags/%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Sat, 07 Sep 2024 20:47:03 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%8C%87%E4%BB%A4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Qt</title>
+      <link>//localhost:1313/tags/qt/</link>
+      <pubDate>Sat, 07 Sep 2024 09:59:59 +0800</pubDate>
+      <guid>//localhost:1313/tags/qt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>学习</title>
+      <link>//localhost:1313/tags/%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 07 Sep 2024 09:59:59 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>测试</title>
+      <link>//localhost:1313/tags/%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sat, 24 Aug 2024 15:09:26 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E6%B5%8B%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bilibili</title>
+      <link>//localhost:1313/tags/bilibili/</link>
+      <pubDate>Fri, 23 Aug 2024 22:32:58 +0800</pubDate>
+      <guid>//localhost:1313/tags/bilibili/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>博客搭建</title>
+      <link>//localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 23 Aug 2024 22:32:58 +0800</pubDate>
+      <guid>//localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

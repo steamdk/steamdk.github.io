@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>English on 项目介绍</title>
+    <link>//localhost:1313/categories/english/</link>
+    <description>Recent content in English on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Thu, 12 Sep 2024 21:06:42 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/english/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>英语学习</title>
+      <link>//localhost:1313/posts/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Thu, 12 Sep 2024 21:06:42 +0800</pubDate>
+      <guid>//localhost:1313/posts/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&lt;h1 id=&#34;综合writing&#34;&gt;综合writing&lt;/h1&gt;
+&lt;h2 id=&#34;模板&#34;&gt;模板&lt;/h2&gt;
+&lt;p&gt;Both the passage and the lecture explore the topic about  &amp;hellip;.  The reading passage proclaims that &amp;hellip;. While in the lecture , the professor uses three specific &lt;strong&gt;perspectives&lt;/strong&gt; to contradict what the reading states .&lt;/p&gt;
+&lt;p&gt;First and foremost , the reading part holds the belief that &amp;hellip;. because &amp;hellip;. However , the lecturer doubts the view by stating that &amp;hellip; In order to strength his own point , the professor further explains that &amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

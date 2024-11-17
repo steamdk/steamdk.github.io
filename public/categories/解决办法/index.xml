@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>解决办法 on 项目介绍</title>
+    <link>//localhost:1313/categories/%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+    <description>Recent content in 解决办法 on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Sat, 16 Nov 2024 16:26:36 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决hugo复制行号问题的办法</title>
+      <link>//localhost:1313/posts/%E8%A7%A3%E5%86%B3hugo%E5%A4%8D%E5%88%B6%E8%A1%8C%E5%8F%B7%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%9E%E6%B3%95/</link>
+      <pubDate>Sat, 16 Nov 2024 16:26:36 +0800</pubDate>
+      <guid>//localhost:1313/posts/%E8%A7%A3%E5%86%B3hugo%E5%A4%8D%E5%88%B6%E8%A1%8C%E5%8F%B7%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%9E%E6%B3%95/</guid>
+      <description>&lt;h1 id=&#34;问题&#34;&gt;问题&lt;/h1&gt;
+&lt;p&gt;我的网站在复制代码时，会把行号也一起复制下来。我尝试了很多办法，但最终决定：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;既然解决不了问题，那就干脆消灭问题吧！😆&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;解决办法&#34;&gt;解决办法&lt;/h1&gt;
+&lt;p&gt;在&lt;code&gt;hugo.yaml&lt;/code&gt;文件直接增加以下代码, 这段代码的作用是禁用代码块中的行号显示。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

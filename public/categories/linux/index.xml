@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linux on 项目介绍</title>
+    <link>//localhost:1313/categories/linux/</link>
+    <description>Recent content in Linux on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Sat, 07 Sep 2024 20:47:03 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux常用指令</title>
+      <link>//localhost:1313/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Sat, 07 Sep 2024 20:47:03 +0800</pubDate>
+      <guid>//localhost:1313/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid>
+      <description>&lt;h1 id=&#34;常用指令&#34;&gt;常用指令&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;vim    访问文本&lt;/li&gt;
+&lt;li&gt;退出文本并保存       :wq&lt;/li&gt;
+&lt;li&gt;返回到上一个文件夹    cd . .&lt;/li&gt;
+&lt;li&gt;解压指令         tar  -zxvf   xxxx.tar.gz&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;vi----vim-操作&#34;&gt;vi    vim 操作&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;i o a r  进入vim&lt;/li&gt;
+&lt;li&gt;按下esc , 输入**:**   然后输入wq  保存并退出            :q退出      :q!  不保存退出&lt;/li&gt;
+&lt;li&gt;yy 拷贝    5yy&lt;/li&gt;
+&lt;li&gt;dd 删除   5dd&lt;/li&gt;
+&lt;li&gt;撤销  u&lt;/li&gt;
+&lt;li&gt;行号打开 :set nu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;关机&#34;&gt;关机&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;shutdown -h  关机&lt;/li&gt;
+&lt;li&gt;shutdown -r  重启&lt;/li&gt;
+&lt;li&gt;reboot  重启&lt;/li&gt;
+&lt;li&gt;sync  把内存数据存入磁盘&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;注销用户和登录&#34;&gt;注销用户和登录&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;logout&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
