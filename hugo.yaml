@@ -75,26 +75,19 @@ params:
   # 首页的文章上方的一些信息
   homeInfoParams:
     # 首页的 profile 内容
-    Title: "Hey Guys 👋 Here is steamdk!"
+    Title: "一些毕设案例"
     # 首页的 profile 内容
-    Content: >
-      Welcome to my Blog! 这里主要记录了我的日常创作，项目计划，学习进度。
-      <br>
-      <br>
-      博客因为是托管在 Github 上面，所以，挂上一个梯子可能会让访问更加顺畅。
-      <br>
-      <br>
-      也可以在其他地方访问我的文字材料，如下：
-      <br>
-      <br>
-      Welcome to my Blog! This space mainly documents my daily creations, project plans, and learning progress.
-      <br>
-      <br>
-      You can also access my written materials elsewhere as follows:
-      <br>
-      <div>
-      ● [steamdk's GitHub](https://github.com/steamdk)
-      </div>
+    Content: | 
+      ---
+      - 实现语言框架:
+      1. java SSM springboot Mysql 
+      2. php laravel Mysql 
+      3. golang gin Mysql 
+      4. lua lor Mysql 
+      5. javascript vue bootstrap 
+      ---
+      - 如有相关功能修改与开发, 或者定制化网站/管理后台、小程序、小游戏等需求。
+      - 欢迎联系 broli7753@gmail.com
   # 社交帐号的按钮
   socialIcons:
     - name: github
