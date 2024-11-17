@@ -38,7 +38,7 @@ Reactor模式的工作流程
 半同步半异步模式：同步线程用于处理客户逻辑，异步线程用于处理IO事件。异步线程监听到客户请求后，就将其封装成请求对象并插入到请求队列中，请求队列将通知某个工作在同步模式下的工作线程来读取并处理该请求对象。半同步半反应堆模式采用的事件处理模式是reactor模式：它要求工作线程自己从socket上读取客户请求和往socket写入服务器应答。半同步半反应堆也可以模拟proactor模式，即由主线程来完成数据的读写。在这种情况下，主线程会将应用程序数据，任务类型等信息封装为一个任务对象，然后将其插入请求队列。工作线程从请求对象取得任务对象以后，可直接处理无需执行读写操作。">
 <meta name="author" content="steamdk">
 <link rel="canonical" href="https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cba78c4ffa50f20e8eb0332ced57301b5db03425c80bcbcb662ba72eb0c9ae37.css" integrity="sha256-y6eMT/pQ8g6OsDMs7VcwG12wNCXIC8vLZiunLrDJrjc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steamdk.github.io/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
