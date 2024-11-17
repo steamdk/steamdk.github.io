@@ -80,11 +80,12 @@ params:
     Content: | 
       ---
       - 实现语言框架:
-      1. java SSM springboot Mysql 
-      2. php laravel Mysql 
-      3. golang gin Mysql 
+      1. java springboot mybatis Mysql 
+      2. php laravel yii Mysql 
+      3. golang gin net/http gorm Mysql 
       4. lua lor Mysql 
-      5. javascript vue bootstrap 
+      5. node koa express Mysql
+      6. javascript vue bootstrap 
       ---
       - 如有相关功能修改与开发, 或者定制化网站/管理后台、小程序、小游戏等需求。
       - 欢迎联系 broli7753@gmail.com
