@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>SpringBoot on 项目介绍</title>
-    <link>//localhost:1313/tags/springboot/</link>
+    <link>https://steamdk.github.io/tags/springboot/</link>
     <description>Recent content in SpringBoot on 项目介绍</description>
     <image>
       <title>项目介绍</title>
@@ -13,12 +13,12 @@
     <language>zh</language>
     <copyright>©2024 项目介绍</copyright>
     <lastBuildDate>Sat, 14 Sep 2024 15:21:55 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://steamdk.github.io/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>004SpringBoot农产品销售管理系统</title>
-      <link>//localhost:1313/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://steamdk.github.io/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 14 Sep 2024 15:21:55 +0800</pubDate>
-      <guid>//localhost:1313/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://steamdk.github.io/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;h1 id=&#34;springboot-farmproducts&#34;&gt;SpringBoot-FarmProducts&lt;/h1&gt;
 &lt;h2 id=&#34;基于springboot农产品销售管理系统&#34;&gt;基于SpringBoot农产品销售管理系统&lt;/h2&gt;
 &lt;p&gt;基于Springboot+vue.js的学习项目，通过Springboot整合了SpringMVC,Spring Data JPA,MyBatisPlus、Junit等技术。&lt;/p&gt;</description>

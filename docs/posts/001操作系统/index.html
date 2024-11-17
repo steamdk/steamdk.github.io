@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -37,16 +37,16 @@ Reactor模式的工作流程
 
 半同步半异步模式：同步线程用于处理客户逻辑，异步线程用于处理IO事件。异步线程监听到客户请求后，就将其封装成请求对象并插入到请求队列中，请求队列将通知某个工作在同步模式下的工作线程来读取并处理该请求对象。半同步半反应堆模式采用的事件处理模式是reactor模式：它要求工作线程自己从socket上读取客户请求和往socket写入服务器应答。半同步半反应堆也可以模拟proactor模式，即由主线程来完成数据的读写。在这种情况下，主线程会将应用程序数据，任务类型等信息封装为一个任务对象，然后将其插入请求队列。工作线程从请求对象取得任务对象以后，可直接处理无需执行读写操作。">
 <meta name="author" content="steamdk">
-<link rel="canonical" href="//localhost:1313/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+<link rel="canonical" href="https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.cba78c4ffa50f20e8eb0332ced57301b5db03425c80bcbcb662ba72eb0c9ae37.css" integrity="sha256-y6eMT/pQ8g6OsDMs7VcwG12wNCXIC8vLZiunLrDJrjc=" rel="preload stylesheet" as="style">
-<link rel="icon" href="//localhost:1313/favicon.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon.svg">
-<link rel="apple-touch-icon" href="//localhost:1313/favicon.svg">
-<link rel="mask-icon" href="//localhost:1313/favicon.svg">
+<link rel="icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
+<link rel="apple-touch-icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="mask-icon" href="https://steamdk.github.io/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="//localhost:1313/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+<link rel="alternate" hreflang="zh" href="https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
 <noscript>
     <style>
         #theme-toggle,
@@ -97,7 +97,7 @@ code.has-jax {
     border: inherit;
     color: #515151;
 }
-</style><meta property="og:url" content="//localhost:1313/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+</style><meta property="og:url" content="https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
   <meta property="og:site_name" content="项目介绍">
   <meta property="og:title" content="001操作系统">
   <meta property="og:description" content="阻塞IO和非阻塞IO 阻塞的文件描述符为阻塞IO 非阻塞的文件描述符为非阻塞IO 同步IO和异步IO 同步IO向应用程序通知的是IO就绪事件。要求用户代码自行执行读写操作，将数据从内核缓冲区读入用户缓冲区。 异步IO向应用程序通知的是IO完成事件 。由内核来执行IO读写操作。在linux环境下，aio.h头文件定义的函数提供了对异步IO的支持。 事件处理模式 reactor 同步IO模型通常用于实现reactor模式。要求主线程只负责监听文件描述符是否有事件发生，有的话就立即将该事件通知工作线程。 proactor 异步IO模型通常用于实现proactor模式。也可以用同步IO模拟出proactor模式。proactor将所有IO操作都交给主线程和内核来处理，工作线程仅仅负责业务逻辑。 Reactor模式的工作流程 主线程往epoll内核事件表中注册socket上的就绪事件。 主线程调用epoll_wait等待socket上有数据可读。 当socket上有数据可读时，epoll_wait通知主线程。主线程将socket可读事件放入请求队列。 睡眠在请求队列上的某个工作线程被唤醒，它从socket读取数据，并处理客户请求，然后往epoll内核事件表中注册该socket上的写就绪事件。 主线程调用epoll_wait等待socket可写。 当socket可写时，epoll_wait通知主线程。主线程将socket可写事件放入请求队列。 睡眠在请求队列上的某个工作线程被唤醒，它往socket上写入服务器处理客户请求的结果。 并发模式 半同步半异步模式：同步线程用于处理客户逻辑，异步线程用于处理IO事件。异步线程监听到客户请求后，就将其封装成请求对象并插入到请求队列中，请求队列将通知某个工作在同步模式下的工作线程来读取并处理该请求对象。半同步半反应堆模式采用的事件处理模式是reactor模式：它要求工作线程自己从socket上读取客户请求和往socket写入服务器应答。半同步半反应堆也可以模拟proactor模式，即由主线程来完成数据的读写。在这种情况下，主线程会将应用程序数据，任务类型等信息封装为一个任务对象，然后将其插入请求队列。工作线程从请求对象取得任务对象以后，可直接处理无需执行读写操作。">
@@ -151,13 +151,13 @@ Reactor模式的工作流程
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "//localhost:1313/posts/"
+      "item": "https://steamdk.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "001操作系统",
-      "item": "//localhost:1313/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+      "item": "https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
     }
   ]
 }
@@ -183,14 +183,14 @@ Reactor模式的工作流程
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "//localhost:1313/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+    "@id": "https://steamdk.github.io/posts/001%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "项目介绍",
     "logo": {
       "@type": "ImageObject",
-      "url": "//localhost:1313/favicon.svg"
+      "url": "https://steamdk.github.io/favicon.svg"
     }
   }
 }
@@ -208,7 +208,7 @@ Reactor模式的工作流程
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="//localhost:1313/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <a href="https://steamdk.github.io/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -234,32 +234,32 @@ Reactor模式的工作流程
         </div>
         <ul id="menu">
             <li>
-                <a href="//localhost:1313/" title="首页">
+                <a href="https://steamdk.github.io/" title="首页">
                     <span>首页</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/archives/" title="归档">
+                <a href="https://steamdk.github.io/archives/" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/categories/" title="分类">
+                <a href="https://steamdk.github.io/categories/" title="分类">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/tags/" title="标签">
+                <a href="https://steamdk.github.io/tags/" title="标签">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/search/" title="搜索">
+                <a href="https://steamdk.github.io/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/about/" title="关于">
+                <a href="https://steamdk.github.io/about/" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -612,15 +612,15 @@ Reactor模式的工作流程
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="//localhost:1313/tags/cpp/">Cpp</a></li>
+      <li><a href="https://steamdk.github.io/tags/cpp/">Cpp</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="//localhost:1313/posts/002%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+  <a class="prev" href="https://steamdk.github.io/posts/002%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
     <span class="title">« 上一页</span>
     <br>
     <span>002计算机网络</span>
   </a>
-  <a class="next" href="//localhost:1313/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+  <a class="next" href="https://steamdk.github.io/posts/004springboot%E5%86%9C%E4%BA%A7%E5%93%81%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
     <span class="title">下一页 »</span>
     <br>
     <span>004SpringBoot农产品销售管理系统</span>
