@@ -4,6 +4,8 @@ title: 项目介绍 # 站点标题
 copyright: "[©2024 项目介绍](https://github.com/steamdk/steamdk.github.io)" # 网站的版权声明，通常显示在页脚
 theme: PaperMod # 主题
 languageCode: zh-cn # 语言
+# publicDir 设置为 docs， 方便发布到 github pages
+publishDir : "docs"   
 
 enableInlineShortcodes: true # shortcode，类似于模板变量，可以在写 markdown 的时候便捷地插入，官方文档中有一个视频讲的很通俗
 hasCJKLanguage: true # 是否有 CJK 的字符

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux常用指令 | 项目介绍</title>
+<meta name="keywords" content="指令">
+<meta name="description" content="常用指令
+
+vim    访问文本
+退出文本并保存       :wq
+返回到上一个文件夹    cd . .
+解压指令         tar  -zxvf   xxxx.tar.gz
+
+vi    vim 操作
+
+i o a r  进入vim
+按下esc , 输入**:**   然后输入wq  保存并退出            :q退出      :q!  不保存退出
+yy 拷贝    5yy
+dd 删除   5dd
+撤销  u
+行号打开 :set nu
+
+关机
+
+shutdown -h  关机
+shutdown -r  重启
+reboot  重启
+sync  把内存数据存入磁盘
+
+注销用户和登录
+
+
+logout">
+<meta name="author" content="steamdk">
+<link rel="canonical" href="https://steamdk.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
+<link rel="apple-touch-icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="mask-icon" href="https://steamdk.github.io/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://steamdk.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style><meta property="og:url" content="https://steamdk.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+  <meta property="og:site_name" content="项目介绍">
+  <meta property="og:title" content="Linux常用指令">
+  <meta property="og:description" content="常用指令 vim 访问文本 退出文本并保存 :wq 返回到上一个文件夹 cd . . 解压指令 tar -zxvf xxxx.tar.gz vi vim 操作 i o a r 进入vim 按下esc , 输入**:** 然后输入wq 保存并退出 :q退出 :q! 不保存退出 yy 拷贝 5yy dd 删除 5dd 撤销 u 行号打开 :set nu 关机 shutdown -h 关机 shutdown -r 重启 reboot 重启 sync 把内存数据存入磁盘 注销用户和登录 logout">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-07T20:47:03+08:00">
+    <meta property="article:modified_time" content="2024-09-07T20:47:03+08:00">
+    <meta property="article:tag" content="指令">
+      <meta property="og:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:title" content="Linux常用指令">
+<meta name="twitter:description" content="常用指令
+
+vim    访问文本
+退出文本并保存       :wq
+返回到上一个文件夹    cd . .
+解压指令         tar  -zxvf   xxxx.tar.gz
+
+vi    vim 操作
+
+i o a r  进入vim
+按下esc , 输入**:**   然后输入wq  保存并退出            :q退出      :q!  不保存退出
+yy 拷贝    5yy
+dd 删除   5dd
+撤销  u
+行号打开 :set nu
+
+关机
+
+shutdown -h  关机
+shutdown -r  重启
+reboot  重启
+sync  把内存数据存入磁盘
+
+注销用户和登录
+
+
+logout">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steamdk.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Linux常用指令",
+      "item": "https://steamdk.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Linux常用指令",
+  "name": "Linux常用指令",
+  "description": "常用指令 vim 访问文本 退出文本并保存 :wq 返回到上一个文件夹 cd . . 解压指令 tar -zxvf xxxx.tar.gz vi vim 操作 i o a r 进入vim 按下esc , 输入**:** 然后输入wq 保存并退出 :q退出 :q! 不保存退出 yy 拷贝 5yy dd 删除 5dd 撤销 u 行号打开 :set nu 关机 shutdown -h 关机 shutdown -r 重启 reboot 重启 sync 把内存数据存入磁盘 注销用户和登录 logout\n",
+  "keywords": [
+    "指令"
+  ],
+  "articleBody": "常用指令 vim 访问文本 退出文本并保存 :wq 返回到上一个文件夹 cd . . 解压指令 tar -zxvf xxxx.tar.gz vi vim 操作 i o a r 进入vim 按下esc , 输入**:** 然后输入wq 保存并退出 :q退出 :q! 不保存退出 yy 拷贝 5yy dd 删除 5dd 撤销 u 行号打开 :set nu 关机 shutdown -h 关机 shutdown -r 重启 reboot 重启 sync 把内存数据存入磁盘 注销用户和登录 logout\n退出root logout\n压缩/解压指令 tar -zxvf xxxx.tar.gz gzip 文件 压缩 gunzip 解压文件 zip 压缩文件夹 unzip 解压文件夹 -r 递归压缩 zip -r xxxxx.zip /home/ [将home目录及其包含的的文件和子文件夹都压缩] -d \u003c可指定目录\u003e unzip -d /opt/tmp /home/xxxxx.zip tar 万能 tar -c 产生打包文件 -v 显示详细信息 -f 指定压缩后的文件名 -z 打包并同时压缩 -x 解压.tar文件 帮助指令 man ls 列出所有指令\nhelp + 指令\nls -la\nls -la /root\n文件目录指令 pwd 显示出地址 cd ~ 回到家目录 cd .. 上一目录 mkdir 创建目录 mkdir -p /home/…/…. 创建指定目录 rmdir 删除空目录 强制删除空目录 rm -rf touch 创建空文件 cp 拷贝 cp hello.txt /bbb cp -r /home/bbb /opt 把目录复制到指定目录下 \\cp -r /home/bbb /opt 强制 rm 删除文件或目录 rm -rf /home/bbb 强制删除 -f 就是强制删除不提醒 mv 移动指令 cat 查看文件 -n 行号 less 分屏查看 echo $HOSTNAME 输出环境变量 head 查看文件的前几行 -\u003e 10 行 head xxxx.c tail 查看末尾文件 tail xxxx.c ln -s /root /home/myroot 快捷指令指向 在myroot创建指向/root的快捷方式, cd myroot 就会直接进入/root 文件管理 使用 mkdir 创建目录。例如，mkdir xxxx 将在当前位置创建一个名为 “xxxx” 的目录。 要创建多级目录，可以使用 mkdir -p 命令。例如，mkdir -p xxx/yyy 将在 “xxx” 目录下创建一个名为 “yyy” 的子目录。 使用 mkdir -m 777 命令创建目录时，可以直接设置权限。数字 “777” 表示所有权限（读、写和执行）。另外，“4” 代表读权限，“2” 代表写权限，“1” 代表执行权限。 mv 命令用于移动文件或重命名文件。例如，mv xxx.c /home/zzz/targetPlace 将把 “xxx.c” 文件移动到 “/home/zzz/targetPlace” 目录。 使用 cp 命令复制文件。例如，cp xxx.c /home/zzz/targetPlace 将把 “xxx.c” 文件复制到 “/home/zzz/targetPlace” 目录。 若要复制目录，应使用 cp -r 命令。例如，cp -r /home/bbb /opt 将把 “/home/bbb” 目录复制到 “/opt” 目录。 rm 用于删除文件或目录，而 rmdir 仅用于删除空目录。删除文件时，使用 rm 文件名；删除目录（及其内容）时，使用 rm -r 目录名；删除空目录时，使用 rmdir 目录名。 使用 chown 和 chgrp 命令更改文件的所有权。例如，chown -R root /home/zzz/targetPlace/xxx.c 将把 “xxx.c” 文件的所有权更改为 root 用户。同理，使用 chgrp 命令更改文件的群组所有权。 使用 chmod 命令更改文件或目录的权限。例如，chmod 777 xxxx（目录） 将为名为 “xxxx” 的目录设置所有权限（读、写和执行）。 ln 命令用于创建链接，类似于快捷方式。例如，ln 路径/xxx.c newxxx.c 将在当前位置创建一个指向 “xxx.c” 的新链接 “newxxx.c”。若要删除快捷方式，可以使用 rm -rf 命令。 输入/输出重定向是一种将命令的输出发送到文件而不是屏幕的技术。例如，date \u003e xx.txt 将当前日期和时间写入 “xx.txt” 文件。而 date \u003e\u003e xx.txt 会将日期和时间追加到文件的末尾，常用于日志、脚本和文件中。 cat命令 使用 cat \u003e xxxx.c 创建一个新文件 “xxxx.c”。此命令进入文本输入模式，可以直接输入内容，输入完成后按 Ctrl+D 保存并退出。\n合并文件可以使用 cat 命令。例如，cat tx1.c tx2.c \u003e tx3.c 将分别将 “tx1.c” 和 “tx2.c” 的内容合并并输出到 “tx3.c” 文件中。\n要向文件末尾添加内容，使用 cat \u003e\u003e tx.c。此命令进入文本输入模式，输入完内容后，同样按 Ctrl+D 保存并退出。\nmore命令 使用 more 命令可以逐屏查看大型文件。例如，more -3 tx 将从文件 “tx” 的第三行开始显示内容。使用方向键或空格键可以向下滚动，按 q 退出查看。 grep命令 使用 grep -i \"abc.....\" xxxx.c 查找文件 “xxxx.c” 中的内容，-i 选项使搜索不区分大小写。 使用 grep -n -i \"abc.....\" xxxx.c 查找文件 “xxxx.c” 中的内容，-n 选项会显示匹配行的行号，且同样不区分大小写。 find命令 使用 find -name 'tex*' 查找当前目录及子目录中以 “tex” 开头的文件，支持模糊查找。 使用 find -name 'te??.c' 查找当前目录及子目录中以 “te” 开头，后跟任意两个字符且以 “.c” 结尾的文件。 使用 find -name '[a-z]*.c' 查找当前目录及子目录中以小写字母开头且以 “.c” 结尾的文件。 locate 命令 要快速定位文件，可以使用 locate xxxx 命令。此命令通过查询系统中的文件数据库，迅速找出包含 “xxxx” 的文件路径。请确保在使用前更新数据库，通常可以通过 updatedb 命令实现。 who 命令 使用 who 查看当前登录的用户。 使用 who -a 查看详细的用户信息，包括登录时间和终端等。 使用 whoami 查看当前用户的用户名。 使用 uname 命令查看主机信息，uname -a 则显示所有相关信息，包括主机名、内核版本、硬件架构等。常用选项包括： -n: 显示主机名 -r: 显示内核版本 -v: 显示内核版本号 -m: 显示机器硬件名称 -p: 显示处理器架构 -i: 显示硬件平台 -o: 显示操作系统名称 man命令 要查看命令手册，可以使用 man 命令。具体示例：\n使用 man ls 查看 ls 命令的说明书。这将打开 ls 命令的手册页，其中包括用法、选项和示例等详细信息。 要退出手册页，可以按 q。\n软件包管理 apt-get 命令 下载/卸载/管理 软件包\nwhich 命令查找位置\n使用 apt-get 命令下载、卸载和管理软件包。例如：\napt-get install package_name 安装软件包。 apt-get remove package_name 卸载软件包。 使用 which 命令查找可执行文件的位置。例如，which command_name 将显示该命令的完整路径。\n不同系统管理 Debian/Ubuntu 系统 下载软件包: apt-get install package_name 卸载软件包: apt-get remove package_name 更新软件包列表: apt-get update 升级软件包: apt-get upgrade Red Hat/CentOS 系统 下载软件包: yum install package_name 卸载软件包: yum remove package_name 更新软件包列表: yum check-update 升级软件包: yum update Arch Linux 系统 下载软件包: pacman -S package_name 卸载软件包: pacman -R package_name 更新软件包列表和升级: pacman -Syu macOS (使用 Homebrew) 下载软件包: brew install package_name 卸载软件包: brew uninstall package_name 更新软件包列表: brew update 升级软件包: brew upgrade Windows (使用 Chocolatey) 下载软件包: choco install package_name 卸载软件包: choco uninstall package_name 更新软件包: choco upgrade all 文件系统类型 查看swap信息并更改单位显示：free -h。 挂载文件系统：使用 sudo mount 命令挂载文件系统到指定目标点，例如 sudo mount /dev/xxx/yyy target。其中，target 是挂载点。 卸载已挂载的文件系统：使用 umount 命令卸载挂载点，例如 umount target。 查询磁盘使用情况：使用 df -h 命令查看磁盘的可用空间等信息。 检查或修改文件系统：使用 fsck 命令进行磁盘检查和修复。可以使用 -C 和 -t $type $路径 参数来指定检查的类型和路径。具体语法可查看 fsck --help 获取更多信息。 在磁盘上创建文件系统：使用 mkfs 命令。具体文件系统类型可以通过查看系统支持的选项来确定。例如，创建ext4文件系统可以使用 mkfs.ext4 命令。 查看分区表：使用 fdisk -l $路径 命令来查看指定设备的分区表信息。如果只是想列出当前系统所有设备，可以省略 $路径 参数。 使用gzip压缩工具：压缩文件使用 gzip xxxx.c，压缩目录使用 gzip -r /home，解压使用 gzip -d xxxx.c.gz。注意，gzip 会替换原始文件为 .gz 格式。 使用tar命令进行压缩和解压：查看tar的帮助信息可以使用 tar --help。压缩文件可以使用 tar -cvf xxx.tar yyy.c ...，解压可以使用 tar -xf xxx.tar -C $解压放置的位置。 使用bzip压缩和解压缩工具：压缩时使用 bzip2 filename 生成 .bz2 文件，解压缩时使用 bzip2 -d filename.bz2 或 bunzip2 filename.bz2。 使用zip命令创建和解压ZIP文件：压缩时使用 zip archive.zip file1 file2 创建ZIP文件，解压时使用 unzip archive.zip 解压ZIP文件。 用户管理 查看用户信息，可以使用 cat /etc/passwd 命令。 添加用户可以使用 useradd 命令。例如，useradd xxxx 将创建一个名为 “xxxx” 的新用户。 创建用户组使用 groupadd 命令。例如，groupadd xxxxgroup 将创建一个名为 “xxxxgroup” 的新用户组。查看所有用户组信息可以使用 cat /etc/group。 要查看用户执行过的命令记录，可以使用 history 命令。 使用 passwd 命令更改密码。执行此命令后，系统会提示输入当前用户的旧密码以及新密码。 删除用户可以使用 userdel 命令。例如，userdel xxxuser 将删除名为 “xxxuser” 的用户。 管理用户账号，包括修改用户名，可以使用 usermod 命令。例如，usermod -l new_name old_name 将把 “old_name” 的用户名更改为 “new_name”。 查看用户信息，可以使用 id xxxname 命令，这将显示名为 “xxxname” 的用户的详细信息。 用户切换可以使用 su 命令。例如，su root 将切换到 root 用户，而 su xxxname 将切换到名为 “xxxname” 的用户。 使用 sudo 命令可以以管理员权限执行命令。在执行需要特权的命令前，输入 sudo 和该命令，然后输入管理员密码即可。 进程管理 监视进程： 使用 ps 命令查看当前进程。 查看 ps 手册：man ps。 常用选项： 显示所有进程：ps -e 显示不带终端的所有进程：ps -au 显示特定用户的进程：ps -u root 或 ps -u xxxname 显示详细信息：ps -l 跟踪进程： 使用 top 命令监控进程。 自动更新 4 次后退出：top -n 4 设置刷新时间为 5 秒：top -d 5 仅监控特定进程 ID（如 1810）：top -p 1810 htop 命令： htop 是 top 的升级版，提供更友好的用户界面和交互功能。 终止进程： 使用 kill 命令终止进程。例如，kill 1201 将关闭进程 ID 为 1201 的进程。 设置进程优先级： 查看进程 nice 值并按降序排列：ps axo pid,comm,nice --sort=-nice 查看特定进程的 nice 值：ps -p 1201 -o nice 修改进程的 nice 值：renice -n 10 -p 1201 查看进程属性： 使用 pgrep 命令查找进程。 常用命令： 查询特定进程名：pgrep xxxname 模糊查询进程名：pgrep -l ^xxxname 性能监控 显示和配置网络设备 查看网络设备信息： 使用 ifconfig 命令可以查看当前网络配置。 显示所有网络设备及其状态：ifconfig 帮助文档： 查看 ifconfig 的帮助信息：ifconfig --help 常用选项： 启用网络接口：ifconfig eth0 up （将 eth0 替换为实际接口名） 禁用网络接口：ifconfig eth0 down 设置 IP 地址：ifconfig eth0 192.168.1.100 设置子网掩码：ifconfig eth0 netmask 255.255.255.0 查看特定接口信息：ifconfig eth0 现代替代工具 在许多现代 Linux 发行版中，\nifconfig 已被\nip 命令替代，建议使用：\n查看网络设备信息：ip addr 启用接口：ip link set eth0 up 禁用接口：ip link set eth0 down 设置 IP 地址：ip addr add 192.168.1.100/24 dev eth0 CPU 统计数据 iostat 命令\n：\n基本使用：iostat 显示 CPU 和 I/O 统计信息。 输出磁盘利用率：iostat -d sda1 （显示指定磁盘的利用信息）。 输出 CPU 和磁盘利用率：iostat -t （包含时间戳）。 显示 CPU 和磁盘利用率的详细信息：iostat -m （以兆字节为单位显示）。 查看 CPU 使用情况：iostat -c （只显示 CPU 统计数据）。 I/O 监控 iotop 命令\n：\niotop 用于实时监控 I/O 使用情况。 需要 root 权限，可以使用 sudo iotop 来执行该命令。 CPU 统计信息 mpstat 命令\n：\n使用 mpstat 报告 CPU 统计信息。 显示 CPU 中断数：mpstat -I SUM。 虚拟内存统计 vmstat 命令\n：\n查看所有虚拟内存的统计信息：vmstat -a。 输出磁盘统计数据：vmstat -d。 报告虚拟内存统计的详细信息：vmstat -s。 shell 编程基础 shell入门编程实例 Linux C++引用 Linux C++智能指针 unique_ptr shared_ptr weak_ptr 为什么要使用 weak_ptr指针: 为了解决 shared ptr 循环引用问题。\nLinux客户端与服务器 Linux IO 多路复用 ",
+  "wordCount" : "4124",
+  "inLanguage": "zh",
+  "image": "https://i.postimg.cc/7hwBy7VS/calcr.png","datePublished": "2024-09-07T20:47:03+08:00",
+  "dateModified": "2024-09-07T20:47:03+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "steamdk"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steamdk.github.io/posts/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "项目介绍",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steamdk.github.io/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://steamdk.github.io/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://steamdk.github.io/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Linux常用指令
+    </h1>
+    <div class="post-meta"><span title='2024-09-07 20:47:03 +0800 CST'>2024-09-07</span>&nbsp;·&nbsp;9 分钟&nbsp;·&nbsp;steamdk
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" aria-label="常用指令">常用指令</a></li>
+                <li>
+                    <a href="#vi----vim-%e6%93%8d%e4%bd%9c" aria-label="vi    vim 操作">vi    vim 操作</a></li>
+                <li>
+                    <a href="#%e5%85%b3%e6%9c%ba" aria-label="关机">关机</a></li>
+                <li>
+                    <a href="#%e6%b3%a8%e9%94%80%e7%94%a8%e6%88%b7%e5%92%8c%e7%99%bb%e5%bd%95" aria-label="注销用户和登录">注销用户和登录</a></li>
+                <li>
+                    <a href="#%e5%8e%8b%e7%bc%a9%e8%a7%a3%e5%8e%8b%e6%8c%87%e4%bb%a4" aria-label="压缩/解压指令">压缩/解压指令</a></li>
+                <li>
+                    <a href="#%e5%b8%ae%e5%8a%a9%e6%8c%87%e4%bb%a4" aria-label="帮助指令">帮助指令</a></li>
+                <li>
+                    <a href="#%e6%96%87%e4%bb%b6%e7%9b%ae%e5%bd%95%e6%8c%87%e4%bb%a4" aria-label="文件目录指令">文件目录指令</a></li>
+                <li>
+                    <a href="#%e6%96%87%e4%bb%b6%e7%ae%a1%e7%90%86" aria-label="文件管理">文件管理</a></li>
+                <li>
+                    <a href="#cat%e5%91%bd%e4%bb%a4" aria-label="cat命令">cat命令</a></li>
+                <li>
+                    <a href="#more%e5%91%bd%e4%bb%a4" aria-label="more命令">more命令</a></li>
+                <li>
+                    <a href="#grep%e5%91%bd%e4%bb%a4" aria-label="grep命令">grep命令</a></li>
+                <li>
+                    <a href="#find%e5%91%bd%e4%bb%a4" aria-label="find命令">find命令</a></li>
+                <li>
+                    <a href="#locate-%e5%91%bd%e4%bb%a4" aria-label="locate 命令">locate 命令</a></li>
+                <li>
+                    <a href="#who-%e5%91%bd%e4%bb%a4" aria-label="who 命令">who 命令</a></li>
+                <li>
+                    <a href="#man%e5%91%bd%e4%bb%a4" aria-label="man命令">man命令</a></li>
+                <li>
+                    <a href="#%e8%bd%af%e4%bb%b6%e5%8c%85%e7%ae%a1%e7%90%86" aria-label="软件包管理">软件包管理</a><ul>
+                        
+                <li>
+                    <a href="#%e4%b8%8d%e5%90%8c%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86" aria-label="不同系统管理">不同系统管理</a><ul>
+                        
+                <li>
+                    <a href="#debianubuntu-%e7%b3%bb%e7%bb%9f" aria-label="Debian/Ubuntu 系统">Debian/Ubuntu 系统</a></li>
+                <li>
+                    <a href="#red-hatcentos-%e7%b3%bb%e7%bb%9f" aria-label="Red Hat/CentOS 系统">Red Hat/CentOS 系统</a></li>
+                <li>
+                    <a href="#arch-linux-%e7%b3%bb%e7%bb%9f" aria-label="Arch Linux 系统">Arch Linux 系统</a></li>
+                <li>
+                    <a href="#macos-%e4%bd%bf%e7%94%a8-homebrew" aria-label="macOS (使用 Homebrew)">macOS (使用 Homebrew)</a></li>
+                <li>
+                    <a href="#windows-%e4%bd%bf%e7%94%a8-chocolatey" aria-label="Windows (使用 Chocolatey)">Windows (使用 Chocolatey)</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f%e7%b1%bb%e5%9e%8b" aria-label="文件系统类型">文件系统类型</a></li>
+                <li>
+                    <a href="#%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86" aria-label="用户管理">用户管理</a></li>
+                <li>
+                    <a href="#%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86" aria-label="进程管理">进程管理</a></li>
+                <li>
+                    <a href="#%e6%80%a7%e8%83%bd%e7%9b%91%e6%8e%a7" aria-label="性能监控">性能监控</a><ul>
+                        
+                <li>
+                    <a href="#%e6%98%be%e7%a4%ba%e5%92%8c%e9%85%8d%e7%bd%ae%e7%bd%91%e7%bb%9c%e8%ae%be%e5%a4%87" aria-label="显示和配置网络设备">显示和配置网络设备</a><ul>
+                        
+                <li>
+                    <a href="#%e7%8e%b0%e4%bb%a3%e6%9b%bf%e4%bb%a3%e5%b7%a5%e5%85%b7" aria-label="现代替代工具">现代替代工具</a></li></ul>
+                </li>
+                <li>
+                    <a href="#cpu-%e7%bb%9f%e8%ae%a1%e6%95%b0%e6%8d%ae" aria-label="CPU 统计数据">CPU 统计数据</a><ul>
+                        
+                <li>
+                    <a href="#io-%e7%9b%91%e6%8e%a7" aria-label="I/O 监控">I/O 监控</a></li></ul>
+                </li>
+                <li>
+                    <a href="#cpu-%e7%bb%9f%e8%ae%a1%e4%bf%a1%e6%81%af" aria-label="CPU 统计信息">CPU 统计信息</a></li>
+                <li>
+                    <a href="#%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98%e7%bb%9f%e8%ae%a1" aria-label="虚拟内存统计">虚拟内存统计</a></li></ul>
+                </li>
+                <li>
+                    <a href="#shell-%e7%bc%96%e7%a8%8b%e5%9f%ba%e7%a1%80" aria-label="shell 编程基础">shell 编程基础</a><ul>
+                        
+                <li>
+                    <a href="#shell%e5%85%a5%e9%97%a8%e7%bc%96%e7%a8%8b%e5%ae%9e%e4%be%8b" aria-label="shell入门编程实例">shell入门编程实例</a></li></ul>
+                </li>
+                <li>
+                    <a href="#linux-c%e5%bc%95%e7%94%a8" aria-label="Linux C&#43;&#43;引用">Linux C++引用</a></li>
+                <li>
+                    <a href="#linux-c%e6%99%ba%e8%83%bd%e6%8c%87%e9%92%88" aria-label="Linux C&#43;&#43;智能指针">Linux C++智能指针</a><ul>
+                        
+                <li>
+                    <a href="#unique_ptr" aria-label="unique_ptr">unique_ptr</a></li>
+                <li>
+                    <a href="#shared_ptr" aria-label="shared_ptr">shared_ptr</a></li>
+                <li>
+                    <a href="#weak_ptr" aria-label="weak_ptr">weak_ptr</a></li></ul>
+                </li>
+                <li>
+                    <a href="#linux%e5%ae%a2%e6%88%b7%e7%ab%af%e4%b8%8e%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="Linux客户端与服务器">Linux客户端与服务器</a></li>
+                <li>
+                    <a href="#linux-io-%e5%a4%9a%e8%b7%af%e5%a4%8d%e7%94%a8" aria-label="Linux IO 多路复用">Linux IO 多路复用</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="常用指令">常用指令<a hidden class="anchor" aria-hidden="true" href="#常用指令">#</a></h1>
+<ol>
+<li>vim    访问文本</li>
+<li>退出文本并保存       :wq</li>
+<li>返回到上一个文件夹    cd . .</li>
+<li>解压指令         tar  -zxvf   xxxx.tar.gz</li>
+</ol>
+<h1 id="vi----vim-操作">vi    vim 操作<a hidden class="anchor" aria-hidden="true" href="#vi----vim-操作">#</a></h1>
+<ol>
+<li>i o a r  进入vim</li>
+<li>按下esc , 输入**:**   然后输入wq  保存并退出            :q退出      :q!  不保存退出</li>
+<li>yy 拷贝    5yy</li>
+<li>dd 删除   5dd</li>
+<li>撤销  u</li>
+<li>行号打开 :set nu</li>
+</ol>
+<h1 id="关机">关机<a hidden class="anchor" aria-hidden="true" href="#关机">#</a></h1>
+<ol>
+<li>shutdown -h  关机</li>
+<li>shutdown -r  重启</li>
+<li>reboot  重启</li>
+<li>sync  把内存数据存入磁盘</li>
+</ol>
+<h1 id="注销用户和登录">注销用户和登录<a hidden class="anchor" aria-hidden="true" href="#注销用户和登录">#</a></h1>
+<ol>
+<li>
+<p>logout</p>
+</li>
+<li>
+<p>退出root    logout</p>
+</li>
+</ol>
+<h1 id="压缩解压指令">压缩/解压指令<a hidden class="anchor" aria-hidden="true" href="#压缩解压指令">#</a></h1>
+<ol>
+<li>tar  -zxvf   xxxx.tar.gz</li>
+<li>gzip 文件 压缩</li>
+<li>gunzip 解压文件</li>
+<li>zip 压缩文件夹</li>
+<li>unzip 解压文件夹</li>
+<li>-r 递归压缩  zip -r xxxxx.zip  /home/  [将home目录及其包含的的文件和子文件夹都压缩]</li>
+<li>-d &lt;可指定目录&gt;   unzip -d /opt/tmp    /home/xxxxx.zip</li>
+<li>tar 万能</li>
+<li>tar -c  产生打包文件</li>
+<li>-v 显示详细信息</li>
+<li>-f 指定压缩后的文件名</li>
+<li>-z 打包并同时压缩</li>
+<li>-x 解压.tar文件</li>
+</ol>
+<h1 id="帮助指令">帮助指令<a hidden class="anchor" aria-hidden="true" href="#帮助指令">#</a></h1>
+<ol>
+<li>
+<p>man ls 列出所有指令</p>
+</li>
+<li>
+<p>help   +  指令</p>
+</li>
+<li>
+<p>ls -la</p>
+</li>
+<li>
+<p>ls  -la /root</p>
+</li>
+</ol>
+<h1 id="文件目录指令">文件目录指令<a hidden class="anchor" aria-hidden="true" href="#文件目录指令">#</a></h1>
+<ol>
+<li><strong>pwd  显示出地址</strong></li>
+<li>cd ~  回到家目录</li>
+<li>cd .. 上一目录</li>
+<li>mkdir 创建目录</li>
+<li>mkdir -p /home/&hellip;/&hellip;.  创建指定目录</li>
+<li>rmdir 删除空目录    强制删除空目录 rm -rf</li>
+<li>touch 创建空文件</li>
+<li>cp 拷贝  cp hello.txt /bbb</li>
+<li>cp -r  /home/bbb /opt  把目录复制到指定目录下</li>
+<li>\cp -r  /home/bbb /opt 强制</li>
+<li>rm 删除文件或目录</li>
+<li><strong>rm -rf  /home/bbb 强制删除      -f 就是强制删除不提醒</strong></li>
+<li>mv 移动指令</li>
+<li>cat  查看文件     -n 行号</li>
+<li>less 分屏查看</li>
+<li>echo $HOSTNAME  输出环境变量</li>
+<li>head 查看文件的前几行 -&gt; 10 行 head  xxxx.c</li>
+<li>tail  查看末尾文件 tail  xxxx.c</li>
+<li>ln -s  /root      /home/myroot           快捷指令指向  在myroot创建指向/root的快捷方式,  cd myroot 就会直接进入/root</li>
+</ol>
+<h1 id="文件管理">文件管理<a hidden class="anchor" aria-hidden="true" href="#文件管理">#</a></h1>
+<ol>
+<li>使用 <code>mkdir</code> 创建目录。例如，<code>mkdir xxxx</code> 将在当前位置创建一个名为 &ldquo;xxxx&rdquo; 的目录。</li>
+<li>要创建多级目录，可以使用 <code>mkdir -p</code> 命令。例如，<code>mkdir -p xxx/yyy</code> 将在 &ldquo;xxx&rdquo; 目录下创建一个名为 &ldquo;yyy&rdquo; 的子目录。</li>
+<li>使用 <code>mkdir -m 777</code> 命令创建目录时，可以直接设置权限。数字 &ldquo;777&rdquo; 表示所有权限（读、写和执行）。另外，&ldquo;4&rdquo; 代表读权限，&ldquo;2&rdquo; 代表写权限，&ldquo;1&rdquo; 代表执行权限。</li>
+<li><code>mv</code> 命令用于移动文件或重命名文件。例如，<code>mv xxx.c /home/zzz/targetPlace</code> 将把 &ldquo;xxx.c&rdquo; 文件移动到 &ldquo;/home/zzz/targetPlace&rdquo; 目录。</li>
+<li>使用 <code>cp</code> 命令复制文件。例如，<code>cp xxx.c /home/zzz/targetPlace</code> 将把 &ldquo;xxx.c&rdquo; 文件复制到 &ldquo;/home/zzz/targetPlace&rdquo; 目录。</li>
+<li>若要复制目录，应使用 <code>cp -r</code> 命令。例如，<code>cp -r /home/bbb /opt</code> 将把 &ldquo;/home/bbb&rdquo; 目录复制到 &ldquo;/opt&rdquo; 目录。</li>
+<li><code>rm</code> 用于删除文件或目录，而 <code>rmdir</code> 仅用于删除空目录。删除文件时，使用 <code>rm 文件名</code>；删除目录（及其内容）时，使用 <code>rm -r 目录名</code>；删除空目录时，使用 <code>rmdir 目录名</code>。</li>
+<li>使用 <code>chown</code> 和 <code>chgrp</code> 命令更改文件的所有权。例如，<code>chown -R root /home/zzz/targetPlace/xxx.c</code> 将把 &ldquo;xxx.c&rdquo; 文件的所有权更改为 root 用户。同理，使用 <code>chgrp</code> 命令更改文件的群组所有权。</li>
+<li>使用 <code>chmod</code> 命令更改文件或目录的权限。例如，<code>chmod 777 xxxx（目录）</code> 将为名为 &ldquo;xxxx&rdquo; 的目录设置所有权限（读、写和执行）。</li>
+<li><code>ln</code> 命令用于创建链接，类似于快捷方式。例如，<code>ln 路径/xxx.c newxxx.c</code> 将在当前位置创建一个指向 &ldquo;xxx.c&rdquo; 的新链接 &ldquo;newxxx.c&rdquo;。若要删除快捷方式，可以使用 <code>rm -rf</code> 命令。</li>
+<li>输入/输出重定向是一种将命令的输出发送到文件而不是屏幕的技术。例如，<code>date &gt; xx.txt</code> 将当前日期和时间写入 &ldquo;xx.txt&rdquo; 文件。而 <code>date &gt;&gt; xx.txt</code> 会将日期和时间追加到文件的末尾，常用于日志、脚本和文件中。</li>
+</ol>
+<p><img alt="image-20240910112844875" loading="lazy" src="../img/image-20240910112844875.png"></p>
+<p><img alt="image-20240909235340928" loading="lazy" src="../img/image-20240909235340928.png"></p>
+<h1 id="cat命令">cat命令<a hidden class="anchor" aria-hidden="true" href="#cat命令">#</a></h1>
+<ol>
+<li>
+<p>使用 <code>cat &gt; xxxx.c</code> 创建一个新文件 &ldquo;xxxx.c&rdquo;。此命令进入文本输入模式，可以直接输入内容，输入完成后按 <code>Ctrl+D</code> 保存并退出。</p>
+</li>
+<li>
+<p>合并文件可以使用 <code>cat</code> 命令。例如，<code>cat tx1.c tx2.c &gt; tx3.c</code> 将分别将 &ldquo;tx1.c&rdquo; 和 &ldquo;tx2.c&rdquo; 的内容合并并输出到 &ldquo;tx3.c&rdquo; 文件中。</p>
+</li>
+<li>
+<p>要向文件末尾添加内容，使用 <code>cat &gt;&gt; tx.c</code>。此命令进入文本输入模式，输入完内容后，同样按 <code>Ctrl+D</code> 保存并退出。</p>
+</li>
+</ol>
+<h1 id="more命令">more命令<a hidden class="anchor" aria-hidden="true" href="#more命令">#</a></h1>
+<ol>
+<li>使用 <code>more</code> 命令可以逐屏查看大型文件。例如，<code>more -3 tx</code> 将从文件 &ldquo;tx&rdquo; 的第三行开始显示内容。使用方向键或空格键可以向下滚动，按 <code>q</code> 退出查看。</li>
+</ol>
+<h1 id="grep命令">grep命令<a hidden class="anchor" aria-hidden="true" href="#grep命令">#</a></h1>
+<ol>
+<li>使用 <code>grep -i &quot;abc.....&quot; xxxx.c</code> 查找文件 &ldquo;xxxx.c&rdquo; 中的内容，<code>-i</code> 选项使搜索不区分大小写。</li>
+<li>使用 <code>grep -n -i &quot;abc.....&quot; xxxx.c</code> 查找文件 &ldquo;xxxx.c&rdquo; 中的内容，<code>-n</code> 选项会显示匹配行的行号，且同样不区分大小写。</li>
+</ol>
+<h1 id="find命令">find命令<a hidden class="anchor" aria-hidden="true" href="#find命令">#</a></h1>
+<ol>
+<li>使用 <code>find -name 'tex*'</code> 查找当前目录及子目录中以 &ldquo;tex&rdquo; 开头的文件，支持模糊查找。</li>
+<li>使用 <code>find -name 'te??.c'</code> 查找当前目录及子目录中以 &ldquo;te&rdquo; 开头，后跟任意两个字符且以 &ldquo;.c&rdquo; 结尾的文件。</li>
+<li>使用 <code>find -name '[a-z]*.c'</code> 查找当前目录及子目录中以小写字母开头且以 &ldquo;.c&rdquo; 结尾的文件。</li>
+</ol>
+<h1 id="locate-命令">locate 命令<a hidden class="anchor" aria-hidden="true" href="#locate-命令">#</a></h1>
+<ol>
+<li>要快速定位文件，可以使用 <code>locate xxxx</code> 命令。此命令通过查询系统中的文件数据库，迅速找出包含 &ldquo;xxxx&rdquo; 的文件路径。请确保在使用前更新数据库，通常可以通过 <code>updatedb</code> 命令实现。</li>
+</ol>
+<h1 id="who-命令">who 命令<a hidden class="anchor" aria-hidden="true" href="#who-命令">#</a></h1>
+<ol>
+<li>使用 <code>who</code> 查看当前登录的用户。</li>
+<li>使用 <code>who -a</code> 查看详细的用户信息，包括登录时间和终端等。</li>
+<li>使用 <code>whoami</code> 查看当前用户的用户名。</li>
+<li>使用 <code>uname</code> 命令查看主机信息，<code>uname -a</code> 则显示所有相关信息，包括主机名、内核版本、硬件架构等。常用选项包括：
+<ul>
+<li><code>-n</code>: 显示主机名</li>
+<li><code>-r</code>: 显示内核版本</li>
+<li><code>-v</code>: 显示内核版本号</li>
+<li><code>-m</code>: 显示机器硬件名称</li>
+<li><code>-p</code>: 显示处理器架构</li>
+<li><code>-i</code>: 显示硬件平台</li>
+<li><code>-o</code>: 显示操作系统名称</li>
+</ul>
+</li>
+</ol>
+<h1 id="man命令">man命令<a hidden class="anchor" aria-hidden="true" href="#man命令">#</a></h1>
+<ol>
+<li>
+<p>要查看命令手册，可以使用 <code>man</code> 命令。具体示例：</p>
+<ul>
+<li>使用 <code>man ls</code> 查看 <code>ls</code> 命令的说明书。这将打开 <code>ls</code> 命令的手册页，其中包括用法、选项和示例等详细信息。</li>
+</ul>
+<p>要退出手册页，可以按 <code>q</code>。</p>
+</li>
+</ol>
+<h1 id="软件包管理">软件包管理<a hidden class="anchor" aria-hidden="true" href="#软件包管理">#</a></h1>
+<ol>
+<li>
+<p>apt-get 命令 下载/卸载/管理 软件包</p>
+</li>
+<li>
+<p>which 命令查找位置</p>
+</li>
+<li>
+<p>使用 <code>apt-get</code> 命令下载、卸载和管理软件包。例如：</p>
+<ul>
+<li><code>apt-get install package_name</code> 安装软件包。</li>
+<li><code>apt-get remove package_name</code> 卸载软件包。</li>
+</ul>
+</li>
+<li>
+<p>使用 <code>which</code> 命令查找可执行文件的位置。例如，<code>which command_name</code> 将显示该命令的完整路径。</p>
+</li>
+</ol>
+<h2 id="不同系统管理"><strong>不同系统管理</strong><a hidden class="anchor" aria-hidden="true" href="#不同系统管理">#</a></h2>
+<h3 id="debianubuntu-系统">Debian/Ubuntu 系统<a hidden class="anchor" aria-hidden="true" href="#debianubuntu-系统">#</a></h3>
+<ul>
+<li><strong>下载软件包</strong>: <code>apt-get install package_name</code></li>
+<li><strong>卸载软件包</strong>: <code>apt-get remove package_name</code></li>
+<li><strong>更新软件包列表</strong>: <code>apt-get update</code></li>
+<li><strong>升级软件包</strong>: <code>apt-get upgrade</code></li>
+</ul>
+<h3 id="red-hatcentos-系统">Red Hat/CentOS 系统<a hidden class="anchor" aria-hidden="true" href="#red-hatcentos-系统">#</a></h3>
+<ul>
+<li><strong>下载软件包</strong>: <code>yum install package_name</code></li>
+<li><strong>卸载软件包</strong>: <code>yum remove package_name</code></li>
+<li><strong>更新软件包列表</strong>: <code>yum check-update</code></li>
+<li><strong>升级软件包</strong>: <code>yum update</code></li>
+</ul>
+<h3 id="arch-linux-系统">Arch Linux 系统<a hidden class="anchor" aria-hidden="true" href="#arch-linux-系统">#</a></h3>
+<ul>
+<li><strong>下载软件包</strong>: <code>pacman -S package_name</code></li>
+<li><strong>卸载软件包</strong>: <code>pacman -R package_name</code></li>
+<li><strong>更新软件包列表和升级</strong>: <code>pacman -Syu</code></li>
+</ul>
+<h3 id="macos-使用-homebrew">macOS (使用 Homebrew)<a hidden class="anchor" aria-hidden="true" href="#macos-使用-homebrew">#</a></h3>
+<ul>
+<li><strong>下载软件包</strong>: <code>brew install package_name</code></li>
+<li><strong>卸载软件包</strong>: <code>brew uninstall package_name</code></li>
+<li><strong>更新软件包列表</strong>: <code>brew update</code></li>
+<li><strong>升级软件包</strong>: <code>brew upgrade</code></li>
+</ul>
+<h3 id="windows-使用-chocolatey">Windows (使用 Chocolatey)<a hidden class="anchor" aria-hidden="true" href="#windows-使用-chocolatey">#</a></h3>
+<ul>
+<li><strong>下载软件包</strong>: <code>choco install package_name</code></li>
+<li><strong>卸载软件包</strong>: <code>choco uninstall package_name</code></li>
+<li><strong>更新软件包</strong>: <code>choco upgrade all</code></li>
+</ul>
+<h1 id="文件系统类型">文件系统类型<a hidden class="anchor" aria-hidden="true" href="#文件系统类型">#</a></h1>
+<p><img alt="image-20240911110514902" loading="lazy" src="../img/image-20240911110514902.png"></p>
+<p><img alt="image-20240911114224707" loading="lazy" src="../img/image-20240911114224707.png"></p>
+<ol>
+<li>查看swap信息并更改单位显示：<code>free -h</code>。</li>
+<li>挂载文件系统：使用 <code>sudo mount</code> 命令挂载文件系统到指定目标点，例如 <code>sudo mount /dev/xxx/yyy target</code>。其中，<code>target</code> 是挂载点。</li>
+<li>卸载已挂载的文件系统：使用 <code>umount</code> 命令卸载挂载点，例如 <code>umount target</code>。</li>
+<li>查询磁盘使用情况：使用 <code>df -h</code> 命令查看磁盘的可用空间等信息。</li>
+<li>检查或修改文件系统：使用 <code>fsck</code> 命令进行磁盘检查和修复。可以使用 <code>-C</code> 和 <code>-t $type $路径</code> 参数来指定检查的类型和路径。具体语法可查看 <code>fsck --help</code> 获取更多信息。</li>
+<li>在磁盘上创建文件系统：使用 <code>mkfs</code> 命令。具体文件系统类型可以通过查看系统支持的选项来确定。例如，创建ext4文件系统可以使用 <code>mkfs.ext4</code> 命令。</li>
+<li>查看分区表：使用 <code>fdisk -l $路径</code> 命令来查看指定设备的分区表信息。如果只是想列出当前系统所有设备，可以省略 <code>$路径</code> 参数。</li>
+<li>使用gzip压缩工具：压缩文件使用 <code>gzip xxxx.c</code>，压缩目录使用 <code>gzip -r /home</code>，解压使用 <code>gzip -d xxxx.c.gz</code>。注意，gzip 会替换原始文件为 <code>.gz</code> 格式。</li>
+<li>使用tar命令进行压缩和解压：查看tar的帮助信息可以使用 <code>tar --help</code>。压缩文件可以使用 <code>tar -cvf xxx.tar yyy.c ...</code>，解压可以使用 <code>tar -xf xxx.tar -C $解压放置的位置</code>。</li>
+<li>使用bzip压缩和解压缩工具：压缩时使用 <code>bzip2 filename</code> 生成 <code>.bz2</code> 文件，解压缩时使用 <code>bzip2 -d filename.bz2</code> 或 <code>bunzip2 filename.bz2</code>。</li>
+<li>使用zip命令创建和解压ZIP文件：压缩时使用 <code>zip archive.zip file1 file2</code> 创建ZIP文件，解压时使用 <code>unzip archive.zip</code> 解压ZIP文件。</li>
+</ol>
+<h1 id="用户管理">用户管理<a hidden class="anchor" aria-hidden="true" href="#用户管理">#</a></h1>
+<ol>
+<li>查看用户信息，可以使用 <code>cat  /etc/passwd</code> 命令。</li>
+<li>添加用户可以使用 <code>useradd</code> 命令。例如，<code>useradd xxxx</code> 将创建一个名为 &ldquo;xxxx&rdquo; 的新用户。</li>
+<li>创建用户组使用 <code>groupadd</code> 命令。例如，<code>groupadd xxxxgroup</code> 将创建一个名为 &ldquo;xxxxgroup&rdquo; 的新用户组。查看所有用户组信息可以使用 <code>cat /etc/group</code>。</li>
+<li>要查看用户执行过的命令记录，可以使用 <code>history</code> 命令。</li>
+<li>使用 <code>passwd</code> 命令更改密码。执行此命令后，系统会提示输入当前用户的旧密码以及新密码。</li>
+<li>删除用户可以使用 <code>userdel</code> 命令。例如，<code>userdel xxxuser</code> 将删除名为 &ldquo;xxxuser&rdquo; 的用户。</li>
+<li>管理用户账号，包括修改用户名，可以使用 <code>usermod</code> 命令。例如，<code>usermod -l new_name old_name</code> 将把 &ldquo;old_name&rdquo; 的用户名更改为 &ldquo;new_name&rdquo;。</li>
+<li>查看用户信息，可以使用 <code>id xxxname</code> 命令，这将显示名为 &ldquo;xxxname&rdquo; 的用户的详细信息。</li>
+<li>用户切换可以使用 <code>su</code> 命令。例如，<code>su root</code> 将切换到 root 用户，而 <code>su xxxname</code> 将切换到名为 &ldquo;xxxname&rdquo; 的用户。</li>
+<li>使用 <code>sudo</code> 命令可以以管理员权限执行命令。在执行需要特权的命令前，输入 <code>sudo</code> 和该命令，然后输入管理员密码即可。</li>
+</ol>
+<h1 id="进程管理">进程管理<a hidden class="anchor" aria-hidden="true" href="#进程管理">#</a></h1>
+<ol>
+<li><strong>监视进程</strong>：
+<ul>
+<li>使用 <code>ps</code> 命令查看当前进程。</li>
+<li>查看 <code>ps</code> 手册：<code>man ps</code>。</li>
+<li>常用选项：
+<ul>
+<li>显示所有进程：<code>ps -e</code></li>
+<li>显示不带终端的所有进程：<code>ps -au</code></li>
+<li>显示特定用户的进程：<code>ps -u root</code> 或 <code>ps -u xxxname</code></li>
+<li>显示详细信息：<code>ps -l</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>跟踪进程</strong>：
+<ul>
+<li>使用 <code>top</code> 命令监控进程。</li>
+<li>自动更新 4 次后退出：<code>top -n 4</code></li>
+<li>设置刷新时间为 5 秒：<code>top -d 5</code></li>
+<li>仅监控特定进程 ID（如 1810）：<code>top -p 1810</code></li>
+</ul>
+</li>
+<li><strong>htop 命令</strong>：
+<ul>
+<li><code>htop</code> 是 <code>top</code> 的升级版，提供更友好的用户界面和交互功能。</li>
+</ul>
+</li>
+<li><strong>终止进程</strong>：
+<ul>
+<li>使用 <code>kill</code> 命令终止进程。例如，<code>kill 1201</code> 将关闭进程 ID 为 1201 的进程。</li>
+</ul>
+</li>
+<li><strong>设置进程优先级</strong>：
+<ul>
+<li>查看进程 nice 值并按降序排列：<code>ps axo pid,comm,nice --sort=-nice</code></li>
+<li>查看特定进程的 nice 值：<code>ps -p 1201 -o nice</code></li>
+<li>修改进程的 nice 值：<code>renice -n 10 -p 1201</code></li>
+</ul>
+</li>
+<li><strong>查看进程属性</strong>：
+<ul>
+<li>使用 <code>pgrep</code> 命令查找进程。</li>
+<li>常用命令：
+<ul>
+<li>查询特定进程名：<code>pgrep xxxname</code></li>
+<li>模糊查询进程名：<code>pgrep -l ^xxxname</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="性能监控">性能监控<a hidden class="anchor" aria-hidden="true" href="#性能监控">#</a></h1>
+<h2 id="显示和配置网络设备">显示和配置网络设备<a hidden class="anchor" aria-hidden="true" href="#显示和配置网络设备">#</a></h2>
+<ol>
+<li><strong>查看网络设备信息</strong>：
+<ul>
+<li>使用 <code>ifconfig</code> 命令可以查看当前网络配置。</li>
+<li>显示所有网络设备及其状态：<code>ifconfig</code></li>
+</ul>
+</li>
+<li><strong>帮助文档</strong>：
+<ul>
+<li>查看 <code>ifconfig</code> 的帮助信息：<code>ifconfig --help</code></li>
+</ul>
+</li>
+<li><strong>常用选项</strong>：
+<ul>
+<li>启用网络接口：<code>ifconfig eth0 up</code> （将 <code>eth0</code> 替换为实际接口名）</li>
+<li>禁用网络接口：<code>ifconfig eth0 down</code></li>
+<li>设置 IP 地址：<code>ifconfig eth0 192.168.1.100</code></li>
+<li>设置子网掩码：<code>ifconfig eth0 netmask 255.255.255.0</code></li>
+<li>查看特定接口信息：<code>ifconfig eth0</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="现代替代工具">现代替代工具<a hidden class="anchor" aria-hidden="true" href="#现代替代工具">#</a></h3>
+<ul>
+<li>
+<p>在许多现代 Linux 发行版中，</p>
+<pre tabindex="0"><code>ifconfig
+</code></pre><p>已被</p>
+<pre tabindex="0"><code>ip
+</code></pre><p>命令替代，建议使用：</p>
+<ul>
+<li>查看网络设备信息：<code>ip addr</code></li>
+<li>启用接口：<code>ip link set eth0 up</code></li>
+<li>禁用接口：<code>ip link set eth0 down</code></li>
+<li>设置 IP 地址：<code>ip addr add 192.168.1.100/24 dev eth0</code></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p><img alt="image-20240914002325290" loading="lazy" src="../img/image-20240914002325290.png"></p>
+<h2 id="cpu-统计数据">CPU 统计数据<a hidden class="anchor" aria-hidden="true" href="#cpu-统计数据">#</a></h2>
+<ol>
+<li>
+<p>iostat 命令</p>
+<p>：</p>
+<ul>
+<li>基本使用：<code>iostat</code> 显示 CPU 和 I/O 统计信息。</li>
+<li>输出磁盘利用率：<code>iostat -d sda1</code> （显示指定磁盘的利用信息）。</li>
+<li>输出 CPU 和磁盘利用率：<code>iostat -t</code> （包含时间戳）。</li>
+<li>显示 CPU 和磁盘利用率的详细信息：<code>iostat -m</code> （以兆字节为单位显示）。</li>
+<li>查看 CPU 使用情况：<code>iostat -c</code> （只显示 CPU 统计数据）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="io-监控">I/O 监控<a hidden class="anchor" aria-hidden="true" href="#io-监控">#</a></h3>
+<ol>
+<li>
+<p>iotop 命令</p>
+<p>：</p>
+<ul>
+<li><code>iotop</code> 用于实时监控 I/O 使用情况。</li>
+<li>需要 root 权限，可以使用 <code>sudo iotop</code> 来执行该命令。</li>
+</ul>
+</li>
+</ol>
+<p><img alt="image-20240914153126788" loading="lazy" src="../img/image-20240914153126788.png"></p>
+<h2 id="cpu-统计信息">CPU 统计信息<a hidden class="anchor" aria-hidden="true" href="#cpu-统计信息">#</a></h2>
+<ol>
+<li>
+<p>mpstat 命令</p>
+<p>：</p>
+<ul>
+<li>使用 <code>mpstat</code> 报告 CPU 统计信息。</li>
+<li>显示 CPU 中断数：<code>mpstat -I SUM</code>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="虚拟内存统计">虚拟内存统计<a hidden class="anchor" aria-hidden="true" href="#虚拟内存统计">#</a></h2>
+<ol>
+<li>
+<p>vmstat 命令</p>
+<p>：</p>
+<ul>
+<li>查看所有虚拟内存的统计信息：<code>vmstat -a</code>。</li>
+<li>输出磁盘统计数据：<code>vmstat -d</code>。</li>
+<li>报告虚拟内存统计的详细信息：<code>vmstat -s</code>。</li>
+</ul>
+</li>
+</ol>
+<h1 id="shell-编程基础">shell 编程基础<a hidden class="anchor" aria-hidden="true" href="#shell-编程基础">#</a></h1>
+<p><img alt="image-20240914225909268" loading="lazy" src="../img/image-20240914225909268.png"></p>
+<p><img alt="image-20240914230011901" loading="lazy" src="../img/image-20240914230011901.png"></p>
+<h2 id="shell入门编程实例">shell入门编程实例<a hidden class="anchor" aria-hidden="true" href="#shell入门编程实例">#</a></h2>
+<p><img alt="image-20240914231618458" loading="lazy" src="../img/image-20240914231618458.png"></p>
+<p><img alt="image-20240914231401858" loading="lazy" src="../img/image-20240914231401858.png"></p>
+<!-- raw HTML omitted -->
+<h1 id="linux-c引用">Linux C++引用<a hidden class="anchor" aria-hidden="true" href="#linux-c引用">#</a></h1>
+<p><img alt="image-20240915153157020" loading="lazy" src="../img/image-20240915153157020.png"></p>
+<h1 id="linux-c智能指针">Linux C++智能指针<a hidden class="anchor" aria-hidden="true" href="#linux-c智能指针">#</a></h1>
+<h2 id="unique_ptr">unique_ptr<a hidden class="anchor" aria-hidden="true" href="#unique_ptr">#</a></h2>
+<p><img alt="image-20240915222014358" loading="lazy" src="../img/image-20240915222014358.png"></p>
+<h2 id="shared_ptr">shared_ptr<a hidden class="anchor" aria-hidden="true" href="#shared_ptr">#</a></h2>
+<p><img alt="image-20240915222905392" loading="lazy" src="../img/image-20240915222905392.png"></p>
+<h2 id="weak_ptr">weak_ptr<a hidden class="anchor" aria-hidden="true" href="#weak_ptr">#</a></h2>
+<p><img alt="image-20240915225233527" loading="lazy" src="../img/image-20240915225233527.png"></p>
+<p>为什么要使用 weak_ptr指针:  为了解决 shared ptr 循环引用问题。</p>
+<h1 id="linux客户端与服务器">Linux客户端与服务器<a hidden class="anchor" aria-hidden="true" href="#linux客户端与服务器">#</a></h1>
+<p><img alt="image-20240916221406777" loading="lazy" src="../img/image-20240916221406777.png"></p>
+<h1 id="linux-io-多路复用">Linux IO 多路复用<a hidden class="anchor" aria-hidden="true" href="#linux-io-多路复用">#</a></h1>
+<p><img alt="image-20240916230015671" loading="lazy" src="../img/image-20240916230015671.png"></p>
+<!-- raw HTML omitted -->
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steamdk.github.io/tags/%E6%8C%87%E4%BB%A4/">指令</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://steamdk.github.io/posts/hugo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Hugo博客的图片上传</span>
+  </a>
+  <a class="next" href="https://steamdk.github.io/posts/qt_study/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Qt开发的学习记录</span>
+  </a>
+</nav>
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steamdk\/steamdk.github.io",
+            "data-repo-id": "R_kgDONN_Y2g",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONN_Y2s4CkVh9",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://github.com/steamdk/steamdk.github.io">©2024 项目介绍</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js"
+  integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj+Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var OSName = "unknown";
+  var navApp = navigator.userAgent.toLowerCase();
+  switch (true) {
+    case (navApp.indexOf("win") != -1):
+      OSName = "windows";
+      break;
+    case (navApp.indexOf("mac") != -1):
+      OSName = "apple";
+      break;
+    case (navApp.indexOf("linux") != -1):
+      OSName = "linux";
+      break;
+    case (navApp.indexOf("x11") != -1):
+      OSName = "unix";
+      break;
+  }
+
+  const images = Array.from(document.querySelectorAll(".post-content img"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 1,    
+      
+      container: null,  
+      template: null,  
+      
+    });
+  });
+
+  if (OSName == "windows") {
+    document.body.className += ' win11'
+  }
+</script>
+
+
+
+
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

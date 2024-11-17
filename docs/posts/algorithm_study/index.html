@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>算法学习记录 | 项目介绍</title>
+<meta name="keywords" content="算法, 记录">
+<meta name="description" content="测试数据范围
+
+  
+      
+          时间复杂度
+          对应数据量
+      
+  
+  
+      
+          O(n)
+          1,000,000
+      
+      
+          O(log N)
+          100,000
+      
+      
+          O(n^2)
+          1,000
+      
+      
+          O(n^3)
+          100
+      
+      
+          特殊情况
+          10
+      
+  
+
+滑动窗口
+动态规划 DP
+dp分析, 两个角度
+
+状态表示
+
+
+集合: 前i个数, 总和为j的所有方案
+属性:
+
+
+状态计算
+
+01背包
+n = 4 // 4件物品
+m = 5 // 背包最大容量为 5 
+测试样例
+4 5
+1 2
+2 4
+3 4
+4 5
+
+  
+      
+          
+          j
+          
+          
+          
+          
+      
+  
+  
+      
+          i
+          
+          
+          
+          
+          
+      
+  
+
+状态f[i][j]定义：前 i 个物品，背包容量 j 下的最优解（最大价值）">
+<meta name="author" content="steamdk">
+<link rel="canonical" href="https://steamdk.github.io/posts/algorithm_study/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
+<link rel="apple-touch-icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="mask-icon" href="https://steamdk.github.io/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://steamdk.github.io/posts/algorithm_study/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style><meta property="og:url" content="https://steamdk.github.io/posts/algorithm_study/">
+  <meta property="og:site_name" content="项目介绍">
+  <meta property="og:title" content="算法学习记录">
+  <meta property="og:description" content="测试数据范围 时间复杂度 对应数据量 O(n) 1,000,000 O(log N) 100,000 O(n^2) 1,000 O(n^3) 100 特殊情况 10 滑动窗口 动态规划 DP dp分析, 两个角度
+状态表示 集合: 前i个数, 总和为j的所有方案 属性: 状态计算 01背包 n = 4 // 4件物品 m = 5 // 背包最大容量为 5 测试样例 4 5 1 2 2 4 3 4 4 5 j i 状态f[i][j]定义：前 i 个物品，背包容量 j 下的最优解（最大价值）">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-10T08:33:32+08:00">
+    <meta property="article:modified_time" content="2024-09-10T08:33:32+08:00">
+    <meta property="article:tag" content="算法">
+    <meta property="article:tag" content="记录">
+      <meta property="og:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:title" content="算法学习记录">
+<meta name="twitter:description" content="测试数据范围
+
+  
+      
+          时间复杂度
+          对应数据量
+      
+  
+  
+      
+          O(n)
+          1,000,000
+      
+      
+          O(log N)
+          100,000
+      
+      
+          O(n^2)
+          1,000
+      
+      
+          O(n^3)
+          100
+      
+      
+          特殊情况
+          10
+      
+  
+
+滑动窗口
+动态规划 DP
+dp分析, 两个角度
+
+状态表示
+
+
+集合: 前i个数, 总和为j的所有方案
+属性:
+
+
+状态计算
+
+01背包
+n = 4 // 4件物品
+m = 5 // 背包最大容量为 5 
+测试样例
+4 5
+1 2
+2 4
+3 4
+4 5
+
+  
+      
+          
+          j
+          
+          
+          
+          
+      
+  
+  
+      
+          i
+          
+          
+          
+          
+          
+      
+  
+
+状态f[i][j]定义：前 i 个物品，背包容量 j 下的最优解（最大价值）">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steamdk.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "算法学习记录",
+      "item": "https://steamdk.github.io/posts/algorithm_study/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "算法学习记录",
+  "name": "算法学习记录",
+  "description": "测试数据范围 时间复杂度 对应数据量 O(n) 1,000,000 O(log N) 100,000 O(n^2) 1,000 O(n^3) 100 特殊情况 10 滑动窗口 动态规划 DP dp分析, 两个角度\n状态表示 集合: 前i个数, 总和为j的所有方案 属性: 状态计算 01背包 n = 4 // 4件物品 m = 5 // 背包最大容量为 5 测试样例 4 5 1 2 2 4 3 4 4 5 j i 状态f[i][j]定义：前 i 个物品，背包容量 j 下的最优解（最大价值）\n",
+  "keywords": [
+    "算法", "记录"
+  ],
+  "articleBody": "测试数据范围 时间复杂度 对应数据量 O(n) 1,000,000 O(log N) 100,000 O(n^2) 1,000 O(n^3) 100 特殊情况 10 滑动窗口 动态规划 DP dp分析, 两个角度\n状态表示 集合: 前i个数, 总和为j的所有方案 属性: 状态计算 01背包 n = 4 // 4件物品 m = 5 // 背包最大容量为 5 测试样例 4 5 1 2 2 4 3 4 4 5 j i 状态f[i][j]定义：前 i 个物品，背包容量 j 下的最优解（最大价值）\n前i个物品的价值 1 2 3 4 5 0 0 0 0 0 0 1 2 2 2 2 2 2 2 4 6 6 6 3 2 4 6 6 8 4 2 4 6 6 8 第i个物品的数据 1 2 3 4 volume 1 2 3 4 weight 2 4 4 5 单调栈 合并区间 模板\n排序数组 更新合并左右端点 vector\u003cvector\u003cint\u003e\u003e merge(vector\u003cvector\u003cint\u003e\u003e \u0026intervals) { vector\u003cvector\u003cint\u003e\u003e ans; if (intervals.empty()) return ans; sort(intervals.begin(), intervals.end()); // 先排序 int l = intervals[0][0], r = intervals[0][1]; // 左右端点 for (int i = 1; i \u003c intervals.size(); i++) // 第二数组开始遍历 { if (intervals[i][0] \u003e r) // 第二数组的左端点大于上一数组的右端点, 则保存上一数组 { ans.push_back({l, r}); l = intervals[i][0], r = intervals[i][1]; // 更新左右端点 } else { r = max(r, intervals[i][1]); // 否则更新右端点 } } ans.push_back({l, r}); return ans; } 迪杰斯特拉算法 快速幂 模板\n快速幂 —— 模板题 AcWing 875. 快速幂 求 m^k mod p，时间复杂度 O(logk)。\nint qmi(int m, int k, int p) { int res = 1 % p, t = m; while (k) { if (k\u00261) res = res * t % p; t = t * t % p; k \u003e\u003e= 1; } return res; } 并查集 ",
+  "wordCount" : "441",
+  "inLanguage": "zh",
+  "image": "https://i.postimg.cc/7hwBy7VS/calcr.png","datePublished": "2024-09-10T08:33:32+08:00",
+  "dateModified": "2024-09-10T08:33:32+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "steamdk"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steamdk.github.io/posts/algorithm_study/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "项目介绍",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steamdk.github.io/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://steamdk.github.io/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://steamdk.github.io/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      算法学习记录
+    </h1>
+    <div class="post-meta"><span title='2024-09-10 08:33:32 +0800 CST'>2024-09-10</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;steamdk
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e8%8c%83%e5%9b%b4" aria-label="测试数据范围">测试数据范围</a></li>
+                <li>
+                    <a href="#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3" aria-label="滑动窗口">滑动窗口</a></li>
+                <li>
+                    <a href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92-dp" aria-label="动态规划 DP">动态规划 DP</a><ul>
+                        
+                <li>
+                    <a href="#01%e8%83%8c%e5%8c%85" aria-label="01背包">01背包</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8d%95%e8%b0%83%e6%a0%88" aria-label="单调栈">单调栈</a></li>
+                <li>
+                    <a href="#%e5%90%88%e5%b9%b6%e5%8c%ba%e9%97%b4" aria-label="合并区间">合并区间</a></li>
+                <li>
+                    <a href="#%e8%bf%aa%e6%9d%b0%e6%96%af%e7%89%b9%e6%8b%89%e7%ae%97%e6%b3%95" aria-label="迪杰斯特拉算法">迪杰斯特拉算法</a></li>
+                <li>
+                    <a href="#%e5%bf%ab%e9%80%9f%e5%b9%82" aria-label="快速幂">快速幂</a></li>
+                <li>
+                    <a href="#%e5%b9%b6%e6%9f%a5%e9%9b%86" aria-label="并查集">并查集</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="测试数据范围">测试数据范围<a hidden class="anchor" aria-hidden="true" href="#测试数据范围">#</a></h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">时间复杂度</th>
+          <th style="text-align: center">对应数据量</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">O(n)</td>
+          <td style="text-align: center">1,000,000</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">O(log N)</td>
+          <td style="text-align: center">100,000</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">O(n^2)</td>
+          <td style="text-align: center">1,000</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">O(n^3)</td>
+          <td style="text-align: center">100</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">特殊情况</td>
+          <td style="text-align: center">10</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="滑动窗口">滑动窗口<a hidden class="anchor" aria-hidden="true" href="#滑动窗口">#</a></h1>
+<h1 id="动态规划-dp">动态规划 DP<a hidden class="anchor" aria-hidden="true" href="#动态规划-dp">#</a></h1>
+<p>dp分析, 两个角度</p>
+<ul>
+<li><strong>状态表示</strong></li>
+</ul>
+<ol>
+<li>集合: 前<code>i</code>个数, 总和为<code>j</code>的所有方案</li>
+<li>属性:</li>
+</ol>
+<ul>
+<li><strong>状态计算</strong></li>
+</ul>
+<h2 id="01背包">01背包<a hidden class="anchor" aria-hidden="true" href="#01背包">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">// 4件物品
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">m</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">// 背包最大容量为 5 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">测试样例</span>
+</span></span><span class="line"><span class="cl"><span class="mi">4</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="mi">4</span> <span class="mi">5</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">j</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">i</td>
+          <td style="text-align: center"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>状态<code>f[i][j]</code>定义：<strong>前 i 个物品</strong>，<strong>背包容量 j</strong> 下的最优解（<strong>最大价值</strong>）</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">前i个物品的价值</th>
+          <th style="text-align: center">1</th>
+          <th style="text-align: center">2</th>
+          <th style="text-align: center">3</th>
+          <th style="text-align: center">4</th>
+          <th style="text-align: center">5</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">6</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">8</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">8</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">第i个物品的数据</th>
+          <th style="text-align: center">1</th>
+          <th style="text-align: center">2</th>
+          <th style="text-align: center">3</th>
+          <th style="text-align: center">4</th>
+          <th style="text-align: center"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">volume</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">weight</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="单调栈">单调栈<a hidden class="anchor" aria-hidden="true" href="#单调栈">#</a></h1>
+<h1 id="合并区间">合并区间<a hidden class="anchor" aria-hidden="true" href="#合并区间">#</a></h1>
+<p><strong>模板</strong></p>
+<ol>
+<li>排序数组</li>
+<li>更新合并左右端点</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">intervals</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">intervals</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">sort</span><span class="p">(</span><span class="n">intervals</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">intervals</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// 先排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// 左右端点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">intervals</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 第二数组开始遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span> <span class="c1">// 第二数组的左端点大于上一数组的右端点, 则保存上一数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="n">l</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span> <span class="o">=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// 更新左右端点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">r</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// 否则更新右端点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><h1 id="迪杰斯特拉算法">迪杰斯特拉算法<a hidden class="anchor" aria-hidden="true" href="#迪杰斯特拉算法">#</a></h1>
+<h1 id="快速幂">快速幂<a hidden class="anchor" aria-hidden="true" href="#快速幂">#</a></h1>
+<p>模板</p>
+<p>快速幂 —— 模板题 AcWing 875. 快速幂
+求 m^k mod p，时间复杂度 O(logk)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">qmi</span><span class="p">(</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">%</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">t</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">k</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="并查集">并查集<a hidden class="anchor" aria-hidden="true" href="#并查集">#</a></h1>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steamdk.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+      <li><a href="https://steamdk.github.io/tags/%E8%AE%B0%E5%BD%95/">记录</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://steamdk.github.io/posts/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>英语学习</span>
+  </a>
+  <a class="next" href="https://steamdk.github.io/posts/c&#43;&#43;%E8%AF%AD%E8%A8%80/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>C&#43;&#43;基础</span>
+  </a>
+</nav>
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steamdk\/steamdk.github.io",
+            "data-repo-id": "R_kgDONN_Y2g",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONN_Y2s4CkVh9",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://github.com/steamdk/steamdk.github.io">©2024 项目介绍</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js"
+  integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj+Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var OSName = "unknown";
+  var navApp = navigator.userAgent.toLowerCase();
+  switch (true) {
+    case (navApp.indexOf("win") != -1):
+      OSName = "windows";
+      break;
+    case (navApp.indexOf("mac") != -1):
+      OSName = "apple";
+      break;
+    case (navApp.indexOf("linux") != -1):
+      OSName = "linux";
+      break;
+    case (navApp.indexOf("x11") != -1):
+      OSName = "unix";
+      break;
+  }
+
+  const images = Array.from(document.querySelectorAll(".post-content img"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 1,    
+      
+      container: null,  
+      template: null,  
+      
+    });
+  });
+
+  if (OSName == "windows") {
+    document.body.className += ' win11'
+  }
+</script>
+
+
+
+
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

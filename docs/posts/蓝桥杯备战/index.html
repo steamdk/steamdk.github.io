@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>蓝桥杯备战 | 项目介绍</title>
+<meta name="keywords" content="算法, 蓝桥杯, 竞赛">
+<meta name="description" content="二分
+整数二分算法模板
+—— 模板题 AcWing 789. 数的范围
+cpp除法默认是向下取整: 如 5 / 2 = 2 
+上取整 ==&gt; 5 / 2 = 3  ==&gt;  5&#43;1 &gt;&gt; 1
+下取整 ==&gt; 5 / 2 = 2
+
+&gt;&gt;  右移运算符（Bitwise Right Shift）">
+<meta name="author" content="steamdk">
+<link rel="canonical" href="https://steamdk.github.io/posts/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
+<link rel="apple-touch-icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="mask-icon" href="https://steamdk.github.io/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://steamdk.github.io/posts/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style><meta property="og:url" content="https://steamdk.github.io/posts/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/">
+  <meta property="og:site_name" content="项目介绍">
+  <meta property="og:title" content="蓝桥杯备战">
+  <meta property="og:description" content="二分 整数二分算法模板 —— 模板题 AcWing 789. 数的范围
+cpp除法默认是向下取整: 如 5 / 2 = 2 上取整 ==&gt; 5 / 2 = 3 ==&gt; 5&#43;1 &gt;&gt; 1
+下取整 ==&gt; 5 / 2 = 2
+&gt;&gt; 右移运算符（Bitwise Right Shift）">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-12T14:55:08+08:00">
+    <meta property="article:modified_time" content="2024-10-12T14:55:08+08:00">
+    <meta property="article:tag" content="算法">
+    <meta property="article:tag" content="蓝桥杯">
+    <meta property="article:tag" content="竞赛">
+      <meta property="og:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:title" content="蓝桥杯备战">
+<meta name="twitter:description" content="二分
+整数二分算法模板
+—— 模板题 AcWing 789. 数的范围
+cpp除法默认是向下取整: 如 5 / 2 = 2 
+上取整 ==&gt; 5 / 2 = 3  ==&gt;  5&#43;1 &gt;&gt; 1
+下取整 ==&gt; 5 / 2 = 2
+
+&gt;&gt;  右移运算符（Bitwise Right Shift）">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steamdk.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "蓝桥杯备战",
+      "item": "https://steamdk.github.io/posts/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "蓝桥杯备战",
+  "name": "蓝桥杯备战",
+  "description": "二分 整数二分算法模板 —— 模板题 AcWing 789. 数的范围\ncpp除法默认是向下取整: 如 5 / 2 = 2 上取整 ==\u0026gt; 5 / 2 = 3 ==\u0026gt; 5+1 \u0026gt;\u0026gt; 1\n下取整 ==\u0026gt; 5 / 2 = 2\n\u0026gt;\u0026gt; 右移运算符（Bitwise Right Shift）\n",
+  "keywords": [
+    "算法", "蓝桥杯", "竞赛"
+  ],
+  "articleBody": "二分 整数二分算法模板 —— 模板题 AcWing 789. 数的范围\ncpp除法默认是向下取整: 如 5 / 2 = 2 上取整 ==\u003e 5 / 2 = 3 ==\u003e 5+1 \u003e\u003e 1\n下取整 ==\u003e 5 / 2 = 2\n\u003e\u003e 右移运算符（Bitwise Right Shift）\n用于将一个整数的二进制位向右移动指定的位数。每右移一位，相当于将数值除以 2。\nint x = 8; // 二进制 1000 int y = x \u003e\u003e 2; // 结果是 2，二进制 0010 模板 整数数组必须是升序排列\nL和R 都是下标\n确定 mid(坐标) , 然后套模板\n**L L L mid mid+1 r r r\t//mid 在左边 , mid = L + r » 1 , 自动取左 **\n(尽量选 mid 在左边)\nL L L mid-1 mid r r r //mid 在右边 , mid = L + r + 1 » 1\nbool check(int x) { /* ... */ } // 检查x是否满足某种性质 // 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用： l l l mid mid+1 r r r\t//mid 在左边 , l + r \u003e\u003e 1 , 自动取左 int bsearch_1(int l, int r) { while (l \u003c r) { int mid = l + r \u003e\u003e 1; if (check(mid)) r = mid; // check()判断mid是否满足性质 else l = mid + 1; } return l; } // 向上取整 // ------------------------------------------------------------------------ // 向下取整 // 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用： l l l mid-1 mid r r r //mid 在右边 , l + r + 1 \u003e\u003e 1 int bsearch_2(int l, int r) { while (l \u003c r) { int mid = l + r + 1 \u003e\u003e 1; if (check(mid)) l = mid; else r = mid - 1; } return l; } 如果数据单调, 意味着可以二分\n二分就是找两段不同性质数据的分界点\n浮点数二分算法模板 —— 模板题 AcWing 790. 数的三次方根\nbool check(double x) {/* ... */} // 检查x是否满足某种性质 double bsearch_3(double l, double r) { const double eps = 1e-6; // eps 表示精度，取决于题目对精度的要求 while (r - l \u003e eps) { double mid = (l + r) / 2; if (check(mid)) r = mid; else l = mid; } return l; } 前缀和 作用 : 快速求出一个区间的和 , O(1) S[i] 为前缀和\nS[i] = a[1]+ a[2] + .... + a[i] , S[0] = 0 (默认) S[i] = S[i-1] + a[i] 求a数组中任意区间[l,r]的和 : S[r] - S[l-1] , 注意是求的是第 L 个 到 第 R 个数的和 (不是下标) s[R] = a[1] + ... + a[L-1] + a[L] + ... + a[R] s[L - 1] = a[1] + ... + a[L-1] //结论 s[R] - s[L - 1] = a[L] + ... + a[R] 差分 yxc: 差分是前缀和的逆运算 a1 a2 ... an //数组前缀和 构造 b1 b2 ... bn 使得 ai = b1 + b2 + ... + bi b1 = a1 b2 = a2 - a1 b3 = a3 - a2 ... bn = a_n - a_n-1 可以实现 O(1) 时间把某一个数组区间的每一个值加上一个值 X\nexample: // a 是原数组 , b 是差分数组 b_l + x b_r+1 - x 一开始可以把a看成 0 0 0 … 0 通过插入insert操作得到a数组 void insert(int l, int r, int c) { b[l] += c; b[r + 1] -= c; } 林小鹿: 类似于数学中的求导和积分，差分可以看成前缀和的逆运算。 差分数组：\n首先给定一个原数组a：a[1], a[2], a[3],,,,,, a[n];\n然后我们构造一个数组b ： b[1] ,b[2] , b[3],,,,,, b[i];\n使得 a[i] = b[1] + b[2 ]+ b[3] +,,,,,, + b[i]\n也就是说，a数组是b数组的前缀和数组，反过来我们把b数组叫做a数组的差分数组。换句话说，每一个a[i]都是b数组中从头开始的一段区间和。\n考虑如何构造差分b数组？\n最为直接的方法\n如下：\na[0 ]= 0; b[1] = a[1] - a[0]; b[2] = a[2] - a[1]; b[3] =a [3] - a[2]; ........ b[n] = a[n] - a[n-1]; 我们只要有b数组，通过前缀和运算，就可以在O(n) 的时间内得到a数组 。\n知道了差分数组有什么用呢？ 别着急，慢慢往下看。\n话说有这么一个问题：\n给定区间[l ,r ]，让我们把a数组中的[ l, r]区间中的每一个数都加上c,即 a[l] + c , a[l+1] + c , a[l+2] + c ,,,,,, a[r] + c;\n暴力做法是for循环l到r区间，时间复杂度O(n)，如果我们需要对原数组执行m次这样的操作，时间复杂度就会变成O(n*m)。有没有更高效的做法吗? 考虑差分做法。\n始终要记得，a数组是b数组的前缀和数组，比如对b数组的b[i]的修改，会影响到a数组中从a[i]及往后的每一个数。\n首先让差分b数组中的 b[l] + c ,a数组变成 a[l] + c ,a[l+1] + c,,,,,, a[n] + c;\n然后我们打个补丁，b[r+1] - c, a数组变成 a[r+1] - c,a[r+2] - c,,,,,,,a[n] - c;\n为啥还要打个补丁？\nb[l] + c，效果使得a数组中 a[l]及以后的数都加上了c(红色部分)，但我们只要求l到r区间加上c, 因此还需要执行 b[r+1] - c,让a数组中a[r+1]及往后的区间再减去c(绿色部分)，这样对于a[r] 以后区间的数相当于没有发生改变。\n因此我们得出一维差分结论：给a数组中的[ l, r]区间中的每一个数都加上c,只需对差分数组b做 b[l] + = c, b[r+1] - = c。时间复杂度为O(1), 大大提高了效率。\n//差分 时间复杂度 o(m) #include using namespace std; const int N = 1e5 + 10; int a[N], b[N]; int main() { int n, m; scanf(\"%d%d\", \u0026n, \u0026m); for (int i = 1; i \u003c= n; i++) { scanf(\"%d\", \u0026a[i]); b[i] = a[i] - a[i - 1]; //构建差分数组 } int l, r, c; while (m--) { scanf(\"%d%d%d\", \u0026l, \u0026r, \u0026c); b[l] += c; //将序列中[l, r]之间的每个数都加上c b[r + 1] -= c; } for (int i = 1; i \u003c= n; i++) { a[i] = b[i] + a[i - 1]; //前缀和运算 printf(\"%d \", a[i]); } return 0; } 双指针 (双指针) O(n) 必要条件 先考虑暴力方式 确定目标数组的单调性 i从 0开始 从前往后遍历 j从 m - 1开始 从后向前遍历 #include #include using namespace std; const int N = 10001; int a[N], b[N]; int main() { int n, m, x; cin \u003e\u003e n \u003e\u003e m \u003e\u003e x; for (int i = 0; i \u003c n; i++) cin \u003e\u003e a[i]; for (int i = 0; i \u003c m; i++) cin \u003e\u003e b[i]; // sort(a,a+n); // sort(b,b+m); //必须保证两个数组都是单调的 for (int i = 0, j = m - 1; i \u003c n; i++) { while( j \u003e= 0 \u0026\u0026 a[i] + b[j] \u003e x) { j--; } if(a[i] + b[j] == x) { cout \u003c\u003c i \u003c\u003c \" \" \u003c\u003c j; break; } } return 0; } #include #include using namespace std; const int N = 100100; int a[N], b[N]; int main() { int n; cin \u003e\u003e n; for (int i = 0; i \u003c n; i++) { cin \u003e\u003e a[i]; } int ans = 0; for (int i = 0, j = 0; i \u003c n; i++) { b[a[i]]++; while (b[a[i]] \u003e 1) { b[a[j]]--; j++; } ans = max(ans, i - j + 1); } cout \u003c\u003c ans; return 0; } 归并排序 分治 模板 void merge_sort(int q[], int l, int r) { if (l \u003e= r) return; int mid = l + r \u003e\u003e 1; merge_sort(q, l, mid); merge_sort(q, mid + 1, r); int k = 0, i = l, j = mid + 1; while (i \u003c= mid \u0026\u0026 j \u003c= r) if (q[i] \u003c= q[j]) tmp[k ++ ] = q[i ++ ]; else tmp[k ++ ] = q[j ++ ]; while (i \u003c= mid) tmp[k ++ ] = q[i ++ ]; while (j \u003c= r) tmp[k ++ ] = q[j ++ ]; for (i = l, j = 0; i \u003c= r; i ++, j ++ ) q[i] = tmp[j]; } L L L r r r\n确定分界点 递归排序 left right 归并 – 合二为一 多路归并 重点是 merge() 函数\n贡献法 是一种数学思想 原本是对矩阵的行进行操作, 换一种方式, 变成对矩阵的列进行操作 孤独的区间 , 只有1个 n➡️ 0 1 2 … n 所有区间⬇️ 子串是连续的\n日期问题 求闰年模板 const int months[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // 一三五七八十蜡，三十一天永不差 // 一、1、3、5、7、8、10、12 每月31天，4、6、9、11为30天。 二、2月正常为28天，如果为闰年，则多一天为29天。 int is_leap(int year) //判断闰年 { if (year % 4 == 0 \u0026\u0026 year % 100 || year % 400 == 0) return 1; return 0; } int get_days(int y, int m) { if ( m == 2) return 28 + is_leap(y); } int months[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; bool check(int date) // 判断日期是否合法 { int year = date / 10000; int month = date % 10000 / 100; int day = date % 100; if (!day || month \u003c 0 || month \u003e 12) return false; if (month != 2 \u0026\u0026 day \u003e months[month]) return false; if (month == 2) { if ((year % 4 == 0 \u0026\u0026 year % 100 != 0) || (year % 400 == 0)) // 闰年特判 { if (day \u003e 29) return false; } else { if (day \u003e 28) return false; } } return true; } 求区间天数 思想是计算各个日期到公元1.1.1的天数, 再将计算结果相减+1 , 得到结果\n模板\nint months[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; //\t一 三 五 七 八 十 蜡，三十一天永不差 //或 const int months[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; #include #include #include #include using namespace std; int months[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; int day(int n) { int y = n / 10000; // 年 int m = n % 10000 / 100; // 月 int d = n % 10000 % 100; // 日 // 首先更新一下计算年份的二月天数有多少 // 闰年包括普通闰年和世纪闰年 // 普通闰年年分是4倍数不是100倍数（），世纪闰年是400的倍数， // 即100的倍数不是4的倍数不是闰年，如1900 // 判断闰年 if (y % 4 == 0 \u0026\u0026 y % 100 != 0 || y % 400 == 0) months[2] = 29; else // 不加这个会错 months[2] = 28; //统计当前年份的总天数 (今年的天数) while (m--) d += months[m]; //计算从公元1年开始开始，一直到\u003c去年\u003e最后一天,不是到0000年 while (y--) d += (y % 4 == 0 \u0026\u0026 y % 100 != 0 || y % 400 == 0 ? 366 : 365); // 闰年366天，平年365天 return d; } int main() { int a, b; while (cin \u003e\u003e a \u003e\u003e b) cout \u003c\u003c abs(day(a) - day(b)) + 1 \u003c\u003c endl; // 由题所示“如果两个日期是连续的我们规定他们之间的天数为两天”，因此我们加一 return 0; } 区间合并 任意多个区间的范围有交集, 快速把这几个区间合并\n贪心思想\n模板ycx\n// 将所有存在交集的区间合并 void merge(vector\u003cPII\u003e \u0026segs) { vector\u003cPII\u003e res; sort(segs.begin(), segs.end()); int st = -2e9, ed = -2e9; for (auto seg : segs) if (ed \u003c seg.first) { if (st != -2e9) res.push_back({st, ed}); st = seg.first, ed = seg.second; } else ed = max(ed, seg.second); if (st != -2e9) res.push_back({st, ed}); segs = res; } 按区间左端点排序\nstart_________________________end 三种情况⬇️\n​ f—–s 在区间内 这情况等于不用操作 ​ f———————-s 右端点超出 ​ f———-s 全部超出 void merge(vector\u003cPii\u003e \u0026segment) { vector\u003cPii\u003e ans; sort(segment.begin(), segment.end()); // 默认排序左端点 int start = -2e9, end = -2e9; for (auto seg : segment) { if (end \u003c seg.first) { if (start != -2e9) // 没有交集 ans.push_back({start, end}); start = seg.first, end = seg.second; } else { end = max(end, seg.second); //合并情况不添加ans } } if (start != -2e9) // 防止vector是空集 , 空集就是也是一个区间 ans.push_back({start, end}); segment = ans; } 递归 ",
+  "wordCount" : "3154",
+  "inLanguage": "zh",
+  "image": "https://i.postimg.cc/7hwBy7VS/calcr.png","datePublished": "2024-10-12T14:55:08+08:00",
+  "dateModified": "2024-10-12T14:55:08+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "steamdk"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steamdk.github.io/posts/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E6%88%98/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "项目介绍",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steamdk.github.io/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://steamdk.github.io/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://steamdk.github.io/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      蓝桥杯备战
+    </h1>
+    <div class="post-meta"><span title='2024-10-12 14:55:08 +0800 CST'>2024-10-12</span>&nbsp;·&nbsp;7 分钟&nbsp;·&nbsp;steamdk
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e4%ba%8c%e5%88%86" aria-label="二分">二分</a><ul>
+                        
+                <li>
+                    <a href="#%e6%95%b4%e6%95%b0%e4%ba%8c%e5%88%86%e7%ae%97%e6%b3%95%e6%a8%a1%e6%9d%bf" aria-label="整数二分算法模板">整数二分算法模板</a></li>
+                <li>
+                    <a href="#%e6%a8%a1%e6%9d%bf" aria-label="模板">模板</a></li>
+                <li>
+                    <a href="#%e6%b5%ae%e7%82%b9%e6%95%b0%e4%ba%8c%e5%88%86%e7%ae%97%e6%b3%95%e6%a8%a1%e6%9d%bf" aria-label="浮点数二分算法模板">浮点数二分算法模板</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%89%8d%e7%bc%80%e5%92%8c" aria-label="前缀和">前缀和</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bd%9c%e7%94%a8----%e5%bf%ab%e9%80%9f%e6%b1%82%e5%87%ba%e4%b8%80%e4%b8%aa%e5%8c%ba%e9%97%b4%e7%9a%84%e5%92%8c--o1" aria-label="作用 : 快速求出一个区间的和 , O(1)">作用 : 快速求出一个区间的和 , O(1)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%b7%ae%e5%88%86" aria-label="差分">差分</a><ul>
+                        
+                <li>
+                    <a href="#yxc-%e5%b7%ae%e5%88%86%e6%98%af%e5%89%8d%e7%bc%80%e5%92%8c%e7%9a%84%e9%80%86%e8%bf%90%e7%ae%97" aria-label="yxc: 差分是前缀和的逆运算">yxc: 差分是前缀和的逆运算</a></li>
+                <li>
+                    <a href="#%e6%9e%97%e5%b0%8f%e9%b9%bf-%e7%b1%bb%e4%bc%bc%e4%ba%8e%e6%95%b0%e5%ad%a6%e4%b8%ad%e7%9a%84%e6%b1%82%e5%af%bc%e5%92%8c%e7%a7%af%e5%88%86%e5%b7%ae%e5%88%86%e5%8f%af%e4%bb%a5%e7%9c%8b%e6%88%90%e5%89%8d%e7%bc%80%e5%92%8c%e7%9a%84%e9%80%86%e8%bf%90%e7%ae%97" aria-label="林小鹿: 类似于数学中的求导和积分，差分可以看成前缀和的逆运算。">林小鹿: 类似于数学中的求导和积分，差分可以看成前缀和的逆运算。</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8f%8c%e6%8c%87%e9%92%88" aria-label="双指针">双指针</a><ul>
+                        
+                <li>
+                    <a href="#%e5%8f%8c%e6%8c%87%e9%92%88-on-%e5%bf%85%e8%a6%81%e6%9d%a1%e4%bb%b6" aria-label="(双指针) O(n) 必要条件">(双指针) O(n) 必要条件</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8f" aria-label="归并排序">归并排序</a><ul>
+                        
+                <li>
+                    <a href="#%e5%88%86%e6%b2%bb" aria-label="分治">分治</a></li>
+                <li>
+                    <a href="#%e6%a8%a1%e6%9d%bf-1" aria-label="模板">模板</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%a4%9a%e8%b7%af%e5%bd%92%e5%b9%b6" aria-label="多路归并">多路归并</a></li>
+                <li>
+                    <a href="#%e8%b4%a1%e7%8c%ae%e6%b3%95" aria-label="贡献法">贡献法</a></li>
+                <li>
+                    <a href="#%e6%97%a5%e6%9c%9f%e9%97%ae%e9%a2%98" aria-label="日期问题">日期问题</a><ul>
+                        
+                <li>
+                    <a href="#%e6%b1%82%e9%97%b0%e5%b9%b4%e6%a8%a1%e6%9d%bf" aria-label="求闰年模板">求闰年模板</a></li>
+                <li>
+                    <a href="#%e6%b1%82%e5%8c%ba%e9%97%b4%e5%a4%a9%e6%95%b0" aria-label="求区间天数">求区间天数</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e5%8c%ba%e9%97%b4%e5%90%88%e5%b9%b6" aria-label="区间合并">区间合并</a></li>
+                <li>
+                    <a href="#%e9%80%92%e5%bd%92" aria-label="递归">递归</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="二分">二分<a hidden class="anchor" aria-hidden="true" href="#二分">#</a></h1>
+<h2 id="整数二分算法模板"><em>整数</em>二分算法模板<a hidden class="anchor" aria-hidden="true" href="#整数二分算法模板">#</a></h2>
+<p>—— 模板题 AcWing 789. 数的范围</p>
+<p>cpp除法默认是向下取整: 如 <code>5 / 2 = 2 </code></p>
+<p>上取整 ==&gt; <code>5 / 2 = 3</code>  ==&gt;  <code>5+1 &gt;&gt; 1</code></p>
+<p>下取整 ==&gt; <code>5 / 2 = 2</code></p>
+<blockquote>
+<p><code>&gt;&gt; </code> <strong>右移运算符（Bitwise Right Shift）</strong></p>
+</blockquote>
+<p>用于将一个整数的二进制位向右移动指定的位数。每右移一位，相当于<strong>将数值除以 2。</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 二进制 1000
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 结果是 2，二进制 0010
+</span></span></span></code></pre></div><h2 id="模板">模板<a hidden class="anchor" aria-hidden="true" href="#模板">#</a></h2>
+<p><strong>整数数组必须是<em>升序排列</em></strong></p>
+<p>L和R 都是下标</p>
+<p>确定 mid(坐标)  , 然后套模板</p>
+<p>**L L L <em>mid</em> mid+1 r r r	//mid 在左边 ,  mid = L + r &raquo; 1 , 自动取左 **</p>
+<p>(尽量选 mid 在左边)</p>
+<p><strong>L L L mid-1 <em>mid</em> r r r  //mid 在右边 , mid = L + r + 1 &raquo; 1</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span> <span class="c1">// 检查x是否满足某种性质
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">l</span> <span class="n">l</span> <span class="n">l</span> <span class="n">mid</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span> <span class="n">r</span> <span class="n">r</span> <span class="n">r</span>	<span class="c1">//mid 在左边 , l + r &gt;&gt; 1 , 自动取左
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">bsearch_1</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span> <span class="c1">// check()判断mid是否满足性质
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 向上取整
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ------------------------------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 向下取整
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">l</span> <span class="n">l</span> <span class="n">l</span> <span class="n">mid</span><span class="o">-</span><span class="mi">1</span> <span class="n">mid</span> <span class="n">r</span> <span class="n">r</span> <span class="n">r</span>  <span class="c1">//mid 在右边 , l + r + 1 &gt;&gt; 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">bsearch_2</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><blockquote>
+<p>如果数据单调, 意味着可以二分</p>
+</blockquote>
+<blockquote>
+<p>二分就是找两段不同性质数据的<strong>分界点</strong></p>
+</blockquote>
+<h2 id="浮点数二分算法模板"><em>浮点数</em>二分算法模板<a hidden class="anchor" aria-hidden="true" href="#浮点数二分算法模板">#</a></h2>
+<p>—— 模板题 AcWing 790. 数的三次方根</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="cm">/* ... */</span><span class="p">}</span> <span class="c1">// 检查x是否满足某种性质
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="nf">bsearch_3</span><span class="p">(</span><span class="kt">double</span> <span class="n">l</span><span class="p">,</span> <span class="kt">double</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">;</span>   <span class="c1">// eps 表示精度，取决于题目对精度的要求
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="前缀和">前缀和<a hidden class="anchor" aria-hidden="true" href="#前缀和">#</a></h1>
+<h2 id="作用----快速求出一个区间的和--o1"><em><strong>作用</strong></em> :   快速求出一个区间的<strong>和</strong> , O(1)<a hidden class="anchor" aria-hidden="true" href="#作用----快速求出一个区间的和--o1">#</a></h2>
+<p><code>S[i] 为前缀和</code></p>
+<ol>
+<li><code>S[i] = a[1]+ a[2] + .... + a[i]</code> , <code>S[0] = 0</code> (默认)</li>
+<li><code>S[i] = S[i-1] + a[i]</code></li>
+<li>求a数组中任意区间<code>[l,r]</code>的和 : <code>S[r] - S[l-1]</code>  , <strong>注意</strong>是求的是第 <code>L</code> 个 到 第 <code>R</code> 个数的和 (不是下标)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">s</span><span class="p">[</span><span class="n">R</span><span class="p">]</span>      <span class="o">=</span>  <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> 
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="p">[</span><span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>  <span class="o">=</span>  <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="c1">//结论
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">s</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="n">L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">R</span><span class="p">]</span>
+</span></span></code></pre></div><h1 id="差分">差分<a hidden class="anchor" aria-hidden="true" href="#差分">#</a></h1>
+<h2 id="yxc-差分是前缀和的逆运算">yxc: 差分是前缀和的逆运算<a hidden class="anchor" aria-hidden="true" href="#yxc-差分是前缀和的逆运算">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a1</span> <span class="n">a2</span> <span class="p">...</span> <span class="n">an</span> <span class="c1">//数组前缀和 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">   <span class="err">构造</span> <span class="n">b1</span> <span class="n">b2</span> <span class="p">...</span> <span class="n">bn</span>
+</span></span><span class="line"><span class="cl">   <span class="err">使得</span> <span class="n">ai</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span>  <span class="p">...</span> <span class="o">+</span> <span class="n">bi</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">b1</span> <span class="o">=</span> <span class="n">a1</span> 
+</span></span><span class="line"><span class="cl">   <span class="n">b2</span> <span class="o">=</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">a1</span> 
+</span></span><span class="line"><span class="cl">   <span class="n">b3</span> <span class="o">=</span> <span class="n">a3</span> <span class="o">-</span> <span class="n">a2</span>
+</span></span><span class="line"><span class="cl">   <span class="p">...</span>
+</span></span><span class="line"><span class="cl">   <span class="n">bn</span> <span class="o">=</span> <span class="n">a_n</span> <span class="o">-</span> <span class="n">a_n</span><span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    	
+</span></span></code></pre></div><blockquote>
+<p>可以实现 <code>O(1)</code> 时间把<strong>某一个数组区间</strong>的每一个值加上一个值 <code>X</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nl">example</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="c1">// a 是原数组 , b 是差分数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">b_l</span>   <span class="o">+</span> <span class="n">x</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">b_r</span><span class="o">+</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span></code></pre></div><ul>
+<li>一开始可以把a看成 0 0 0 &hellip; 0</li>
+<li>通过插入insert操作得到a数组</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="林小鹿-类似于数学中的求导和积分差分可以看成前缀和的逆运算">林小鹿: 类似于数学中的求导和积分，差分可以看成前缀和的逆运算。<a hidden class="anchor" aria-hidden="true" href="#林小鹿-类似于数学中的求导和积分差分可以看成前缀和的逆运算">#</a></h2>
+<p>差分数组：</p>
+<ul>
+<li>
+<p>首先给定一个原数组a：a[1], a[2], a[3],,,,,, a[n];</p>
+</li>
+<li>
+<p>然后我们构造一个数组b ： b[1] ,b[2] , b[3],,,,,, b[i];</p>
+</li>
+<li>
+<p>使得 a[i] = b[1] + b[2 ]+ b[3] +,,,,,, + b[i]</p>
+</li>
+<li>
+<p>也就是说，a数组是b数组的前缀和数组，反过来我们把b数组叫做a数组的差分数组。换句话说，每一个a[i]都是b数组中从头开始的一段区间和。</p>
+</li>
+</ul>
+<p>考虑如何构造差分b数组？</p>
+<p>最为直接的方法</p>
+<p>如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">[</span><span class="mi">0</span> <span class="p">]</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span><span class="n">a</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">........</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+</span></span></code></pre></div><p>我们只要有b数组，通过前缀和运算，就可以在O(n) 的时间内得到a数组 。</p>
+<p>知道了差分数组有什么用呢？ 别着急，慢慢往下看。</p>
+<p>话说有这么一个问题：</p>
+<p>给定区间[l ,r ]，让我们把a数组中的[ l, r]区间中的每一个数都加上c,即 a[l] + c , a[l+1] + c , a[l+2] + c ,,,,,, a[r] + c;</p>
+<p>暴力做法是for循环l到r区间，时间复杂度O(n)，如果我们需要对原数组执行m次这样的操作，时间复杂度就会变成O(n*m)。有没有更高效的做法吗? 考虑差分做法。</p>
+<ul>
+<li>
+<p>始终要记得，a数组是b数组的前缀和数组，比如对b数组的b[i]的修改，会影响到a数组中从a[i]及往后的每一个数。</p>
+</li>
+<li>
+<p>首先让差分b数组中的 b[l] + c ,a数组变成 a[l] + c ,a[l+1] + c,,,,,, a[n] + c;</p>
+</li>
+<li>
+<p>然后我们打个补丁，b[r+1] - c, a数组变成 a[r+1] - c,a[r+2] - c,,,,,,,a[n] - c;</p>
+</li>
+</ul>
+<p>为啥还要打个补丁？</p>
+<ul>
+<li>
+<p>b[l] + c，效果使得a数组中 a[l]及以后的数都加上了c(红色部分)，但我们只要求l到r区间加上c, 因此还需要执行 b[r+1] - c,让a数组中a[r+1]及往后的区间再减去c(绿色部分)，这样对于a[r] 以后区间的数相当于没有发生改变。</p>
+</li>
+<li>
+<p>因此我们得出一维差分结论：给a数组中的[ l, r]区间中的每一个数都加上c,只需对差分数组b做 b[l] + = c, b[r+1] - = c。时间复杂度为O(1), 大大提高了效率。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//差分 时间复杂度 o(m)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>      <span class="c1">//构建差分数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%d%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>     <span class="c1">//将序列中[l, r]之间的每个数都加上c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">b</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>    <span class="c1">//前缀和运算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d &#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="双指针">双指针<a hidden class="anchor" aria-hidden="true" href="#双指针">#</a></h1>
+<h2 id="双指针-on-必要条件">(双指针) O(n) 必要条件<a hidden class="anchor" aria-hidden="true" href="#双指针-on-必要条件">#</a></h2>
+<ol>
+<li>先考虑暴力方式</li>
+<li>确定目标数组的单调性</li>
+</ol>
+<ul>
+<li>i从 0开始 从前往后遍历</li>
+<li>j从 m - 1开始 从后向前遍历</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// sort(a,a+n);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// sort(b,b+m); //必须保证两个数组都是单调的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="p">(</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">b</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ans</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><img alt="1.png" loading="lazy" src="../img/38626_0aed0a9e9b-1.png"></p>
+<h1 id="归并排序">归并排序<a hidden class="anchor" aria-hidden="true" href="#归并排序">#</a></h1>
+<h2 id="分治">分治<a hidden class="anchor" aria-hidden="true" href="#分治">#</a></h2>
+<h2 id="模板-1">模板<a hidden class="anchor" aria-hidden="true" href="#模板-1">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">q</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">merge_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">merge_sort</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span> <span class="o">++</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span> <span class="o">++</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">mid</span><span class="p">)</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span> <span class="o">++</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="n">tmp</span><span class="p">[</span><span class="n">k</span> <span class="o">++</span> <span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span> <span class="o">++</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">l</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">;</span> <span class="n">i</span> <span class="o">++</span><span class="p">,</span> <span class="n">j</span> <span class="o">++</span> <span class="p">)</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>L L L r r r</p>
+<ol>
+<li>确定分界点</li>
+<li>递归排序 left  right</li>
+<li>归并 &ndash; 合二为一</li>
+</ol>
+<h1 id="多路归并">多路归并<a hidden class="anchor" aria-hidden="true" href="#多路归并">#</a></h1>
+<p>重点是 merge() 函数</p>
+<h1 id="贡献法">贡献法<a hidden class="anchor" aria-hidden="true" href="#贡献法">#</a></h1>
+<ul>
+<li>是一种数学思想</li>
+<li>原本是对矩阵的<strong>行</strong>进行操作, 换一种方式, 变成对矩阵的<strong>列</strong>进行操作</li>
+<li>孤独的区间 , 只有1个</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>n➡️  0</th>
+          <th>1</th>
+          <th>2</th>
+          <th>&hellip;</th>
+          <th>n</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>所有区间⬇️</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>子串是连续的</p>
+</blockquote>
+<h1 id="日期问题">日期问题<a hidden class="anchor" aria-hidden="true" href="#日期问题">#</a></h1>
+<h2 id="求闰年模板">求闰年模板<a hidden class="anchor" aria-hidden="true" href="#求闰年模板">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">months</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 一三五七八十蜡，三十一天永不差
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 一、1、3、5、7、8、10、12 每月31天，4、6、9、11为30天。 二、2月正常为28天，如果为闰年，则多一天为29天。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">is_leap</span><span class="p">(</span><span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="c1">//判断闰年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">||</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_days</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">28</span> <span class="o">+</span> <span class="nf">is_leap</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">months</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">date</span><span class="p">)</span> <span class="c1">// 判断日期是否合法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">date</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">date</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="n">date</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">day</span> <span class="o">||</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">!=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">day</span> <span class="o">&gt;</span> <span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">// 闰年特判
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">day</span> <span class="o">&gt;</span> <span class="mi">29</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">day</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="求区间天数">求区间天数<a hidden class="anchor" aria-hidden="true" href="#求区间天数">#</a></h2>
+<p><img alt="image-20241103233359402" loading="lazy" src="./img/image-20241103233359402.png"></p>
+<blockquote>
+<p>思想是计算各个日期到公元1.1.1的天数, 再将计算结果相减+1 , 得到结果</p>
+</blockquote>
+<p>模板</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">months</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//		    一      三      五      七  八      十       蜡，三十一天永不差
+</span></span></span><span class="line"><span class="cl"><span class="c1">//或
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">months</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">};</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">months</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">day</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">;</span>       <span class="c1">// 年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 月
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 日
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 首先更新一下计算年份的二月天数有多少
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 闰年包括普通闰年和世纪闰年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 普通闰年年分是4倍数不是100倍数（），世纪闰年是400的倍数，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 即100的倍数不是4的倍数不是闰年，如1900
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 判断闰年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">months</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="c1">// 不加这个会错
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">months</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">	<span class="c1">//统计当前年份的总天数 (今年的天数)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">d</span> <span class="o">+=</span> <span class="n">months</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">   	<span class="c1">//计算从公元1年开始开始，一直到&lt;去年&gt;最后一天,不是到0000年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">y</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">d</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">366</span> <span class="o">:</span> <span class="mi">365</span><span class="p">);</span> <span class="c1">// 闰年366天，平年365天
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="nf">abs</span><span class="p">(</span><span class="nf">day</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nf">day</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 由题所示“如果两个日期是连续的我们规定他们之间的天数为两天”，因此我们加一
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="区间合并">区间合并<a hidden class="anchor" aria-hidden="true" href="#区间合并">#</a></h1>
+<blockquote>
+<p>任意多个区间的范围有交集, <strong>快速</strong>把这几个区间合并</p>
+</blockquote>
+<blockquote>
+<p>贪心思想</p>
+</blockquote>
+<p>模板ycx</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 将所有存在交集的区间合并
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PII</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">segs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">PII</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">sort</span><span class="p">(</span><span class="n">segs</span><span class="p">.</span><span class="nf">begin</span><span class="p">(),</span> <span class="n">segs</span><span class="p">.</span><span class="nf">end</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">st</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">,</span> <span class="n">ed</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">seg</span> <span class="p">:</span> <span class="n">segs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">ed</span> <span class="o">&lt;</span> <span class="n">seg</span><span class="p">.</span><span class="n">first</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">st</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">)</span> <span class="n">res</span><span class="p">.</span><span class="nf">push_back</span><span class="p">({</span><span class="n">st</span><span class="p">,</span> <span class="n">ed</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="n">st</span> <span class="o">=</span> <span class="n">seg</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">ed</span> <span class="o">=</span> <span class="n">seg</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="n">ed</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ed</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">st</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">)</span> <span class="n">res</span><span class="p">.</span><span class="nf">push_back</span><span class="p">({</span><span class="n">st</span><span class="p">,</span> <span class="n">ed</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">segs</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
+<li>
+<p>按区间左端点排序</p>
+</li>
+<li>
+<p>start_________________________end    三种情况⬇️</p>
+<ol>
+<li>​     f&mdash;&ndash;s   在区间内     这情况等于不用操作</li>
+<li>​          f&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-s  右端点超出</li>
+<li>​                                   f&mdash;&mdash;&mdash;-s  全部超出</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Pii</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">segment</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Pii</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">sort</span><span class="p">(</span><span class="n">segment</span><span class="p">.</span><span class="nf">begin</span><span class="p">(),</span> <span class="n">segment</span><span class="p">.</span><span class="nf">end</span><span class="p">());</span> <span class="c1">// 默认排序左端点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">seg</span> <span class="p">:</span> <span class="n">segment</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">&lt;</span> <span class="n">seg</span><span class="p">.</span><span class="n">first</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">)</span> <span class="c1">// 没有交集
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">ans</span><span class="p">.</span><span class="nf">push_back</span><span class="p">({</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="n">seg</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">seg</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">end</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">second</span><span class="p">);</span> <span class="c1">//合并情况不添加ans
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">2e9</span><span class="p">)</span> <span class="c1">// 防止vector是空集 , 空集就是也是一个区间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ans</span><span class="p">.</span><span class="nf">push_back</span><span class="p">({</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="n">segment</span> <span class="o">=</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="递归">递归<a hidden class="anchor" aria-hidden="true" href="#递归">#</a></h1>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steamdk.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+      <li><a href="https://steamdk.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a></li>
+      <li><a href="https://steamdk.github.io/tags/%E7%AB%9E%E8%B5%9B/">竞赛</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://steamdk.github.io/posts/%E5%AD%97%E8%8A%82%E8%AE%AD%E7%BB%83%E8%90%A5%E8%AE%B0%E5%BD%95/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>字节训练营记录</span>
+  </a>
+  <a class="next" href="https://steamdk.github.io/posts/qt%E4%B8%BB%E9%A2%98onedark%E8%AE%BE%E7%BD%AE/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Qt主题oneDark设置</span>
+  </a>
+</nav>
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steamdk\/steamdk.github.io",
+            "data-repo-id": "R_kgDONN_Y2g",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONN_Y2s4CkVh9",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://github.com/steamdk/steamdk.github.io">©2024 项目介绍</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js"
+  integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj+Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var OSName = "unknown";
+  var navApp = navigator.userAgent.toLowerCase();
+  switch (true) {
+    case (navApp.indexOf("win") != -1):
+      OSName = "windows";
+      break;
+    case (navApp.indexOf("mac") != -1):
+      OSName = "apple";
+      break;
+    case (navApp.indexOf("linux") != -1):
+      OSName = "linux";
+      break;
+    case (navApp.indexOf("x11") != -1):
+      OSName = "unix";
+      break;
+  }
+
+  const images = Array.from(document.querySelectorAll(".post-content img"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 1,    
+      
+      container: null,  
+      template: null,  
+      
+    });
+  });
+
+  if (OSName == "windows") {
+    document.body.className += ' win11'
+  }
+</script>
+
+
+
+
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

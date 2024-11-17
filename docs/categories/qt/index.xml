@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Qt on 项目介绍</title>
+    <link>https://steamdk.github.io/categories/qt/</link>
+    <description>Recent content in Qt on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Wed, 09 Oct 2024 23:14:12 +0800</lastBuildDate>
+    <atom:link href="https://steamdk.github.io/categories/qt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Qt主题oneDark设置</title>
+      <link>https://steamdk.github.io/posts/qt%E4%B8%BB%E9%A2%98onedark%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Wed, 09 Oct 2024 23:14:12 +0800</pubDate>
+      <guid>https://steamdk.github.io/posts/qt%E4%B8%BB%E9%A2%98onedark%E8%AE%BE%E7%BD%AE/</guid>
+      <description>&lt;p&gt;参考链接:  CSDN  &lt;a href=&#34;https://blog.csdn.net/qq_41980754/article/details/119861293&#34;&gt;Qt Creator打造VScode one dark pro主题配色&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;代码部分&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;
+&amp;lt;style-scheme version=&amp;#34;1.0&amp;#34; name=&amp;#34;One Dark&amp;#34;&amp;gt;
+  &amp;lt;style name=&amp;#34;Text&amp;#34; foreground=&amp;#34;#abb2bf&amp;#34; background=&amp;#34;#282c34&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Link&amp;#34; underlineStyle=&amp;#34;SingleUnderline&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Selection&amp;#34; background=&amp;#34;#3e4451&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LineNumber&amp;#34; foreground=&amp;#34;#4b5363&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;SearchResult&amp;#34; background=&amp;#34;#324365&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;SearchScope&amp;#34; background=&amp;#34;#3e4451&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Parentheses&amp;#34; underlineColor=&amp;#34;#61afef&amp;#34; underlineStyle=&amp;#34;SingleUnderline&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;ParenthesesMismatch&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;AutoComplete&amp;#34; background=&amp;#34;#3e4451&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;CurrentLine&amp;#34; background=&amp;#34;#3a3f4b&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;CurrentLineNumber&amp;#34; foreground=&amp;#34;#777c87&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Occurrences&amp;#34; background=&amp;#34;#324365&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Occurrences.Unused&amp;#34; underlineColor=&amp;#34;#d19a66&amp;#34; underlineStyle=&amp;#34;DashUnderline&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Occurrences.Rename&amp;#34; background=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Number&amp;#34; foreground=&amp;#34;#d19a66&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;String&amp;#34; foreground=&amp;#34;#98c379&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Type&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Local&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Global&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Field&amp;#34; foreground=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Static&amp;#34; foreground=&amp;#34;#61afef&amp;#34; italic=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;VirtualMethod&amp;#34; foreground=&amp;#34;#61afef&amp;#34; italic=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Function&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Keyword&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;PrimitiveType&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Operator&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Overloaded Operator&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Punctuation&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Preprocessor&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Label&amp;#34; foreground=&amp;#34;#e06c75&amp;#34; bold=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Comment&amp;#34; foreground=&amp;#34;#5c6370&amp;#34; italic=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Doxygen.Comment&amp;#34; foreground=&amp;#34;#5c6370&amp;#34; italic=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Doxygen.Tag&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;VisualWhitespace&amp;#34; foreground=&amp;#34;#3c4049&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlLocalId&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlExternalId&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlTypeId&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlRootObjectProperty&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlScopeObjectProperty&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlExternalObjectProperty&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;JsScopeVar&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;JsImportVar&amp;#34; foreground=&amp;#34;#d19a66&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;JsGlobalVar&amp;#34; foreground=&amp;#34;#d19a66&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;QmlStateName&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Binding&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DisabledCode&amp;#34; foreground=&amp;#34;#5c6370&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;AddedLine&amp;#34; foreground=&amp;#34;#98c379&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;RemovedLine&amp;#34; foreground=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffFile&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffLocation&amp;#34; foreground=&amp;#34;#d19a66&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffFileLine&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#e5c07b&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffContextLine&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#56b6c2&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffSourceLine&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#be5046&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffSourceChar&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffDestLine&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#789353&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;DiffDestChar&amp;#34; foreground=&amp;#34;#000000&amp;#34; background=&amp;#34;#98c379&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogChangeLine&amp;#34; foreground=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogAuthorName&amp;#34; foreground=&amp;#34;#61afef&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogCommitDate&amp;#34; foreground=&amp;#34;#98c379&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogCommitHash&amp;#34; foreground=&amp;#34;#e06c75&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogCommitSubject&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LogDecoration&amp;#34; foreground=&amp;#34;#c678dd&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Warning&amp;#34; underlineColor=&amp;#34;#d19a66&amp;#34; underlineStyle=&amp;#34;SingleUnderline&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;WarningContext&amp;#34; underlineColor=&amp;#34;#d19a66&amp;#34; underlineStyle=&amp;#34;DotLine&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Error&amp;#34; underlineColor=&amp;#34;#e06c75&amp;#34; underlineStyle=&amp;#34;SingleUnderline&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;ErrorContext&amp;#34; underlineColor=&amp;#34;#e06c75&amp;#34; underlineStyle=&amp;#34;DotLine&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;Declaration&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;FunctionDefinition&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;OutputArgument&amp;#34; italic=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;style name=&amp;#34;LastStyleSentinel&amp;#34;/&amp;gt;
+&amp;lt;/style-scheme&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主题设置&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Qt开发的学习记录</title>
+      <link>https://steamdk.github.io/posts/qt_study/</link>
+      <pubDate>Sat, 07 Sep 2024 09:59:59 +0800</pubDate>
+      <guid>https://steamdk.github.io/posts/qt_study/</guid>
+      <description>&lt;h1 id=&#34;信号与槽机制&#34;&gt;信号与槽机制&lt;/h1&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;h1 id=&#34;pyqt的ui文件转成py文件&#34;&gt;PyQt的&lt;code&gt;.ui&lt;/code&gt;文件转成&lt;code&gt;.py&lt;/code&gt;文件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;进入 &lt;code&gt;.ui&lt;/code&gt; 文件所在的目录，然后在命令行中输入下面的代码示例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;pyuic5   -x    xxxx.ui   -o   yyyyyy.py&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xxxx.ui  目标文件  &amp;mdash;&amp;gt;   yyyyy.py 结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;设置ui禁止编辑&#34;&gt;设置ui禁止编辑&lt;/h1&gt;
+&lt;p&gt;例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ui&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tableView&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setEditTriggers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QAbstractItemView&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NoEditTriggers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

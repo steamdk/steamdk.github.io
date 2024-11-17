@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>004数据库 | 项目介绍</title>
+<meta name="keywords" content="cpp, 基础">
+<meta name="description" content="B&#43;树
+
+具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n&#43;1个节点。
+B&#43;树的叶子节点包含了所有关键字，并且包含信息。
+B&#43;树非叶子节点只起索引作用，不存数据。
+B&#43;数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。
+
+什么是索引
+索引是数据表中对字段进行排序的一种数据结构。常用的索引有">
+<meta name="author" content="steamdk">
+<link rel="canonical" href="https://steamdk.github.io/posts/004%E6%95%B0%E6%8D%AE%E5%BA%93/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0dacc8c7e73304b031a6a2212c5729fafb119196b4d02d3b299eb05a4bd0b2a9.css" integrity="sha256-DazIx&#43;czBLAxpqIhLFcp&#43;vsRkZa00C07KZ6wWkvQsqk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steamdk.github.io/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steamdk.github.io/favicon.svg">
+<link rel="apple-touch-icon" href="https://steamdk.github.io/favicon.svg">
+<link rel="mask-icon" href="https://steamdk.github.io/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://steamdk.github.io/posts/004%E6%95%B0%E6%8D%AE%E5%BA%93/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style><meta property="og:url" content="https://steamdk.github.io/posts/004%E6%95%B0%E6%8D%AE%E5%BA%93/">
+  <meta property="og:site_name" content="项目介绍">
+  <meta property="og:title" content="004数据库">
+  <meta property="og:description" content="B&#43;树 具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n&#43;1个节点。 B&#43;树的叶子节点包含了所有关键字，并且包含信息。 B&#43;树非叶子节点只起索引作用，不存数据。 B&#43;数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。 什么是索引 索引是数据表中对字段进行排序的一种数据结构。常用的索引有">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-14T21:58:32+08:00">
+    <meta property="article:modified_time" content="2024-09-14T21:58:32+08:00">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="基础">
+      <meta property="og:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/7hwBy7VS/calcr.png">
+<meta name="twitter:title" content="004数据库">
+<meta name="twitter:description" content="B&#43;树
+
+具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n&#43;1个节点。
+B&#43;树的叶子节点包含了所有关键字，并且包含信息。
+B&#43;树非叶子节点只起索引作用，不存数据。
+B&#43;数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。
+
+什么是索引
+索引是数据表中对字段进行排序的一种数据结构。常用的索引有">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steamdk.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "004数据库",
+      "item": "https://steamdk.github.io/posts/004%E6%95%B0%E6%8D%AE%E5%BA%93/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "004数据库",
+  "name": "004数据库",
+  "description": "B+树 具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n+1个节点。 B+树的叶子节点包含了所有关键字，并且包含信息。 B+树非叶子节点只起索引作用，不存数据。 B+数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。 什么是索引 索引是数据表中对字段进行排序的一种数据结构。常用的索引有\n",
+  "keywords": [
+    "cpp", "基础"
+  ],
+  "articleBody": "B+树 具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n+1个节点。 B+树的叶子节点包含了所有关键字，并且包含信息。 B+树非叶子节点只起索引作用，不存数据。 B+数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。 什么是索引 索引是数据表中对字段进行排序的一种数据结构。常用的索引有\nB树 哈希索引 全文索引 Rtree索引\nAVL树，B树，B+树，红黑树，哈希表。\n哈希表和B树不利于范围查找。红黑树在数据量大的时候性能会下降。\n**聚集索引：**数据和索引在一起的。\n**非聚集索引：**索引文件和数据文件是分离的。\n联合索引：对多个字段同时建立的索引。Mysql从左到右的使用索引中的字段，一个查询可以只使用索引中的一部份，但只能是最左侧部分，跳跃索引查询就会导致索引失效。\nB树和B+树的区别 B树：叶节点具有相同的深度，所有索引元素不重复，节点中的数据索引从左到右递增排列。 B+树：非叶子节点不存储数据，只存储索引，叶子节点包含了全部的关键字且存储数据。叶子节点用指针连接从左往右递增排序，提高区间访问的性能。 mysql存储引擎myISAM和InnoDB 存储引擎是基于表的，而不是数据库。\nInnoDB引擎：支持事务，行锁（适合高并发），支持外键。mysql5.5版本后的默认存储引擎 myISAM引擎：不支持事务，不支持外键，支持表锁。优势是访问的速度快。mysql5.5版本前的默认存储引擎。myISAM索引文件和数据文件是分离的。查询较多的更新较少的情况下使用myisam存储引擎。 数据库三大范式 数据库中的所有字段都是不可分割的原子值 满足第一范式的前提下，除主键外的每一列都必须完全依赖于主键。如果不完全依赖，只能发生在联合主键下。 满足第二范式的前提下，除开主键列的其他列之间不能有传递依赖关系。 事务的四个特性ACID 事务是作为单个逻辑工作单元执行的一系列操作。要么完全执行，要么完全不执行。\n**原子性 ：**同一事务中多个操作不能分割，必须是一个整体。 **一致性 ：**事务操作前后的总量保持一致。 **隔离性 ：**多个事务之间的操作互不干扰。 **持久性：**事务提交以后，对数据库中数据的改变是永久的。 事务隔离级别 事务分为四个隔离级别：分别是读未提交，读提交，可重复读，串行化。从前往后隔离级别依次递增，同时执行效率依次下降。mysql的默认隔离级别是可重复读。\n读未提交：会产生脏读，即一个事务读取了另一个事务未提交的内容。 读提交：可以解决脏读问题，但是会产生不可重复读，即一个事务在执行的过程中得到的结果不一致。 可重复读：可以解决不可重复读的问题，但会产生幻读，即一个事务无法看到另一个事务已经提交的内容。 **串行化：**可以解决幻读问题。当同一张表被另一个事务操作时，其他事务的写操作是不可以进行的，进入串行化排队，直到另一个结束，同时还为超时的情况下才可以继续执行。 set global transaction isolation level read committed # 修改隔离级别' select @@x_isolation # 查看隔离级别 主键和外键约束 主键：**唯一且非空。**一个表有且只能由一个主键约束。创建主键会自动创建对应的索引，同样删除主键，对应的索引也会被删除。\n外键约束：如果定义了外键约束，主表中没有的数据在子表中是不可以被使用的。主表中的记录被子表引用，是不可以被删除的。\ninner join 和 left join 等值联接：inner join返回两个表中联接字段相等的行 左联接：left join 返回左表所有记录和右表中联接字段相等的记录，如果左表中的记录在右边不存在，则对应字段设为null。 redis 是C语言编写的基于内存可持久化的key-value内存数据库，使用的是epoll单线程模型。常用的数据结构有set， list，string, hash, sorted set。\n查询 分组查询：count() sum() max() min() avg()\n聚合查询：7种 A B A∪B A∩B A - A∩B B - A∩B A∪B - A∩B\n左连接： A - A∩B 右连接：B - A∩B 内连接：A∩B\n悲观锁和乐观锁 悲观锁： 每次去拿数据时都认为别人会修改，所以每次在拿数据的时候都会上锁。悲观锁由数据库自己实现，共享锁和排他锁是悲观锁的不同实现。悲观锁的缺点：效率低，并行差，增加死锁的概率。 乐观锁：每次去拿数据都认为别人不会修改，所以不会上锁。乐观锁适用于读多，写少的场景。乐观锁常见的实现方式：版本号机制和CAS自旋算法。乐观锁的缺点：ABA问题，循环时间长开销大，只能保证一个共享变量的原子操作。 explain 查看执行计划 使用explain关键字可以模拟优化器执行sql查询语句，从而知道mysql是如何处理sql语句的。分析查询语句或表结构的性能瓶颈。\nexplain + sql语句 show profile 用来分析当前会话中语句执行的资源消耗情况。\n什么时候应该创建索引 频繁查询字段 什么时候不应该创建索引 where条件里用不到的字段 频繁更新的字段 表记录太少\u003c300W 重复且平均的表字段 B+树 B+树是B树的变形，B+树非叶子节点只存索引，不存数据，叶子节点存储所有的索引和数据。B+树三层可以存储上百万条数据，磁盘IO最多三次，每次读取磁盘块到内存后，使用二分查找找到索引的位置。\nB+树是聚集索引，数据和索引在一起。B+树使用指针将叶子节点的连接起来。\nB树 是一种多路平衡二叉树，m阶B树，每个节点最多可以有m-1关键字。所有叶子节点在同一层。每个节点保存索引和数据。\n索引 索引是按照某个字段排序的数据结构。\nACID 事务时单个逻辑工作单元的一系列操作。\n原子性：事务的操作是不可分割的，要么完全成功，要么完全失败。\n一致性：事务操作前后的总量保持不变。\n隔离性：事务之间的操作应该相互隔离。\n持久性：事务一旦提交后，数据库中的值不可更改。\n事务的隔离级别 读未提交：产生脏读，即一个事务可以读取另一个事务未提交的内容。 读提交：解决脏读，产生不可重复读，即事务的两次读取结果不一致。 可重复读：解决不可重复读，但是会产生幻读，即一个事务明明提交了，但是在另一个事务中没有更新。 串行化：当两个事务都在写入内容时，必须排队，当两个事务提交后，才可以执行后续事务。 数据库三大范式 数据库中的所有字段都是不可分割的原子值 在满足第一范式的前提下，除开主键外的其他列都必须完全依赖于主键。 在满足第二范式的前提下，除开主键外的其他列之间不能有传递依赖关系。 myisam和innoDB myisam不支持事务，不支持外键，支持表锁。查询速度较快。适合读多更新少的表。\ninnoDB支持事务，支持外键，支持行锁，因为锁的粒度比较小，所以适合高并发。\n持久化 利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的机制叫做持久化。确保数据安全。\n将当前数据状态进行保存，快照形式。RDB 将数据的操作过程进行保存，日志形式。AOF ",
+  "wordCount" : "2722",
+  "inLanguage": "zh",
+  "image": "https://i.postimg.cc/7hwBy7VS/calcr.png","datePublished": "2024-09-14T21:58:32+08:00",
+  "dateModified": "2024-09-14T21:58:32+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "steamdk"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steamdk.github.io/posts/004%E6%95%B0%E6%8D%AE%E5%BA%93/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "项目介绍",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steamdk.github.io/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://steamdk.github.io/" accesskey="h" title="项目介绍 (Alt + H)">项目介绍</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://steamdk.github.io/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steamdk.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      004数据库
+    </h1>
+    <div class="post-meta"><span title='2024-09-14 21:58:32 +0800 CST'>2024-09-14</span>&nbsp;·&nbsp;6 分钟&nbsp;·&nbsp;steamdk
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#b%e6%a0%91" aria-label="B&#43;树">B+树</a></li>
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e7%b4%a2%e5%bc%95" aria-label="什么是索引">什么是索引</a></li>
+                <li>
+                    <a href="#b%e6%a0%91%e5%92%8cb%e6%a0%91%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="B树和B&#43;树的区别">B树和B+树的区别</a></li>
+                <li>
+                    <a href="#mysql%e5%ad%98%e5%82%a8%e5%bc%95%e6%93%8emyisam%e5%92%8cinnodb" aria-label="mysql存储引擎myISAM和InnoDB">mysql存储引擎myISAM和InnoDB</a></li>
+                <li>
+                    <a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%89%e5%a4%a7%e8%8c%83%e5%bc%8f" aria-label="数据库三大范式">数据库三大范式</a></li>
+                <li>
+                    <a href="#%e4%ba%8b%e5%8a%a1%e7%9a%84%e5%9b%9b%e4%b8%aa%e7%89%b9%e6%80%a7acid" aria-label="事务的四个特性ACID">事务的四个特性ACID</a></li>
+                <li>
+                    <a href="#%e4%ba%8b%e5%8a%a1%e9%9a%94%e7%a6%bb%e7%ba%a7%e5%88%ab" aria-label="事务隔离级别">事务隔离级别</a></li>
+                <li>
+                    <a href="#%e4%b8%bb%e9%94%ae%e5%92%8c%e5%a4%96%e9%94%ae%e7%ba%a6%e6%9d%9f" aria-label="主键和外键约束">主键和外键约束</a></li>
+                <li>
+                    <a href="#inner-join-%e5%92%8c-left-join" aria-label="inner join 和 left join">inner join 和 left join</a></li>
+                <li>
+                    <a href="#redis" aria-label="redis">redis</a></li>
+                <li>
+                    <a href="#%e6%9f%a5%e8%af%a2" aria-label="查询">查询</a></li>
+                <li>
+                    <a href="#%e6%82%b2%e8%a7%82%e9%94%81%e5%92%8c%e4%b9%90%e8%a7%82%e9%94%81" aria-label="悲观锁和乐观锁">悲观锁和乐观锁</a></li>
+                <li>
+                    <a href="#explain-%e6%9f%a5%e7%9c%8b%e6%89%a7%e8%a1%8c%e8%ae%a1%e5%88%92" aria-label="explain 查看执行计划">explain 查看执行计划</a></li>
+                <li>
+                    <a href="#show-profile" aria-label="show profile">show profile</a></li>
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e5%ba%94%e8%af%a5%e5%88%9b%e5%bb%ba%e7%b4%a2%e5%bc%95" aria-label="什么时候应该创建索引">什么时候应该创建索引</a></li>
+                <li>
+                    <a href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%b8%8d%e5%ba%94%e8%af%a5%e5%88%9b%e5%bb%ba%e7%b4%a2%e5%bc%95" aria-label="什么时候不应该创建索引">什么时候不应该创建索引</a></li>
+                <li>
+                    <a href="#b%e6%a0%91-1" aria-label="B&#43;树">B+树</a></li>
+                <li>
+                    <a href="#b%e6%a0%91-2" aria-label="B树">B树</a></li>
+                <li>
+                    <a href="#%e7%b4%a2%e5%bc%95" aria-label="索引">索引</a></li>
+                <li>
+                    <a href="#acid" aria-label="ACID">ACID</a></li>
+                <li>
+                    <a href="#%e4%ba%8b%e5%8a%a1%e7%9a%84%e9%9a%94%e7%a6%bb%e7%ba%a7%e5%88%ab" aria-label="事务的隔离级别">事务的隔离级别</a></li>
+                <li>
+                    <a href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%89%e5%a4%a7%e8%8c%83%e5%bc%8f-1" aria-label="数据库三大范式">数据库三大范式</a></li>
+                <li>
+                    <a href="#myisam%e5%92%8cinnodb" aria-label="myisam和innoDB">myisam和innoDB</a></li>
+                <li>
+                    <a href="#%e6%8c%81%e4%b9%85%e5%8c%96" aria-label="持久化">持久化</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="b树">B+树<a hidden class="anchor" aria-hidden="true" href="#b树">#</a></h2>
+<ol>
+<li>具有n个关键字的节点含有n个分支。而在B树中，具有n个关键字的节点含有n+1个节点。</li>
+<li>B+树的叶子节点包含了所有关键字，并且包含信息。</li>
+<li>B+树非叶子节点只起索引作用，不存数据。</li>
+<li>B+数在叶子节点使用指针将前后磁盘块中的索引连接起来，形成一个线性链表，方便范围查询。</li>
+</ol>
+<h2 id="什么是索引">什么是索引<a hidden class="anchor" aria-hidden="true" href="#什么是索引">#</a></h2>
+<p>索引是数据表中对<strong>字段</strong>进行排序的一种<strong>数据结构</strong>。常用的索引有</p>
+<p>B树 哈希索引 全文索引 Rtree索引</p>
+<p>AVL树，B树，B+树，红黑树，哈希表。</p>
+<p>哈希表和B树不利于范围查找。红黑树在数据量大的时候性能会下降。</p>
+<p>**聚集索引：**数据和索引在一起的。</p>
+<p>**非聚集索引：**索引文件和数据文件是分离的。</p>
+<p>联合索引：对多个字段同时建立的索引。Mysql从左到右的使用索引中的字段，一个查询可以只使用索引中的一部份，但只能是最左侧部分，<strong>跳跃索引查询</strong>就会导致索引失效。</p>
+<h2 id="b树和b树的区别">B树和B+树的区别<a hidden class="anchor" aria-hidden="true" href="#b树和b树的区别">#</a></h2>
+<ol>
+<li>B树：叶节点具有相同的深度，<strong>所有索引元素不重复</strong>，节点中的数据索引从左到右递增排列。</li>
+<li>B+树：<strong>非叶子节点不存储数据，只存储索引</strong>，叶子节点包含了全部的关键字且存储数据。叶子节点用指针连接从左往右递增排序，提高区间访问的性能。</li>
+</ol>
+<h2 id="mysql存储引擎myisam和innodb">mysql存储引擎myISAM和InnoDB<a hidden class="anchor" aria-hidden="true" href="#mysql存储引擎myisam和innodb">#</a></h2>
+<p><strong>存储引擎是基于表的，而不是数据库。</strong></p>
+<ol>
+<li>InnoDB引擎：<strong>支持事务，行锁（适合高并发）</strong>，支持外键。mysql5.5版本后的<strong>默认存储引擎</strong></li>
+<li>myISAM引擎：不支持事务，不支持外键，支持表锁。<strong>优势是访问的速度快</strong>。mysql5.5版本前的默认存储引擎。myISAM索引文件和数据文件是分离的。<strong>查询较多的更新较少的情况下使用myisam存储引擎。</strong></li>
+</ol>
+<h2 id="数据库三大范式">数据库三大范式<a hidden class="anchor" aria-hidden="true" href="#数据库三大范式">#</a></h2>
+<ol>
+<li>数据库中的<strong>所有字段</strong>都是<strong>不可分割的原子值</strong></li>
+<li>满足第一范式的前提下，除主键外的<strong>每一列</strong>都必须<strong>完全依赖于主键</strong>。如果不完全依赖，只能发生在联合主键下。</li>
+<li>满足第二范式的前提下，除开主键列的其他<strong>列之间</strong>不能有<strong>传递依赖</strong>关系。</li>
+</ol>
+<h2 id="事务的四个特性acid">事务的四个特性ACID<a hidden class="anchor" aria-hidden="true" href="#事务的四个特性acid">#</a></h2>
+<p>事务是作为<strong>单个逻辑工作单元</strong>执行的一系列操作。要么完全执行，要么完全不执行。</p>
+<ol>
+<li>**原子性 ：**同一事务中多个操作不能分割，必须是一个整体。</li>
+<li>**一致性 ：**事务操作前后的总量保持一致。</li>
+<li>**隔离性 ：**多个事务之间的操作互不干扰。</li>
+<li>**持久性：**事务提交以后，对数据库中数据的改变是永久的。</li>
+</ol>
+<h2 id="事务隔离级别">事务隔离级别<a hidden class="anchor" aria-hidden="true" href="#事务隔离级别">#</a></h2>
+<p>事务分为四个隔离级别：分别是读未提交，读提交，可重复读，串行化。从前往后隔离级别依次递增，同时执行效率依次下降。mysql的默认隔离级别是可重复读。</p>
+<ol>
+<li><strong>读未提交：<strong>会产生</strong>脏读</strong>，即一个事务读取了另一个事务未提交的内容。</li>
+<li><strong>读提交：<strong>可以解决脏读问题，但是会产生</strong>不可重复读</strong>，即一个事务在执行的过程中得到的结果不一致。</li>
+<li><strong>可重复读：<strong>可以解决不可重复读的问题，但会产生</strong>幻读</strong>，即一个事务无法看到另一个事务已经提交的内容。</li>
+<li>**串行化：**可以解决幻读问题。当同一张表被另一个事务操作时，其他事务的写操作是不可以进行的，进入串行化排队，直到另一个结束，同时还为超时的情况下才可以继续执行。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">set</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="k">transaction</span><span class="w"> </span><span class="k">isolation</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="k">read</span><span class="w"> </span><span class="k">committed</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">修改隔离级别</span><span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">select @@x_isolation  # 查看隔离级别
+</span></span></span></code></pre></div><h2 id="主键和外键约束">主键和外键约束<a hidden class="anchor" aria-hidden="true" href="#主键和外键约束">#</a></h2>
+<p>主键：**唯一且非空。**一个表有且只能由一个主键约束。创建主键会自动创建对应的索引，同样删除主键，对应的索引也会被删除。</p>
+<p>外键约束：如果定义了外键约束，主表中没有的数据在子表中是<strong>不可以被使用的</strong>。主表中的记录被子表引用，是不可以被删除的。</p>
+<h2 id="inner-join-和-left-join">inner join 和 left join<a hidden class="anchor" aria-hidden="true" href="#inner-join-和-left-join">#</a></h2>
+<ol>
+<li>等值联接：inner join返回两个表中<strong>联接字段相等的行</strong></li>
+<li>左联接：left join 返回左表所有记录和右表中联接字段相等的记录，如果左表中的记录在右边不存在，则对应字段设为null。</li>
+</ol>
+<h2 id="redis">redis<a hidden class="anchor" aria-hidden="true" href="#redis">#</a></h2>
+<p>是C语言编写的基于<strong>内存可持久化</strong>的key-value内存数据库，使用的是<strong>epoll单线程模型</strong>。常用的数据结构有set， list，string, hash, sorted set。</p>
+<h2 id="查询">查询<a hidden class="anchor" aria-hidden="true" href="#查询">#</a></h2>
+<p>分组查询：count() sum() max() min() avg()</p>
+<p>聚合查询：7种 A B A∪B A∩B   A - A∩B  B - A∩B  A∪B - A∩B</p>
+<p>左连接： A - A∩B   右连接：B - A∩B  内连接：A∩B</p>
+<h2 id="悲观锁和乐观锁">悲观锁和乐观锁<a hidden class="anchor" aria-hidden="true" href="#悲观锁和乐观锁">#</a></h2>
+<ol>
+<li>悲观锁： <strong>每次去拿数据时都认为别人会修改，所以每次在拿数据的时候都会上锁。悲观锁由数据库自己实现，共享锁和排他锁是悲观锁的不同实现。悲观锁的缺点：效率低，并行差，增加死锁的概率。</strong></li>
+<li>乐观锁：<strong>每次去拿数据都认为别人不会修改，所以不会上锁。乐观锁适用于读多，写少的场景。乐观锁常见的实现方式：版本号机制和CAS自旋算法。乐观锁的缺点：ABA问题，循环时间长开销大，只能保证一个共享变量的原子操作。</strong></li>
+</ol>
+<h2 id="explain-查看执行计划">explain 查看执行计划<a hidden class="anchor" aria-hidden="true" href="#explain-查看执行计划">#</a></h2>
+<p>使用explain关键字可以<strong>模拟优化器执行sql查询语句</strong>，从而知道mysql是如何处理sql语句的。分析查询语句或表结构的性能瓶颈。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">explain</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sql语句</span><span class="w">
+</span></span></span></code></pre></div><h2 id="show-profile">show profile<a hidden class="anchor" aria-hidden="true" href="#show-profile">#</a></h2>
+<p>用来分析当前会话中<strong>语句执行的资源消耗情况。</strong></p>
+<h2 id="什么时候应该创建索引">什么时候应该创建索引<a hidden class="anchor" aria-hidden="true" href="#什么时候应该创建索引">#</a></h2>
+<ol>
+<li>频繁查询字段</li>
+</ol>
+<h2 id="什么时候不应该创建索引">什么时候不应该创建索引<a hidden class="anchor" aria-hidden="true" href="#什么时候不应该创建索引">#</a></h2>
+<ol>
+<li>where条件里用不到的字段</li>
+<li>频繁更新的字段</li>
+<li>表记录太少&lt;300W</li>
+<li>重复且平均的表字段</li>
+</ol>
+<h2 id="b树-1">B+树<a hidden class="anchor" aria-hidden="true" href="#b树-1">#</a></h2>
+<p>B+树是B树的变形，B+树非叶子节点只存索引，不存数据，叶子节点存储所有的索引和数据。B+树三层可以存储上百万条数据，磁盘IO最多三次，每次读取磁盘块到内存后，使用二分查找找到索引的位置。</p>
+<p>B+树是聚集索引，数据和索引在一起。B+树使用指针将叶子节点的连接起来。</p>
+<h2 id="b树-2">B树<a hidden class="anchor" aria-hidden="true" href="#b树-2">#</a></h2>
+<p>是一种多路平衡二叉树，m阶B树，每个节点最多可以有m-1关键字。所有叶子节点在同一层。每个节点保存索引和数据。</p>
+<h2 id="索引">索引<a hidden class="anchor" aria-hidden="true" href="#索引">#</a></h2>
+<p>索引是按照某个字段排序的数据结构。</p>
+<h2 id="acid">ACID<a hidden class="anchor" aria-hidden="true" href="#acid">#</a></h2>
+<p><strong>事务时单个逻辑工作单元的一系列操作。</strong></p>
+<p>原子性：事务的操作是不可分割的，要么完全成功，要么完全失败。</p>
+<p>一致性：事务操作前后的总量保持不变。</p>
+<p>隔离性：事务之间的操作应该相互隔离。</p>
+<p>持久性：事务一旦提交后，数据库中的值不可更改。</p>
+<h2 id="事务的隔离级别">事务的隔离级别<a hidden class="anchor" aria-hidden="true" href="#事务的隔离级别">#</a></h2>
+<ol>
+<li>读未提交：产生脏读，即一个事务可以读取另一个事务未提交的内容。</li>
+<li>读提交：解决脏读，产生不可重复读，即事务的两次读取结果不一致。</li>
+<li>可重复读：解决不可重复读，但是会产生幻读，即一个事务明明提交了，但是在另一个事务中没有更新。</li>
+<li>串行化：当两个事务都在写入内容时，必须排队，当两个事务提交后，才可以执行后续事务。</li>
+</ol>
+<h2 id="数据库三大范式-1">数据库三大范式<a hidden class="anchor" aria-hidden="true" href="#数据库三大范式-1">#</a></h2>
+<ol>
+<li>数据库中的所有字段都是不可分割的原子值</li>
+<li>在满足第一范式的前提下，除开主键外的其他列都必须完全依赖于主键。</li>
+<li>在满足第二范式的前提下，除开主键外的其他列之间不能有传递依赖关系。</li>
+</ol>
+<h2 id="myisam和innodb">myisam和innoDB<a hidden class="anchor" aria-hidden="true" href="#myisam和innodb">#</a></h2>
+<p>myisam不支持事务，不支持外键，支持表锁。查询速度较快。适合读多更新少的表。</p>
+<p>innoDB支持事务，支持外键，支持行锁，因为锁的粒度比较小，所以适合高并发。</p>
+<h2 id="持久化">持久化<a hidden class="anchor" aria-hidden="true" href="#持久化">#</a></h2>
+<p>利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的机制叫做持久化。确保数据安全。</p>
+<ol>
+<li>将当前数据状态进行保存，快照形式。RDB</li>
+<li>将数据的操作过程进行保存，日志形式。AOF</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steamdk.github.io/tags/cpp/">Cpp</a></li>
+      <li><a href="https://steamdk.github.io/tags/%E5%9F%BA%E7%A1%80/">基础</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://steamdk.github.io/posts/005%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>005数据结构</span>
+  </a>
+  <a class="next" href="https://steamdk.github.io/posts/%E5%85%AB%E8%82%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>八股基础</span>
+  </a>
+</nav>
+
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "steamdk\/steamdk.github.io",
+            "data-repo-id": "R_kgDONN_Y2g",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDONN_Y2s4CkVh9",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://github.com/steamdk/steamdk.github.io">©2024 项目介绍</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js"
+  integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj+Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var OSName = "unknown";
+  var navApp = navigator.userAgent.toLowerCase();
+  switch (true) {
+    case (navApp.indexOf("win") != -1):
+      OSName = "windows";
+      break;
+    case (navApp.indexOf("mac") != -1):
+      OSName = "apple";
+      break;
+    case (navApp.indexOf("linux") != -1):
+      OSName = "linux";
+      break;
+    case (navApp.indexOf("x11") != -1):
+      OSName = "unix";
+      break;
+  }
+
+  const images = Array.from(document.querySelectorAll(".post-content img"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 1,    
+      
+      container: null,  
+      template: null,  
+      
+    });
+  });
+
+  if (OSName == "windows") {
+    document.body.className += ' win11'
+  }
+</script>
+
+
+
+
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

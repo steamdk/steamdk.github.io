@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>配色 on 项目介绍</title>
+    <link>https://steamdk.github.io/tags/%E9%85%8D%E8%89%B2/</link>
+    <description>Recent content in 配色 on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Wed, 13 Nov 2024 23:26:05 +0800</lastBuildDate>
+    <atom:link href="https://steamdk.github.io/tags/%E9%85%8D%E8%89%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xshell主题配色文件</title>
+      <link>https://steamdk.github.io/posts/xshell%E4%B8%BB%E9%A2%98%E9%85%8D%E8%89%B2%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 13 Nov 2024 23:26:05 +0800</pubDate>
+      <guid>https://steamdk.github.io/posts/xshell%E4%B8%BB%E9%A2%98%E9%85%8D%E8%89%B2%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;h1 id=&#34;xshell突出显示配置&#34;&gt;&lt;code&gt;Xshell&lt;/code&gt;突出显示配置&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将命名为 &lt;strong&gt;&lt;code&gt;XshellColor.hls&lt;/code&gt;&lt;/strong&gt; 的文件准备好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将该文件放置到以下目录：
+&lt;strong&gt;&lt;code&gt;C:\Users\Your_name\Documents\NetSarang Computer\7\Xshell\HighlightSet Files&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（请将 &lt;code&gt;Your_name&lt;/code&gt; 替换为您的实际用户名）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开 Xshell 后，即可在颜色设置中选择该高亮配置文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我这是黑暗版风格, 偏护眼&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
