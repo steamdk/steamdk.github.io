@@ -12,20 +12,55 @@
     <generator>Hugo -- 0.138.0</generator>
     <language>zh</language>
     <copyright>©2024 项目介绍</copyright>
-    <lastBuildDate>Sun, 17 Nov 2024 14:55:20 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://steamdk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>案例</title>
       <link>https://steamdk.github.io/categories/%E6%A1%88%E4%BE%8B/</link>
-      <pubDate>Sun, 17 Nov 2024 14:55:20 +0800</pubDate>
+      <pubDate>Sun, 24 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://steamdk.github.io/categories/%E6%A1%88%E4%BE%8B/</guid>
       <description></description>
     </item>
     <item>
-      <title>八股</title>
-      <link>https://steamdk.github.io/categories/%E5%85%AB%E8%82%A1/</link>
-      <pubDate>Sat, 14 Sep 2024 21:58:12 +0800</pubDate>
-      <guid>https://steamdk.github.io/categories/%E5%85%AB%E8%82%A1/</guid>
+      <title>Golang</title>
+      <link>https://steamdk.github.io/categories/golang/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lua</title>
+      <link>https://steamdk.github.io/categories/lua/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/lua/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nodejs</title>
+      <link>https://steamdk.github.io/categories/nodejs/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/nodejs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SpringBoot</title>
+      <link>https://steamdk.github.io/categories/springboot/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/springboot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Miniprogram</title>
+      <link>https://steamdk.github.io/categories/miniprogram/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/miniprogram/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phaser</title>
+      <link>https://steamdk.github.io/categories/phaser/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/categories/phaser/</guid>
       <description></description>
     </item>
   </channel>

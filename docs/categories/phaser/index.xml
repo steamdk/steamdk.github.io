@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Phaser on 项目介绍</title>
+    <link>https://steamdk.github.io/categories/phaser/</link>
+    <description>Recent content in Phaser on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Fri, 18 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://steamdk.github.io/categories/phaser/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RPG闯关游戏</title>
+      <link>https://steamdk.github.io/posts/phaser/aether/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/posts/phaser/aether/</guid>
+      <description>一个基于phaser3 &#43; javascript &#43; Tiled场景地图 等技术，实现的RPG 闯关卡类型的小游戏。</description>
+    </item>
+    <item>
+      <title>合成大西瓜</title>
+      <link>https://steamdk.github.io/posts/phaser/hexigua/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/posts/phaser/hexigua/</guid>
+      <description>一个基于phaser3 &#43; javascript &#43;  matter物理引擎 等技术，实现的休闲小游戏合成大西瓜。</description>
+    </item>
+  </channel>
+</rss>

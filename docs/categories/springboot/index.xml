@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SpringBoot on 项目介绍</title>
+    <link>https://steamdk.github.io/categories/springboot/</link>
+    <description>Recent content in SpringBoot on 项目介绍</description>
+    <image>
+      <title>项目介绍</title>
+      <url>https://i.postimg.cc/7hwBy7VS/calcr.png</url>
+      <link>https://i.postimg.cc/7hwBy7VS/calcr.png</link>
+    </image>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh</language>
+    <copyright>©2024 项目介绍</copyright>
+    <lastBuildDate>Mon, 18 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://steamdk.github.io/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>购物商城</title>
+      <link>https://steamdk.github.io/posts/springboot/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/posts/springboot/</guid>
+      <description>一个基于Springboot&#43;mysql&#43;vue.js开发的购物商城项目，采用Springboot整合了SpringMVC,Spring Data JPA,MyBatisPlus、Junit等技术。</description>
+    </item>
+  </channel>
+</rss>

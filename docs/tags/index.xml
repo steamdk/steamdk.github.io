@@ -12,27 +12,104 @@
     <generator>Hugo -- 0.138.0</generator>
     <language>zh</language>
     <copyright>©2024 项目介绍</copyright>
-    <lastBuildDate>Sun, 17 Nov 2024 14:55:20 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://steamdk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>案例</title>
       <link>https://steamdk.github.io/tags/%E6%A1%88%E4%BE%8B/</link>
-      <pubDate>Sun, 17 Nov 2024 14:55:20 +0800</pubDate>
+      <pubDate>Sun, 24 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://steamdk.github.io/tags/%E6%A1%88%E4%BE%8B/</guid>
       <description></description>
     </item>
     <item>
-      <title>Cpp</title>
-      <link>https://steamdk.github.io/tags/cpp/</link>
-      <pubDate>Sat, 14 Sep 2024 21:58:12 +0800</pubDate>
-      <guid>https://steamdk.github.io/tags/cpp/</guid>
+      <title>Golang</title>
+      <link>https://steamdk.github.io/tags/golang/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lua</title>
+      <link>https://steamdk.github.io/tags/lua/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/lua/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nodejs</title>
+      <link>https://steamdk.github.io/tags/nodejs/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/nodejs/</guid>
       <description></description>
     </item>
     <item>
       <title>SpringBoot</title>
       <link>https://steamdk.github.io/tags/springboot/</link>
-      <pubDate>Sat, 14 Sep 2024 15:21:55 +0800</pubDate>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://steamdk.github.io/tags/springboot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>后台管理</title>
+      <link>https://steamdk.github.io/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>论坛</title>
+      <link>https://steamdk.github.io/tags/%E8%AE%BA%E5%9D%9B/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/%E8%AE%BA%E5%9D%9B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>宿舍管理</title>
+      <link>https://steamdk.github.io/tags/%E5%AE%BF%E8%88%8D%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/%E5%AE%BF%E8%88%8D%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Miniprogram</title>
+      <link>https://steamdk.github.io/tags/miniprogram/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/miniprogram/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenResty</title>
+      <link>https://steamdk.github.io/tags/openresty/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/openresty/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phaser</title>
+      <link>https://steamdk.github.io/tags/phaser/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/phaser/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RPG</title>
+      <link>https://steamdk.github.io/tags/rpg/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/rpg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>微信小程序</title>
+      <link>https://steamdk.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>小游戏</title>
+      <link>https://steamdk.github.io/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/</link>
+      <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/</guid>
       <description></description>
     </item>
   </channel>
