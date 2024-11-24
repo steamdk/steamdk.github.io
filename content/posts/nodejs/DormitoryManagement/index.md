@@ -10,7 +10,7 @@ tags: ["案例","nodejs", "宿舍管理"]
 author: ["admin"]
 series: ["系统"]
 cover:
-  image: posts/nodejs/DormitoryManagement/images/screen-shot_04.png
+  image: posts/nodejs/DormitoryManagement/images/1.png
   caption: "nodejs [学生宿舍管理系统](#)"
   hidden: false ## 封面图是否隐藏
   hiddenInList: false ## 封面图是否 在列表隐藏
