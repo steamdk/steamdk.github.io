@@ -5,7 +5,7 @@ description : 一个基于基于 nodejs Koa框架，以及 VueJS 的学生宿舍
 keywords : ["nodejs", "Koa", "学生", "宿舍管理"] 
 date: 2024-11-18
 categories: ["nodejs"]
-weight: 3
+weight: 10
 tags: ["案例","nodejs", "宿舍管理"]
 author: ["admin"]
 series: ["系统"]
@@ -23,7 +23,6 @@ cover:
 ShowToc: true # 是否显示目录
 TocOpen: false # 目录是否打开
 ---
-
 
 # 0. 概览
 

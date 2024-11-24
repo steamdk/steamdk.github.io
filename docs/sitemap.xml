@@ -14,9 +14,6 @@
     <loc>https://steamdk.github.io/posts/golang/admin/</loc>
     <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://steamdk.github.io/posts/nodejs/dormitorymanagement/</loc>
-    <lastmod>2024-11-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://steamdk.github.io/posts/phaser/aether/</loc>
     <lastmod>2024-10-18T00:00:00+00:00</lastmod>
   </url><url>
@@ -31,6 +28,9 @@
   </url><url>
     <loc>https://steamdk.github.io/posts/miniprogram/wuye/</loc>
     <lastmod>2024-10-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://steamdk.github.io/posts/nodejs/dormitorymanagement/</loc>
+    <lastmod>2024-11-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://steamdk.github.io/posts/</loc>
     <lastmod>2024-11-24T00:00:00+00:00</lastmod>
