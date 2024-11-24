@@ -10,7 +10,7 @@ tags: ["案例","nodejs", "宿舍管理"]
 author: ["admin"]
 series: ["系统"]
 cover:
-  image: posts/nodejs/DormitoryManagement/images/screen-shot_01.png
+  image: posts/nodejs/DormitoryManagement/images/0.png
   caption: "nodejs [学生宿舍管理系统](#)"
   hidden: false ## 封面图是否隐藏
   hiddenInList: false ## 封面图是否 在列表隐藏
@@ -29,7 +29,7 @@ TocOpen: false # 目录是否打开
 
 基于 Koa 以及 VueJS 的宿舍管理系统。
 
-![](./images/screen-shot_01.png)
+![](./images/0.png)
 
 ![](./images/screen-shot_02.png)
 
