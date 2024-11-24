@@ -2,11 +2,3 @@
 .env
 go.sum 
 .DS_Store
-target
-vendor
-themes
-static
-public
-layouts
-content
-assets
