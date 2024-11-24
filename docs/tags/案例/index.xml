@@ -72,9 +72,9 @@
     </item>
     <item>
       <title>学生宿舍管理系统</title>
-      <link>https://steamdk.github.io/posts/nodejs/dormitorymanagement/</link>
+      <link>https://steamdk.github.io/posts/nodejs/dormitory/</link>
       <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://steamdk.github.io/posts/nodejs/dormitorymanagement/</guid>
+      <guid>https://steamdk.github.io/posts/nodejs/dormitory/</guid>
       <description>一个基于基于 nodejs Koa框架，以及 VueJS 的学生宿舍管理系统。</description>
     </item>
   </channel>
