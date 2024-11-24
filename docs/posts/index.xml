@@ -43,6 +43,13 @@
       <description>一个基于 golang &#43;mysql&#43;vue3开发的后台管理项目，采用golang整合了net/http middleware jwt gorm RBAC 等技术。</description>
     </item>
     <item>
+      <title>学生宿舍管理系统</title>
+      <link>https://steamdk.github.io/posts/nodejs/dormitory/</link>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://steamdk.github.io/posts/nodejs/dormitory/</guid>
+      <description>一个基于基于 nodejs Koa框架，以及 VueJS 的学生宿舍管理系统。</description>
+    </item>
+    <item>
       <title>RPG闯关游戏</title>
       <link>https://steamdk.github.io/posts/phaser/aether/</link>
       <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
@@ -76,13 +83,6 @@
       <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://steamdk.github.io/posts/miniprogram/wuye/</guid>
       <description>一个基于微信小程序 &#43; javascript &#43;  云函数 &#43; 微信云函数对应的存储实现的一个程序， 不需要申请域名和单独购买服务器，每个月基础费用低至19元</description>
-    </item>
-    <item>
-      <title>学生宿舍管理系统</title>
-      <link>https://steamdk.github.io/posts/nodejs/dormitory/</link>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://steamdk.github.io/posts/nodejs/dormitory/</guid>
-      <description>一个基于基于 nodejs Koa框架，以及 VueJS 的学生宿舍管理系统。</description>
     </item>
   </channel>
 </rss>
